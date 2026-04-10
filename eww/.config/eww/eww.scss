@@ -1,0 +1,105 @@
+// ── Catppuccin Mocha palette ────────────────────────────────────────────────
+$base:     #1e1e2e;
+$mantle:   #181825;
+$crust:    #11111b;
+$surface0: #313244;
+$surface1: #45475a;
+$overlay0: #6c7086;
+$subtext0: #a6adc8;
+$subtext1: #bac2de;
+$text:     #cdd6f4;
+
+$blue:     #89b4fa;
+$mauve:    #cba6f7;
+$teal:     #94e2d5;
+$peach:    #fab387;
+$green:    #a6e3a1;
+$red:      #f38ba8;
+
+// ── Reset ───────────────────────────────────────────────────────────────────
+* { all: unset; box-sizing: border-box; }
+
+// ── Floating panel ──────────────────────────────────────────────────────────
+.sysmon {
+  background:    $base;
+  border:        1px solid $surface0;
+  border-radius: 12px;
+  padding:       16px;
+  min-width:     220px;
+}
+
+.sysmon-title {
+  font-family:    monospace;
+  font-size:      12px;
+  font-weight:    bold;
+  color:          $subtext1;
+  letter-spacing: 0.05em;
+  margin-bottom:  4px;
+}
+
+// ── Stat rows ───────────────────────────────────────────────────────────────
+.stat { margin-bottom: 2px; }
+
+.stat-name {
+  font-size: 12px;
+  color:     $subtext0;
+}
+
+.stat-val {
+  font-size:   12px;
+  font-weight: bold;
+  &.cpu { color: $blue;  }
+  &.ram { color: $mauve; }
+  &.gpu { color: $teal;  }
+}
+
+// ── Progress bars (scale widget) ─────────────────────────────────────────────
+scale {
+  trough {
+    background:    $surface0;
+    border-radius: 3px;
+    min-height:    5px;
+  }
+  highlight, fill {
+    border-radius: 3px;
+    min-height:    5px;
+  }
+  // Hide the slider handle — display-only
+  slider {
+    background:  transparent;
+    min-width:   0;
+    min-height:  0;
+    border:      none;
+    box-shadow:  none;
+  }
+}
+
+.cpu-bar { highlight, fill { background: $blue;  } }
+.ram-bar { highlight, fill { background: $mauve; } }
+.gpu-bar { highlight, fill { background: $teal;  } }
+
+// ── Temp section ─────────────────────────────────────────────────────────────
+.temp-row {
+  border-top:  1px solid $surface0;
+  padding-top: 10px;
+  margin-top:  2px;
+}
+
+.temp-chip {
+  background:    $mantle;
+  border:        1px solid $surface0;
+  border-radius: 8px;
+  padding:       8px 14px;
+}
+
+.temp-val {
+  font-size:   20px;
+  font-weight: bold;
+  &.cpu { color: $peach; }
+  &.gpu { color: $teal;  }
+}
+
+.temp-label {
+  font-size: 10px;
+  color:     $overlay0;
+}

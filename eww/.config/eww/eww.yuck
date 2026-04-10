@@ -1,0 +1,66 @@
+;;; ── Polls ─────────────────────────────────────────────────────────────────
+
+(defpoll cpu_pct :interval "2s"
+  "~/.local/bin/sysmon-cpu.sh")
+
+(defpoll ram :interval "2s"
+  "~/.local/bin/sysmon-ram.sh")
+
+(defpoll gpu_pct :interval "2s"
+  "~/.local/bin/sysmon-gpu.sh")
+
+(defpoll temps :interval "3s"
+  "~/.local/bin/sysmon-temps.sh")
+
+;;; ── Widgets ────────────────────────────────────────────────────────────────
+
+(defwidget sysmon []
+  (box :class "sysmon" :orientation "v" :space-evenly false :spacing 10
+
+    (label :class "sysmon-title" :text "  system monitor" :halign "start")
+
+    ;; CPU
+    (box :class "stat" :orientation "v" :space-evenly false :spacing 4
+      (box :orientation "h" :space-evenly false
+        (label :class "stat-name" :text "CPU" :halign "start" :hexpand true)
+        (label :class "stat-val cpu" :text "${cpu_pct}%"))
+      (scale :class "bar cpu-bar" :min 0 :max 100
+             :value cpu_pct :sensitive false :draw-value false))
+
+    ;; RAM
+    (box :class "stat" :orientation "v" :space-evenly false :spacing 4
+      (box :orientation "h" :space-evenly false
+        (label :class "stat-name" :text "RAM" :halign "start" :hexpand true)
+        (label :class "stat-val ram" :text "${ram.used}/${ram.total} GB"))
+      (scale :class "bar ram-bar" :min 0 :max 100
+             :value {ram.pct} :sensitive false :draw-value false))
+
+    ;; GPU
+    (box :class "stat" :orientation "v" :space-evenly false :spacing 4
+      (box :orientation "h" :space-evenly false
+        (label :class "stat-name" :text "GPU" :halign "start" :hexpand true)
+        (label :class "stat-val gpu" :text "${gpu_pct}%"))
+      (scale :class "bar gpu-bar" :min 0 :max 100
+             :value gpu_pct :sensitive false :draw-value false))
+
+    ;; Temps
+    (box :class "temp-row" :orientation "h" :space-evenly true :spacing 8
+      (box :class "temp-chip" :orientation "v" :space-evenly false :spacing 2
+        (label :class "temp-val cpu" :text "${temps.cpu}°" :halign "center")
+        (label :class "temp-label" :text "CPU" :halign "center"))
+      (box :class "temp-chip" :orientation "v" :space-evenly false :spacing 2
+        (label :class "temp-val gpu" :text "${temps.gpu}°" :halign "center")
+        (label :class "temp-label" :text "GPU" :halign "center")))))
+
+;;; ── Window ─────────────────────────────────────────────────────────────────
+
+(defwindow sysmon-window
+  :monitor 0
+  :geometry (geometry
+              :x "10px"
+              :y "40px"        ; adjust to sit below your Waybar
+              :width "230px"
+              :anchor "top right")
+  :stacking "fg"
+  :exclusive false
+  (sysmon))
