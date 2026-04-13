@@ -168,3 +168,26 @@ button:hover {
     background-color: @overlay1;
     margin: 2px 0;
 }
+
+/* ── Add to your ~/.config/waybar/style.css ────────────────────────────────
+   These match the Catppuccin Mocha palette you already use.               */
+
+#custom-cpu {
+    color:   #89b4fa;   /* blue   */
+    padding: 0 8px;
+}
+
+#custom-ram {
+    color:   #cba6f7;   /* mauve  */
+    padding: 0 8px;
+}
+
+#custom-gpu {
+    color:   #94e2d5;   /* teal   */
+    padding: 0 8px;
+}
+
+#custom-temps {
+    color:   #fab387;   /* peach  */
+    padding: 0 8px;
+}

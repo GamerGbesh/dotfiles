@@ -1,6 +1,6 @@
 {
   "position": "top",
-  "modules-left": ["hyprland/workspaces"],
+  "modules-left": ["hyprland/workspaces", "custom/cpu", "custom/ram", "custom/gpu" ,"custom/temps"],
   "modules-center": ["hyprland/window"],
   "modules-right": ["tray", "network", "pulseaudio", "battery", "clock"],
   "clock": {
@@ -39,5 +39,37 @@
   },
   "tray": {
     "spacing": 10
-  }  
+  },
+     
+// ── Add these inside your modules{} in ~/.config/waybar/config ──────────────
+// Then reference them in your "modules-left/center/right" array, e.g.:
+//   "modules-right": ["custom/cpu", "custom/ram", "custom/gpu", "custom/temps", ...]
+
+"custom/cpu": {
+    "exec": "~/.local/bin/sysmon-cpu.sh",
+    "interval": 2,
+    "format": "  {}% cpu",
+    "tooltip": false
+},
+
+"custom/ram": {
+    "exec": "free -m | awk '/^Mem:/{printf \"%.0f%%\", $3/$2*100}'",
+    "interval": 2,
+    "format": "  {} ram",
+    "tooltip": false
+},
+
+"custom/gpu": {
+    "exec": "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits 2>/dev/null | tr -d ' '",
+    "interval": 2,
+    "format": "󰢮  {}% gpu",
+    "tooltip": false
+},
+
+"custom/temps": {
+    "exec": "~/.local/bin/sysmon-temps.sh | python3 -c \"import sys,json; d=json.load(sys.stdin); print(f\\\"{d['cpu']}° cpu | {d['gpu']}° gpu\\\")\"",
+    "interval": 3,
+    "format": "  {}",
+    "tooltip": false
+}
 }

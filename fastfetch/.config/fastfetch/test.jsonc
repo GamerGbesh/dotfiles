@@ -1,0 +1,25 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
+    "display": {
+        "color": {
+            "keys": "cyan"
+        },
+        "constants": [
+            "──────────────────────────────────────────────────────",
+            "\u001b[55D",
+            "\u001b[55C",
+            "\u001b[54C"
+        ]
+    },
+    "modules": [
+        {
+            "type": "disk",
+            "key": "│{#white}│ 󰋊 {mount}   │{$4}│{#keys}│{$2}",
+            "percent": {
+                "type": 3,
+                "green": 30,
+                "yellow": 70
+            }
+        }
+    ]
+}
