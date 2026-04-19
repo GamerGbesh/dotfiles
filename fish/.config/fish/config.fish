@@ -110,14 +110,14 @@ alias cdi=__zoxide_zi
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-if test -f /mnt/data/conda/bin/conda
-    eval /mnt/data/conda/bin/conda "shell.fish" "hook" $argv | source
-else
-    if test -f "/mnt/data/conda/etc/fish/conf.d/conda.fish"
-        . "/mnt/data/conda/etc/fish/conf.d/conda.fish"
-    else
-        set -x PATH "/mnt/data/conda/bin" $PATH
-    end
-end
+#if test -f /mnt/data/conda/bin/conda
+#   eval /mnt/data/conda/bin/conda "shell.fish" "hook" $argv | source
+#else
+#   if test -f "/mnt/data/conda/etc/fish/conf.d/conda.fish"
+#       . "/mnt/data/conda/etc/fish/conf.d/conda.fish"
+#   else
+#     set -x PATH "/mnt/data/conda/bin" $PATH
+#   end
+#end
 # <<< conda initialize <<<
 
