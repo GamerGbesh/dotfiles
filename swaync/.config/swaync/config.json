@@ -1,7 +1,7 @@
 {
   "$schema": "~/.config/swaync/configSchema.json",
   "positionX": "right",
-  "positionY": "bottom",
+  "positionY": "top",
   "layer": "overlay",
   "control-center-layer": "top",
   "control-center-position": "right",
