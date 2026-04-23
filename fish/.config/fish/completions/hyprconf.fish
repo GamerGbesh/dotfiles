@@ -1,2 +1,2 @@
 complete -c hyprconf -e
-complete -c hyprconf -f -a "(find ~/.config/hypr -maxdepth 1 -printf \"%f\n\")"
+complete -c hyprconf -f -a "(string split ' ' (basename -a ~/.config/hypr/*))"
