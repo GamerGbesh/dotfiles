@@ -1,0 +1,5 @@
+# Windows
+UUID=01DB8E9A6DF76840  /mnt/windows  ntfs defaults  0  0
+
+# Games
+UUID=01DC3E9270321530  /mnt/games ntfs  defaults  0  0
