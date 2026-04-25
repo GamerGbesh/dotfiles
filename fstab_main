@@ -19,4 +19,4 @@ tmpfs                                     /tmp           tmpfs   defaults,noatim
 UUID=e2d917e6-856a-42a4-9920-b3db7a6fc0e4 /mnt/Data btrfs subvol=/@data,defaults,noatime,compress=zstd:1 0 0
 UUID=e2d917e6-856a-42a4-9920-b3db7a6fc0e4 /home/gbesh/coding btrfs subvol=/@coding,defaults,noatime,compress=zstd:1 0 0
 UUID=e2d917e6-856a-42a4-9920-b3db7a6fc0e4 /home/gbesh/extra/uv btrfs subvol=/@uv,defaults,noatime,compress=zstd:1 0 0
-
+UUID=e2d917e6-856a-42a4-9920-b3db7a6fc0e4 /mnt/docker btrfs subvol=/@docker,defaults,noatime,compress=zstd:1 0 0
