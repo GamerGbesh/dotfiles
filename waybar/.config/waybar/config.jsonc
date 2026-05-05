@@ -2,7 +2,7 @@
   "position": "top",
   "modules-left": ["hyprland/workspaces", "custom/cpu", "custom/ram", "custom/gpu" ,"custom/temps"],
   "modules-center": ["hyprland/window"],
-  "modules-right": ["tray", "network", "pulseaudio", "battery", "clock"],
+  "modules-right": ["tray", "network", "bluetooth", "pulseaudio", "battery", "clock"],
   "clock": {
     "format": "<span foreground='#f5c2e7'>   </span>{:%a %d %H:%M}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
@@ -36,6 +36,13 @@
           "default": ["", "", " "]
       },
       "on-click": "pavucontrol"
+  },
+  "bluetooth": {
+    "format": " {status}",
+    "format-disabled": " off",
+    "format-connected": " {device_alias}",
+    "tooltip-format": "{controller_alias}\n\n{num_connections} connected",
+    "on-click": "blueman-manager"
   },
   "tray": {
     "spacing": 10
