@@ -1,0 +1,19 @@
+[Added Associations]
+application/x-msdownload=wine-2.desktop;
+
+[Default Applications]
+application/x-msdownload=wine-2.desktop;
+image/jpeg=imv.desktop
+image/png=imv.desktop
+image/webp=imv.desktop
+x-scheme-handler/jetbrains=jetbrainsd.desktop
+x-scheme-handler/mongodb=MongoDB Compass.desktop
+x-scheme-handler/mongodb+srv=MongoDB Compass.desktop
+x-scheme-handler/heroic=com.heroicgameslauncher.hgl.desktop
+x-scheme-handler/bitwarden=bitwarden.desktop
+video/mp4=vlc.desktop
+video/x-matroska=vlc.desktop
+video/webm=vlc.desktop
+video/x-msvideo=vlc.desktop
+video/mpeg=vlc.desktop
+video/quicktime=vlc.desktop
