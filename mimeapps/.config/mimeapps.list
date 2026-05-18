@@ -17,3 +17,4 @@ video/webm=vlc.desktop
 video/x-msvideo=vlc.desktop
 video/mpeg=vlc.desktop
 video/quicktime=vlc.desktop
+x-scheme-handler/fdm=freedownloadmanager_fdm_up.desktop
