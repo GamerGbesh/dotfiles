@@ -1,186 +1,149 @@
+/* ─────────────────────────────────────── */
+/* IMPORTS & MOCHA PALETTE */
+/* ─────────────────────────────────────── */
+@import "mocha.css"; /* adjust path as needed */
+
 * {
     border: none;
     border-radius: 0;
     font-family: "Fira Code", FontAwesome;
     font-weight: 600;
-    font-size: 13px;
+    font-size: 11px;
     min-height: 0;
 }
 
-/* ───────────────────────────── */
-/* MAIN BAR */
-/* ───────────────────────────── */
-
+/* ─────────────────────────────────────── */
+/* MAIN BAR — fully transparent */
+/* ─────────────────────────────────────── */
 window#waybar {
-    background: rgba(21, 18, 27, 0.65);
-    color: #cdd6f4;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: transparent;
+    color: @text;
 }
 
-/* Optional blur (works on Hyprland) */
-window#waybar {
-        background: rgba(21, 18, 27, 0.5);
-}
-
-/* ───────────────────────────── */
+/* ─────────────────────────────────────── */
 /* TOOLTIP */
-/* ───────────────────────────── */
-
+/* ─────────────────────────────────────── */
 tooltip {
-    background: rgba(10, 10, 15, 0.85);
-    border-radius: 12px;
-    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(17, 17, 27, 0.88);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    color: @text;
+    font-size: 11px;
 }
 
-/* ───────────────────────────── */
+/* ─────────────────────────────────────── */
 /* WORKSPACES */
-/* ───────────────────────────── */
-
+/* ─────────────────────────────────────── */
 #workspaces {
-    background: rgba(8, 7, 10, 0.6);
-    margin: 6px;
-    padding: 4px;
-    border-radius: 14px;
-    border: 1px solid rgba(255,255,255,0.05);
+    background: rgba(8, 7, 10, 0.45);
+    margin: 4px 3px;
+    padding: 2px 3px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 #workspaces button {
-    padding: 4px 8px;
-    margin: 2px;
-    border-radius: 10px;
+    padding: 2px 7px;
+    margin: 1px;
+    border-radius: 7px;
     background: transparent;
-    color: #a6adc8;
-    transition: all 0.25s ease;
+    color: @subtext0;
+    transition: all 0.2s ease;
+    font-size: 11px;
 }
 
 #workspaces button.active {
-    background: #cdd6f4;
-    color: #1e1e2e;
-    padding: 4px 14px;
+    background: @text;
+    color: @base;
+    padding: 2px 11px;
 }
 
 #workspaces button:hover {
-    background: rgba(205, 214, 244, 0.2);
-    color: #cdd6f4;
+    background: rgba(205, 214, 244, 0.15);
+    color: @text;
 }
 
-/* ───────────────────────────── */
+/* ─────────────────────────────────────── */
 /* MODULE BASE STYLE */
-/* ───────────────────────────── */
-
+/* ─────────────────────────────────────── */
 #clock,
 #network,
 #pulseaudio,
 #battery,
 #tray,
+#bluetooth,
 #custom-cpu,
 #custom-ram,
 #custom-gpu,
 #custom-temps,
 #window {
-    background: rgba(47, 53, 74, 0.6);
-    margin: 4px 2px;
-    padding: 4px 8px;
-    border-radius: 10px;
-    border: 1px solid rgba(255,255,255,0.05);
-    transition: all 0.25s ease;
+    background: rgba(47, 53, 74, 0.45);
+    margin: 3px 1px;
+    padding: 2px 7px;
+    border-radius: 7px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    transition: background 0.2s ease;
 }
 
-/* Hover effect (subtle lift) */
 #clock:hover,
 #network:hover,
 #pulseaudio:hover,
 #battery:hover,
+#bluetooth:hover,
 #custom-cpu:hover,
 #custom-ram:hover,
 #custom-gpu:hover,
 #custom-temps:hover {
-    background: rgba(70, 75, 100, 0.6);
+    background: rgba(70, 75, 100, 0.5);
 }
 
-/* ───────────────────────────── */
-/* CENTER WINDOW */
-/* ───────────────────────────── */
-
+/* ─────────────────────────────────────── */
+/* CENTER WINDOW TITLE */
+/* ─────────────────────────────────────── */
 #window {
-    background: rgba(205, 214, 244, 0.9);
-    color: #1e1e2e;
+    background: rgba(205, 214, 244, 0.85);
+    color: @base;
     font-weight: 700;
-    padding: 6px 16px;
-    margin: 6px 12px;
+    padding: 2px 12px;
+    margin: 3px 8px;
 }
 
-/* Hide when empty */
 window#waybar.empty #window {
     background: transparent;
+    border-color: transparent;
 }
 
-/* ───────────────────────────── */
+/* ─────────────────────────────────────── */
 /* LEFT MODULE COLORS */
-/* ───────────────────────────── */
+/* ─────────────────────────────────────── */
+#custom-cpu   { color: @red;   }
+#custom-ram   { color: @peach; }
+#custom-gpu   { color: @blue;  }
+#custom-temps { color: @teal;  }
 
-#custom-cpu {
-    color: #f38ba8;
-}
-
-#custom-ram {
-    color: #fab387;
-}
-
-#custom-gpu {
-    color: #89b4fa;
-}
-
-#custom-temps {
-    color: #94e2d5;
-}
-
-/* ───────────────────────────── */
+/* ─────────────────────────────────────── */
 /* RIGHT MODULE COLORS */
-/* ───────────────────────────── */
+/* ─────────────────────────────────────── */
+#network     { color: @yellow; }
+#pulseaudio  { color: @blue;   }
+#battery     { color: @green;  }
 
-#network {
-    color: #f9e2af;
-}
+#battery.warning  { color: @yellow; }
+#battery.critical { color: @red;    }
+#battery.charging { color: @green;  }
 
-#pulseaudio {
-    color: #89b4fa;
-}
+#clock     { color: @pink; }
+#bluetooth { color: @blue; }
 
-#battery {
-    color: #a6e3a1;
-}
+#bluetooth.disabled { color: @overlay0; }
+#bluetooth:hover    { background: rgba(70, 75, 100, 0.5); }
 
-#battery.warning {
-    color: #f9e2af;
-}
-
-#battery.critical {
-    color: #f38ba8;
-}
-
-#clock {
-    color: #f5c2e7;
-}
-
-/* ───────────────────────────── */
+/* ─────────────────────────────────────── */
 /* TRAY */
-/* ───────────────────────────── */
-
+/* ─────────────────────────────────────── */
 #tray {
-    padding: 6px 8px;
+    padding: 2px 6px;
 }
 
-#bluetooth {
-    color: #89b4fa;
-}
-
-/* When disabled */
-#bluetooth.disabled {
-    color: #6c7086;
-}
-
-/* Optional hover */
-#bluetooth:hover {
-    background: rgba(70, 75, 100, 0.6);
-}
+#tray > .passive { -gtk-icon-effect: dim; }
+#tray > .needs-attention { -gtk-icon-effect: highlight; }
