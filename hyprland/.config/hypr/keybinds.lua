@@ -29,7 +29,7 @@ hl.bind(mainMod .. " + K", hl.dsp.layout("orientationleft"))
 hl.bind("print", hl.dsp.exec_cmd("hyprshot -m region -o ~/Pictures/Screenshots"))
 hl.bind("CTRL + print", hl.dsp.exec_cmd("hyprshot -m output -o ~/Pictures/Screenshots"))
 hl.bind(mainMod .. " + print", hl.dsp.exec_cmd("hyprshot -m window -o ~/Pictures/Screenshots"))
-hl.bind("ALT + print", hl.dsp.exec_cmd("hyprshot -m active"))
+hl.bind("ALT + print", hl.dsp.exec_cmd("hyprshot -m active -o ~/Pictures/Screenshots"))
 
 -- Power / Calculator
 hl.bind("XF86PowerOff", hl.dsp.exec_cmd("~/.config/wofi/powermenu.sh"), { locked = true, repeating = true })
@@ -50,7 +50,7 @@ hl.bind(mainMod .. " + CTRL + left", hl.dsp.focus({ workspace = "e-1" }))
 -- Scroll through workspaces with mouse wheel
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
-
+hl.bind("ALT + TAB", hl.dsp.window.cycle_next())
 -- Drag the mouse wheel
 hl.config({
 	binds = {
