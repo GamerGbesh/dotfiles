@@ -32,7 +32,7 @@ hl.bind(mainMod .. " + print", hl.dsp.exec_cmd("hyprshot -m window -o ~/Pictures
 hl.bind("ALT + print", hl.dsp.exec_cmd("hyprshot -m active -o ~/Pictures/Screenshots"))
 
 -- Power / Calculator
-hl.bind("XF86PowerOff", hl.dsp.exec_cmd("~/.config/wofi/powermenu.sh"), { locked = true, repeating = true })
+hl.bind("CTRL + ALT + DELETE", hl.dsp.exec_cmd("~/.config/wofi/powermenu.sh"), { locked = true, repeating = true })
 hl.bind("XF86Calculator", hl.dsp.exec_cmd("kcalc"), { locked = true, repeating = true })
 
 -- Workspace switching: hl.dsp.focus({ workspace = id })
