@@ -1,5 +1,6 @@
 {
   "position": "top",
+  "margin-top": 5,
   "modules-left": ["custom/cpu", "custom/ram", "custom/gpu" ,"custom/temps"],
   "modules-center": ["hyprland/workspaces"],
   "modules-right": ["tray", "network", "bluetooth", "pulseaudio", "battery", "clock"],
