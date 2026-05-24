@@ -1,7 +1,7 @@
 {
   "position": "top",
-  "modules-left": ["hyprland/workspaces", "custom/cpu", "custom/ram", "custom/gpu" ,"custom/temps"],
-  "modules-center": ["hyprland/window"],
+  "modules-left": ["custom/cpu", "custom/ram", "custom/gpu" ,"custom/temps"],
+  "modules-center": ["hyprland/workspaces"],
   "modules-right": ["tray", "network", "bluetooth", "pulseaudio", "battery", "clock"],
   "clock": {
     "format": "<span foreground='#f5c2e7'>   </span>{:%a %d %H:%M}",

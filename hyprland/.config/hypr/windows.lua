@@ -22,4 +22,3 @@ hl.layer_rule({
 	match = "waybar",
 	blur = true,
 })
-
