@@ -4,6 +4,18 @@ local menu = "wofi --show drun"
 local mainBrowser = "firefox"
 local mainMod = "SUPER"
 
+-- Vim directional binding
+local left = "h"
+local right = "l"
+local up = "k"
+local down = "j"
+
+-- Arrow keys
+-- local left = "left"
+-- local right = "right"
+-- local up = "up"
+-- local down = "down"
+
 -- Core actions
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))
 hl.bind("ALT + F4", hl.dsp.window.close())
@@ -15,15 +27,11 @@ hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
 hl.bind("ALT + space", hl.dsp.exec_cmd(menu))
 hl.bind("CTRL + SHIFT + B", hl.dsp.exec_cmd(mainBrowser))
-hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
+hl.bind("ALT + L", hl.dsp.exec_cmd("hyprlock"))
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("cliphist list | wofi --dmenu | cliphist decode | wl-copy"))
 hl.bind(mainMod .. " + ESCAPE", hl.dsp.exec_cmd("missioncenter"))
 hl.bind(mainMod .. " + SHIFT + ESCAPE", hl.dsp.exec_cmd("eww open --toggle sysmon-window"))
 hl.bind(mainMod .. " + PERIOD", hl.dsp.exec_cmd("wofi-emoji"))
-
--- Layout messages
-hl.bind(mainMod .. " + J", hl.dsp.layout("orientationtop"))
-hl.bind(mainMod .. " + K", hl.dsp.layout("orientationleft"))
 
 -- Screenshots
 hl.bind("print", hl.dsp.exec_cmd("hyprshot -m region -o ~/Pictures/Screenshots"))
@@ -44,8 +52,8 @@ end
 hl.bind(mainMod .. " + 0", hl.dsp.focus({ workspace = 10 }))
 hl.bind(mainMod .. " + SHIFT + 0", hl.dsp.window.move({ workspace = 10 }))
 
-hl.bind(mainMod .. " + CTRL + right", hl.dsp.focus({ workspace = "e+1" }))
-hl.bind(mainMod .. " + CTRL + left", hl.dsp.focus({ workspace = "e-1" }))
+hl.bind(mainMod .. " + CTRL + " .. right, hl.dsp.focus({ workspace = "e+1" }))
+hl.bind(mainMod .. " + CTRL + " .. left, hl.dsp.focus({ workspace = "e-1" }))
 
 -- Scroll through workspaces with mouse wheel
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
@@ -65,29 +73,28 @@ hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
 
 -- Focus movement: hl.dsp.focus({ direction = "..." }) — full word, not l/r/u/d
-hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
-hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
-hl.bind(mainMod .. " + up", hl.dsp.focus({ direction = "up" }))
-hl.bind(mainMod .. " + down", hl.dsp.focus({ direction = "down" }))
+hl.bind(mainMod .. " + " .. left, hl.dsp.focus({ direction = "left" }))
+hl.bind(mainMod .. " + " .. right, hl.dsp.focus({ direction = "right" }))
+hl.bind(mainMod .. " + " .. up, hl.dsp.focus({ direction = "up" }))
+hl.bind(mainMod .. " + " .. down, hl.dsp.focus({ direction = "down" }))
 
 -- Move window (swap with neighbour)
-hl.bind(mainMod .. " + SHIFT + left", hl.dsp.window.move({ direction = "left" }))
-hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.move({ direction = "right" }))
-hl.bind(mainMod .. " + SHIFT + up", hl.dsp.window.move({ direction = "up" }))
-hl.bind(mainMod .. " + SHIFT + down", hl.dsp.window.move({ direction = "down" }))
+hl.bind(mainMod .. " + SHIFT + " .. left, hl.dsp.window.move({ direction = "left" }))
+hl.bind(mainMod .. " + SHIFT + " .. right, hl.dsp.window.move({ direction = "right" }))
+hl.bind(mainMod .. " + SHIFT + " .. up, hl.dsp.window.move({ direction = "up" }))
+hl.bind(mainMod .. " + SHIFT + " .. down, hl.dsp.window.move({ direction = "down" }))
 
 -- Resize window (keyboard)
-hl.bind(mainMod .. " + SHIFT + CTRL + left", hl.dsp.window.resize({ x = -50, y = 0, relative = true }))
-hl.bind(mainMod .. " + SHIFT + CTRL + right", hl.dsp.window.resize({ x = 50, y = 0, relative = true }))
-hl.bind(mainMod .. " + SHIFT + CTRL + up", hl.dsp.window.resize({ x = 0, y = -50, relative = true }))
-hl.bind(mainMod .. " + SHIFT + CTRL + down", hl.dsp.window.resize({ x = 0, y = 50, relative = true }))
+hl.bind(mainMod .. " + SHIFT + CTRL + " .. left, hl.dsp.window.resize({ x = -50, y = 0, relative = true }))
+hl.bind(mainMod .. " + SHIFT + CTRL + " .. right, hl.dsp.window.resize({ x = 50, y = 0, relative = true }))
+hl.bind(mainMod .. " + SHIFT + CTRL + " .. up, hl.dsp.window.resize({ x = 0, y = -50, relative = true }))
+hl.bind(mainMod .. " + SHIFT + CTRL + " .. down, hl.dsp.window.resize({ x = 0, y = 50, relative = true }))
 
 -- Move floating window (moveactive dispatcher via exec_raw)
-hl.bind(mainMod .. " + ALT + left", hl.dsp.exec_raw("moveactive -50 0"))
-hl.bind(mainMod .. " + ALT + right", hl.dsp.exec_raw("moveactive 50 0"))
-hl.bind(mainMod .. " + ALT + up", hl.dsp.exec_raw("moveactive 0 -50"))
-hl.bind(mainMod .. " + ALT + down", hl.dsp.exec_raw("moveactive 0 50"))
-
+hl.bind(mainMod .. " + ALT + " .. left, hl.dsp.window.move({ x = -50, y = 0, relative = true }))
+hl.bind(mainMod .. " + ALT + " .. right, hl.dsp.window.move({ x = 50, y = 0, relative = true }))
+hl.bind(mainMod .. " + ALT + " .. up, hl.dsp.window.move({ x = 0, y = -50, relative = true }))
+hl.bind(mainMod .. " + ALT + " .. down, hl.dsp.window.move({ x = 0, y = 50, relative = true }))
 -- Volume
 hl.bind(
 	"XF86AudioRaiseVolume",
