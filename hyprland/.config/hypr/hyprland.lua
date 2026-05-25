@@ -12,81 +12,81 @@ require("autostart")
 require("windows")
 
 hl.config({
-    cursor = {
-        no_hardware_cursors = false,
-    },
+	cursor = {
+		no_hardware_cursors = false,
+	},
 
-    render = {
-        direct_scanout = false,
-    },
+	render = {
+		direct_scanout = false,
+	},
 
-    general = {
-        gaps_in     = 5,
-        gaps_out    = 20,
-        border_size = 2,
+	general = {
+		gaps_in = 5,
+		gaps_out = 20,
+		border_size = 2,
 
-        col = {
-            active_border   = { colors = { "rgba(ffccffee)", "rgba(00ff99ee)" }, angle = 45 },
-            inactive_border = "rgba(595959aa)",
-        },
+		col = {
+			active_border = { colors = { "rgba(ffccffee)", "rgba(00ff99ee)" }, angle = 45 },
+			inactive_border = "rgba(595959aa)",
+		},
 
-        resize_on_border = false,
-        allow_tearing    = false,
-        layout           = "dwindle",
-    },
+		resize_on_border = false,
+		allow_tearing = false,
+		layout = "dwindle",
+	},
 
-    decoration = {
-        rounding       = 10,
-        rounding_power = 2,
+	decoration = {
+		rounding = 10,
+		rounding_power = 2,
 
-        active_opacity   = 1.0,
-        inactive_opacity = 0.95,
+		active_opacity = 1.0,
+		inactive_opacity = 0.95,
 
-        shadow = {
-            enabled      = true,
-            range        = 4,
-            render_power = 3,
-            color        = "rgba(1a1a1aee)",
-        },
+		shadow = {
+			enabled = true,
+			range = 4,
+			render_power = 3,
+			color = "rgba(1a1a1aee)",
+		},
 
-        blur = {
-            enabled  = true,
-            size     = 3,
-            passes   = 1,
-            vibrancy = 0.1696,
-        },
-    },
+		blur = {
+			enabled = true,
+			size = 3,
+			passes = 1,
+			vibrancy = 0.1696,
+		},
+	},
 
-    animations = {
-        enabled = true,
-    },
+	animations = {
+		enabled = true,
+	},
 
-    master = {
-        new_status = "master",
-    },
+	master = {
+		new_status = "master",
+	},
 
-    misc = {
-        force_default_wallpaper = -1,
-        disable_hyprland_logo   = false,
-    },
+	misc = {
+		force_default_wallpaper = -1,
+		disable_hyprland_logo = false,
+	},
 
-    input = {
-        kb_layout  = "us",
-        kb_variant = "",
-        kb_model   = "",
-        kb_options = "",
-        kb_rules   = "",
+	input = {
+		kb_layout = "us",
+		kb_variant = "",
+		kb_model = "",
+		kb_options = "",
+		kb_rules = "",
 
-        follow_mouse = 1,
-        sensitivity  = 0,
+		follow_mouse = 1,
+		sensitivity = 0,
 
-        touchpad = {
-            natural_scroll = true,
-        },
-    },
+		touchpad = {
+			natural_scroll = true,
+		},
+	},
 })
 
 hl.device({
-    name        = "epic-mouse-v1",
-    sensitivity = -0.5,
+	name = "epic-mouse-v1",
+	sensitivity = -0.5,
 })
