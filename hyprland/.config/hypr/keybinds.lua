@@ -32,15 +32,17 @@ hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("cliphist list | wofi --dmenu | cliph
 hl.bind(mainMod .. " + ESCAPE", hl.dsp.exec_cmd("missioncenter"))
 hl.bind(mainMod .. " + SHIFT + ESCAPE", hl.dsp.exec_cmd("eww open --toggle sysmon-window"))
 hl.bind(mainMod .. " + PERIOD", hl.dsp.exec_cmd("wofi-emoji"))
+hl.bind(mainMod .. " + SHIFT + N", hl.dsp.exec_cmd("swaync-client -t"))
 
 -- Screenshots
 hl.bind("print", hl.dsp.exec_cmd("hyprshot -m region -o ~/Pictures/Screenshots"))
 hl.bind("CTRL + print", hl.dsp.exec_cmd("hyprshot -m output -o ~/Pictures/Screenshots"))
 hl.bind(mainMod .. " + print", hl.dsp.exec_cmd("hyprshot -m window -o ~/Pictures/Screenshots"))
 hl.bind("ALT + print", hl.dsp.exec_cmd("hyprshot -m active -o ~/Pictures/Screenshots"))
+hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("hyprpicker | wl-copy"))
 
 -- Power / Calculator
-hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd("wlogout"), { locked = true, repeating = true })
+hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd("wlogout -b 5"), { locked = true, repeating = true })
 hl.bind("XF86Calculator", hl.dsp.exec_cmd("kcalc"), { locked = true, repeating = true })
 
 -- Workspace switching: hl.dsp.focus({ workspace = id })
