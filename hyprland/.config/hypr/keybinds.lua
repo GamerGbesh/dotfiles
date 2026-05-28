@@ -33,6 +33,7 @@ hl.bind(mainMod .. " + ESCAPE", hl.dsp.exec_cmd("missioncenter"))
 hl.bind(mainMod .. " + SHIFT + ESCAPE", hl.dsp.exec_cmd("eww open --toggle sysmon-window"))
 hl.bind(mainMod .. " + PERIOD", hl.dsp.exec_cmd("wofi-emoji"))
 hl.bind(mainMod .. " + SHIFT + N", hl.dsp.exec_cmd("swaync-client -t"))
+hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("waypaper"))
 
 -- Screenshots
 hl.bind("print", hl.dsp.exec_cmd("hyprshot -m region -o ~/Pictures/Screenshots"))

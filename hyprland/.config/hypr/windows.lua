@@ -22,3 +22,9 @@ hl.layer_rule({
 	match = "waybar",
 	blur = true,
 })
+
+hl.window_rule({
+	match = { class = "waypaper" },
+	float = true,
+	center = true,
+})
