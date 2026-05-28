@@ -19,10 +19,6 @@ local down = "j"
 -- Core actions
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))
 hl.bind("ALT + F4", hl.dsp.window.close())
-hl.bind(
-	mainMod .. " + SHIFT + M",
-	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")
-)
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
 hl.bind("ALT + space", hl.dsp.exec_cmd(menu))
@@ -34,6 +30,8 @@ hl.bind(mainMod .. " + SHIFT + ESCAPE", hl.dsp.exec_cmd("eww open --toggle sysmo
 hl.bind(mainMod .. " + PERIOD", hl.dsp.exec_cmd("wofi-emoji"))
 hl.bind(mainMod .. " + SHIFT + N", hl.dsp.exec_cmd("swaync-client -t"))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("waypaper"))
+hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("/home/gbesh/.config/swaync/scripts/acapture.sh"))
+hl.bind(mainMod .. " + SHIFT + D", hl.dsp.exec_cmd("/home/gbesh/.config/swaync/scripts/dnd-notify.sh"))
 
 -- Screenshots
 hl.bind("print", hl.dsp.exec_cmd("hyprshot -m region -o ~/Pictures/Screenshots"))
