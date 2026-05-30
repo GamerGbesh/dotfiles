@@ -32,7 +32,7 @@ hl.bind(mainMod .. " + SHIFT + N", hl.dsp.exec_cmd("swaync-client -t"))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("waypaper"))
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("/home/gbesh/.config/swaync/scripts/acapture.sh"))
 hl.bind(mainMod .. " + SHIFT + D", hl.dsp.exec_cmd("/home/gbesh/.config/swaync/scripts/dnd-notify.sh"))
-
+hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("pkill -SIGUSR1 waybar"))
 -- Screenshots
 hl.bind("print", hl.dsp.exec_cmd("hyprshot -m region -o ~/Pictures/Screenshots"))
 hl.bind("CTRL + print", hl.dsp.exec_cmd("hyprshot -m output -o ~/Pictures/Screenshots"))
