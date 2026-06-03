@@ -1,4 +1,3 @@
-
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -48,8 +47,21 @@ vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower win
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 -- NOTE: Some terminals have colliding keymaps or are not able to send distinct keycodes
-vim.keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Move window to the left" })
-vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Move window to the right" })
-vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
-vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
+vim.keymap.set('n', '<C-S-h>', '<C-w>H', { desc = 'Move window to the left' })
+vim.keymap.set('n', '<C-S-l>', '<C-w>L', { desc = 'Move window to the right' })
+vim.keymap.set('n', '<C-S-j>', '<C-w>J', { desc = 'Move window to the lower' })
+vim.keymap.set('n', '<C-S-k>', '<C-w>K', { desc = 'Move window to the upper' })
 
+-- Indentations
+vim.keymap.set('i', '<Tab>', function()
+  if vim.fn.pumvisible() == 1 then return '<C-n>' end
+  return '<Tab>'
+end, { expr = true })
+
+vim.keymap.set('i', '<S-Tab>', function()
+  if vim.fn.pumvisible() == 1 then return '<C-p>' end
+  return '<C-d>'
+end, { expr = true })
+
+vim.keymap.set('v', '<Tab>', '>gv')
+vim.keymap.set('v', '<S-Tab>', '<gv')
