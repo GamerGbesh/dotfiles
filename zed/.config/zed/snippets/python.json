@@ -1,0 +1,1526 @@
+{
+    "Import module": {
+        "prefix": "im",
+        "body": "import ${1:module}",
+        "description": "Import a module"
+    },
+    "Import from module": {
+        "prefix": "ifm",
+        "body": "from ${1:module} import ${2:item}",
+        "description": "Import specific item from a module"
+    },
+    "Main entry point": {
+        "prefix": "py-main",
+        "description": "Main entry point template",
+        "body": [
+            "def main() -> None:",
+            "    ${1:...}",
+            "",
+            "",
+            "if __name__ == '__main__':",
+            "    main()",
+            ""
+        ]
+    },
+    "Create a function": {
+        "prefix": "py-def",
+        "description": "Function template",
+        "body": [
+            "def ${1:new_function}($2) -> ${3:None}:",
+            "    ${4:raise NotImplementedError('$1() was not implemented.')}"
+        ]
+    },
+    "Class definition": {
+        "prefix": "class",
+        "body": "class ${1:ClassName}(${2:object}):\n    def __init__(self, ${3:args}):\n        $0",
+        "description": "Class definition"
+    },
+    "Property (getter)": {
+        "prefix": "prop",
+        "body": "@property\ndef ${1:attr}(self):\n    $0",
+        "description": "Property getter"
+    },
+    "Method definition": {
+        "prefix": "meth",
+        "body": "def ${1:method}(self, ${2:args}):\n    $0",
+        "description": "Method definition"
+    },
+    "For loop": {
+        "prefix": "for",
+        "body": "for ${1:item} in ${2:iterable}:\n    $0",
+        "description": "For loop"
+    },
+    "While loop": {
+        "prefix": "while",
+        "body": "while ${1:condition}:\n    $0",
+        "description": "While loop"
+    },
+    "If statement": {
+        "prefix": "if",
+        "body": "if ${1:condition}:\n    $0",
+        "description": "If statement"
+    },
+    "If else statement": {
+        "prefix": "ifelse",
+        "body": "if ${1:condition}:\n    ${2:pass}\nelse:\n    $0",
+        "description": "If-else statement"
+    },
+    "Elif / else": {
+        "prefix": "elif",
+        "body": "elif ${1:condition}:\n    $0",
+        "description": "Elif block"
+    },
+    "Quick debug": {
+        "prefix": "py-debug",
+        "description": "Quick debug",
+        "body": [
+            "print(f'${1:name} = {${2:var}}')",
+            "$0"
+        ]
+    },
+    "Quick try/except": {
+        "prefix": "py-try",
+        "description": "Quick try/except block template",
+        "body": [
+            "try:",
+            "    ${1:...}",
+            "except Exception as e:",
+            "    print(f'{type(e).__name__}: {e}')",
+            "$0"
+        ]
+    },
+    "Try except finally": {
+        "prefix": "tryf",
+        "body": "try:\n    ${1:pass}\nexcept ${2:Exception} as ${3:e}:\n    ${4:pass}\nfinally:\n    $0",
+        "description": "Try/except/finally block"
+    },
+    "With context manager": {
+        "prefix": "with",
+        "body": "with ${1:open('file')} as ${2:f}:\n    $0",
+        "description": "With context manager"
+    },
+    "Context manager class": {
+        "prefix": "ctx",
+        "body": "class ${1:ContextManager}:\n    def __enter__(self):\n        $2\n        return self\n    def __exit__(self, exc_type, exc_value, traceback):\n        $0",
+        "description": "Context manager class (with __enter__/__exit__)"
+    },
+    "Decorator": {
+        "prefix": "deco",
+        "body": "def ${1:decorator}(func):\n    def wrapper(*args, **kwargs):\n        $0\n        return func(*args, **kwargs)\n    return wrapper",
+        "description": "Decorator function"
+    },
+    "Lambda/function expression": {
+        "prefix": "lambda",
+        "body": "lambda ${1:x}: ${2:x + 1}",
+        "description": "Lambda expression"
+    },
+    "List comprehension": {
+        "prefix": "lc",
+        "body": "[${1:x} for ${2:x} in ${3:xs}]",
+        "description": "List comprehension"
+    },
+    "F-string": {
+        "prefix": "fs",
+        "body": "f\"${1:text} = {${2:var}}\"",
+        "description": "F-string"
+    },
+    "Logging info": {
+        "prefix": "logi",
+        "body": "import logging\nlogging.info(f\"${1:msg}\")",
+        "description": "Logging info message"
+    },
+    "Logging debug": {
+        "prefix": "logd",
+        "body": "import logging\nlogging.debug(f\"${1:msg}\")",
+        "description": "Logging debug message"
+    },
+    "FastAPI app": {
+        "prefix": "fastapi-app",
+        "body": "from fastapi import FastAPI\n\napp = FastAPI()\n\n@app.get(\"/\")\ndef read_root():\n    return {\"Hello\": \"World\"}",
+        "description": "FastAPI minimal application"
+    },
+    "FastAPI path operation": {
+        "prefix": "fastapi-route",
+        "body": "@app.${1:get}(\"/${2:path}\")\ndef ${3:handler}(${4}):\n    $0",
+        "description": "FastAPI route handler"
+    },
+    "FastAPI dependency": {
+        "prefix": "fastapi-dep",
+        "body": "from fastapi import Depends\n\ndef ${1:get_dependency}():\n    $2\n    return $3",
+        "description": "FastAPI dependency function"
+    },
+    "Pydantic BaseModel": {
+        "prefix": "pydbase",
+        "body": "from pydantic import BaseModel\n\nclass ${1:Model}(BaseModel):\n    ${2:field}: ${3:type}\n    ",
+        "description": "Pydantic BaseModel class"
+    },
+    "Pydantic validator": {
+        "prefix": "pydval",
+        "body": "from pydantic import validator\n\n@validator(\"${1:field}\")\ndef ${2:validate_field}(cls, v):\n    $0\n    return v",
+        "description": "Pydantic validator"
+    },
+    "Typer CLI app": {
+        "prefix": "typer-app",
+        "body": "import typer\n\napp = typer.Typer()\n\n@app.command()\ndef ${1:hello}(${2:name}: str):\n    print(f\"Hello {name}\")\n\nif __name__ == \"__main__\":\n    app()",
+        "description": "Typer CLI app setup"
+    },
+    "SQLAlchemy Base": {
+        "prefix": "sa-base",
+        "body": "from sqlalchemy.ext.declarative import declarative_base\nBase = declarative_base()",
+        "description": "SQLAlchemy Base import"
+    },
+    "SQLAlchemy Model": {
+        "prefix": "sa-model",
+        "body": "class ${1:Model}(Base):\n    __tablename__ = \"${2:tablename}\"\n    id = Column(Integer, primary_key=True)\n    ${3:field} = Column(${4:Type})",
+        "description": "SQLAlchemy ORM model"
+    },
+    "SQLAlchemy session": {
+        "prefix": "sa-session",
+        "body": "from sqlalchemy.orm import sessionmaker\nSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=${1:engine})\nsession = SessionLocal()",
+        "description": "SQLAlchemy session setup"
+    },
+    "Unittest testcase": {
+        "prefix": "ut",
+        "body": "import unittest\n\nclass ${1:TestCase}(unittest.TestCase):\n    def setUp(self):\n        $2\n    def test_${3:testname}(self):\n        $0",
+        "description": "Unittest TestCase"
+    },
+    "Unittest main": {
+        "prefix": "utmain",
+        "body": "if __name__ == \"__main__\":\n    unittest.main()",
+        "description": "Unittest main entrypoint"
+    },
+    "Pytest function": {
+        "prefix": "pt",
+        "body": "def test_${1:func}():\n    $0",
+        "description": "Pytest function"
+    },
+    "Pytest parametrize": {
+        "prefix": "ptp",
+        "body": "@pytest.mark.parametrize(\"${1:param}\", [${2:values}])\ndef test_${3:func}(${1:param}):\n    $0",
+        "description": "Pytest parametrize"
+    },
+    "Pytest fixture": {
+        "prefix": "ptfix",
+        "body": "@pytest.fixture\ndef ${1:my_fixture}():\n    $0",
+        "description": "Pytest fixture"
+    },
+    "Pytest table driven": {
+        "prefix": "pttable",
+        "body": "@pytest.mark.parametrize(\"${1:param}\", [\n    ${2:value1},\n    ${3:value2}\n])\ndef test_${4:func}(${1:param}):\n    $0",
+        "description": "Pytest table-driven parametrize"
+    },
+    "Dataclass": {
+        "prefix": "dc",
+        "body": "from dataclasses import dataclass\n\n@dataclass\nclass ${1:Name}:\n    ${2:field}: ${3:type}",
+        "description": "Python dataclass"
+    },
+    "Type hint function": {
+        "prefix": "hintf",
+        "body": "def ${1:func}(${2:arg}: ${3:type}) -> ${4:rtype}:\n    $0",
+        "description": "Function with type hints"
+    },
+    "Docstring": {
+        "prefix": "doc",
+        "body": "\"\"\"\n${1:Summary}\n\nArgs:\n    $2\nReturns:\n    $3\n\"\"\"",
+        "description": "Function docstring template"
+    },
+    "Async coroutine": {
+        "prefix": "adef",
+        "body": "async def ${1:func}(${2:args}):\n    $0",
+        "description": "Async coroutine definition"
+    },
+    "Async task group context manager": {
+        "prefix": "atg",
+        "body": "async with asyncio.TaskGroup() as ${1:group}:\n    $0",
+        "description": "Async TaskGroup context manager"
+    },
+    "Async main": {
+        "prefix": "amain",
+        "body": "if __name__ == \"__main__\":\n    asyncio.run($0)",
+        "description": "Python __main__ entrypoint for asyncronous"
+    },
+    "Model": {
+        "prefix": "djmodel",
+        "body": [
+            "class ${1:ModelName}(models.Model):",
+            "    ${2:name} = models.CharField(max_length=${3:255})",
+            "    created_at = models.DateTimeField(auto_now_add=True)",
+            "    updated_at = models.DateTimeField(auto_now=True)",
+            "",
+            "    class Meta:",
+            "        verbose_name = \"${4:$1}\"",
+            "        verbose_name_plural = \"${5:$1s}\"",
+            "        ordering = [\"-created_at\"]",
+            "",
+            "    def __str__(self):",
+            "        return self.${6:name}",
+            "",
+            "    $0"
+        ],
+        "description": "Model with timestamps"
+    },
+    "CharField": {
+        "prefix": "djchar",
+        "body": [
+            "${1:field_name} = models.CharField(max_length=${2:255}${3:, blank=True})$0"
+        ],
+        "description": "CharField"
+    },
+    "TextField": {
+        "prefix": "djtext",
+        "body": [
+            "${1:field_name} = models.TextField(${2:blank=True})$0"
+        ],
+        "description": "TextField"
+    },
+    "IntegerField": {
+        "prefix": "djint",
+        "body": [
+            "${1:field_name} = models.IntegerField(${2:default=0})$0"
+        ],
+        "description": "IntegerField"
+    },
+    "DecimalField": {
+        "prefix": "djdecimal",
+        "body": [
+            "${1:field_name} = models.DecimalField(max_digits=${2:10}, decimal_places=${3:2})$0"
+        ],
+        "description": "DecimalField"
+    },
+    "BooleanField": {
+        "prefix": "djbool",
+        "body": [
+            "${1:field_name} = models.BooleanField(default=${2:False})$0"
+        ],
+        "description": "BooleanField"
+    },
+    "DateField": {
+        "prefix": "djdate",
+        "body": [
+            "${1:field_name} = models.DateField(${2:auto_now_add=True})$0"
+        ],
+        "description": "DateField"
+    },
+    "DateTimeField": {
+        "prefix": "djdatetime",
+        "body": [
+            "${1:field_name} = models.DateTimeField(${2:auto_now_add=True})$0"
+        ],
+        "description": "DateTimeField"
+    },
+    "EmailField": {
+        "prefix": "djemail",
+        "body": [
+            "${1:field_name} = models.EmailField(${2:max_length=254})$0"
+        ],
+        "description": "EmailField"
+    },
+    "URLField": {
+        "prefix": "djurl",
+        "body": [
+            "${1:field_name} = models.URLField(${2:max_length=200})$0"
+        ],
+        "description": "URLField"
+    },
+    "SlugField": {
+        "prefix": "djslug",
+        "body": [
+            "${1:slug} = models.SlugField(max_length=${2:255}, unique=${3:True})$0"
+        ],
+        "description": "SlugField"
+    },
+    "ImageField": {
+        "prefix": "djimage",
+        "body": [
+            "${1:image} = models.ImageField(upload_to=\"${2:images/}\")$0"
+        ],
+        "description": "ImageField"
+    },
+    "FileField": {
+        "prefix": "djfile",
+        "body": [
+            "${1:file} = models.FileField(upload_to=\"${2:files/}\")$0"
+        ],
+        "description": "FileField"
+    },
+    "ForeignKey": {
+        "prefix": "djfk",
+        "body": [
+            "${1:field_name} = models.ForeignKey(",
+            "    ${2:Model},",
+            "    on_delete=models.${3|CASCADE,PROTECT,SET_NULL,SET_DEFAULT,DO_NOTHING|},",
+            "    related_name=\"${4:related_name}\"$5",
+            ")$0"
+        ],
+        "description": "ForeignKey field"
+    },
+    "OneToOneField": {
+        "prefix": "djo2o",
+        "body": [
+            "${1:field_name} = models.OneToOneField(",
+            "    ${2:Model},",
+            "    on_delete=models.${3|CASCADE,PROTECT,SET_NULL|},",
+            "    related_name=\"${4:related_name}\"$5",
+            ")$0"
+        ],
+        "description": "OneToOneField"
+    },
+    "ManyToManyField": {
+        "prefix": "djm2m",
+        "body": [
+            "${1:field_name} = models.ManyToManyField(",
+            "    ${2:Model},",
+            "    related_name=\"${3:related_name}\",",
+            "    ${4:blank=True}",
+            ")$0"
+        ],
+        "description": "ManyToManyField"
+    },
+    "JSONField": {
+        "prefix": "djjson",
+        "body": [
+            "${1:field_name} = models.JSONField(${2:default=dict})$0"
+        ],
+        "description": "JSONField"
+    },
+    "Model Meta": {
+        "prefix": "djmeta",
+        "body": [
+            "class Meta:",
+            "    verbose_name = \"${1:name}\"",
+            "    verbose_name_plural = \"${2:names}\"",
+            "    ordering = [${3:\"-created_at\"}]",
+            "    ${4:db_table = \"${5:table_name}\"}",
+            "    $0"
+        ],
+        "description": "Model Meta class"
+    },
+    "Model __str__": {
+        "prefix": "djstr",
+        "body": [
+            "def __str__(self):",
+            "    return ${1:self.name}$0"
+        ],
+        "description": "Model __str__ method"
+    },
+    "Model get_absolute_url": {
+        "prefix": "djgeturl",
+        "body": [
+            "def get_absolute_url(self):",
+            "    return reverse(\"${1:app_name:model-detail}\", kwargs={\"pk\": self.pk})$0"
+        ],
+        "description": "Model get_absolute_url method"
+    },
+    "Model save": {
+        "prefix": "djsave",
+        "body": [
+            "def save(self, *args, **kwargs):",
+            "    ${1:# Custom save logic}",
+            "    super().save(*args, **kwargs)$0"
+        ],
+        "description": "Model save method override"
+    },
+    "Model Manager": {
+        "prefix": "djmanager",
+        "body": [
+            "class ${1:ModelName}Manager(models.Manager):",
+            "    def ${2:method_name}(self):",
+            "        return self.filter(${3:condition})$0"
+        ],
+        "description": "Custom model manager"
+    },
+    "Model QuerySet": {
+        "prefix": "djqueryset",
+        "body": [
+            "class ${1:ModelName}QuerySet(models.QuerySet):",
+            "    def ${2:method_name}(self):",
+            "        return self.filter(${3:condition})$0"
+        ],
+        "description": "Custom QuerySet"
+    },
+    "Abstract Model": {
+        "prefix": "djabstract",
+        "body": [
+            "class ${1:ModelName}(models.Model):",
+            "    ${2:field} = models.${3:CharField}(${4:max_length=255})",
+            "",
+            "    class Meta:",
+            "        abstract = True",
+            "    $0"
+        ],
+        "description": "Abstract base model"
+    },
+    "Model Property": {
+        "prefix": "djproperty",
+        "body": [
+            "@property",
+            "def ${1:property_name}(self):",
+            "    return ${2:self.field}$0"
+        ],
+        "description": "Model property"
+    },
+    "Model Choices": {
+        "prefix": "djchoices",
+        "body": [
+            "class ${1:Status}(models.TextChoices):",
+            "    ${2:DRAFT} = \"${3:draft}\", \"${4:Draft}\"",
+            "    ${5:PUBLISHED} = \"${6:published}\", \"${7:Published}\"$0"
+        ],
+        "description": "Model choices class"
+    },
+    "ListView": {
+        "prefix": "djlistview",
+        "body": [
+            "class ${1:ModelName}ListView(ListView):",
+            "    model = ${2:$1}",
+            "    template_name = \"${3:app_name/$1_list.html}\"",
+            "    context_object_name = \"${4:${1/(.*)/${1:/downcase}/}_list}\"",
+            "    paginate_by = ${5:10}",
+            "    $0"
+        ],
+        "description": "ListView"
+    },
+    "DetailView": {
+        "prefix": "djdetailview",
+        "body": [
+            "class ${1:ModelName}DetailView(DetailView):",
+            "    model = ${2:$1}",
+            "    template_name = \"${3:app_name/$1_detail.html}\"",
+            "    context_object_name = \"${4:${1/(.*)/${1:/downcase}/}}\"",
+            "    $0"
+        ],
+        "description": "DetailView"
+    },
+    "CreateView": {
+        "prefix": "djcreateview",
+        "body": [
+            "class ${1:ModelName}CreateView(CreateView):",
+            "    model = ${2:$1}",
+            "    form_class = ${3:$1Form}",
+            "    template_name = \"${4:app_name/$1_form.html}\"",
+            "    success_url = reverse_lazy(\"${5:app_name:$1-list}\")$0"
+        ],
+        "description": "CreateView"
+    },
+    "UpdateView": {
+        "prefix": "djupdateview",
+        "body": [
+            "class ${1:ModelName}UpdateView(UpdateView):",
+            "    model = ${2:$1}",
+            "    form_class = ${3:$1Form}",
+            "    template_name = \"${4:app_name/$1_form.html}\"",
+            "    success_url = reverse_lazy(\"${5:app_name:$1-detail}\")$0"
+        ],
+        "description": "UpdateView"
+    },
+    "DeleteView": {
+        "prefix": "djdeleteview",
+        "body": [
+            "class ${1:ModelName}DeleteView(DeleteView):",
+            "    model = ${2:$1}",
+            "    template_name = \"${3:app_name/$1_confirm_delete.html}\"",
+            "    success_url = reverse_lazy(\"${4:app_name:$1-list}\")$0"
+        ],
+        "description": "DeleteView"
+    },
+    "TemplateView": {
+        "prefix": "djtemplateview",
+        "body": [
+            "class ${1:ViewName}(TemplateView):",
+            "    template_name = \"${2:app_name/template.html}\"",
+            "",
+            "    def get_context_data(self, **kwargs):",
+            "        context = super().get_context_data(**kwargs)",
+            "        ${3:# Add context}",
+            "        return context$0"
+        ],
+        "description": "TemplateView"
+    },
+    "FormView": {
+        "prefix": "djformview",
+        "body": [
+            "class ${1:ViewName}(FormView):",
+            "    template_name = \"${2:app_name/form.html}\"",
+            "    form_class = ${3:FormName}",
+            "    success_url = reverse_lazy(\"${4:success_url}\")",
+            "",
+            "    def form_valid(self, form):",
+            "        ${5:# Process form}",
+            "        return super().form_valid(form)$0"
+        ],
+        "description": "FormView"
+    },
+    "Function View": {
+        "prefix": "djfbv",
+        "body": [
+            "def ${1:view_name}(request${2:, ${3:pk}}):",
+            "    ${4:# View logic}",
+            "    context = {",
+            "        $5",
+            "    }",
+            "    return render(request, \"${6:template.html}\", context)$0"
+        ],
+        "description": "Function-based view"
+    },
+    "View with POST": {
+        "prefix": "djfbvpost",
+        "body": [
+            "def ${1:view_name}(request):",
+            "    if request.method == \"POST\":",
+            "        ${2:# Handle POST}",
+            "        return redirect(\"${3:redirect_url}\")",
+            "    ",
+            "    context = {",
+            "        $4",
+            "    }",
+            "    return render(request, \"${5:template.html}\", context)$0"
+        ],
+        "description": "Function view with POST handling"
+    },
+    "get_context_data": {
+        "prefix": "djgetcontext",
+        "body": [
+            "def get_context_data(self, **kwargs):",
+            "    context = super().get_context_data(**kwargs)",
+            "    ${1:# Add context}",
+            "    return context$0"
+        ],
+        "description": "get_context_data override"
+    },
+    "get_queryset": {
+        "prefix": "djgetqueryset",
+        "body": [
+            "def get_queryset(self):",
+            "    queryset = super().get_queryset()",
+            "    ${1:# Filter queryset}",
+            "    return queryset$0"
+        ],
+        "description": "get_queryset override"
+    },
+    "form_valid": {
+        "prefix": "djformvalid",
+        "body": [
+            "def form_valid(self, form):",
+            "    ${1:# Process form}",
+            "    return super().form_valid(form)$0"
+        ],
+        "description": "form_valid override"
+    },
+    "dispatch": {
+        "prefix": "djdispatch",
+        "body": [
+            "def dispatch(self, request, *args, **kwargs):",
+            "    ${1:# Custom dispatch logic}",
+            "    return super().dispatch(request, *args, **kwargs)$0"
+        ],
+        "description": "dispatch override"
+    },
+    "LoginRequiredMixin": {
+        "prefix": "djloginrequired",
+        "body": [
+            "class ${1:ViewName}(LoginRequiredMixin, ${2:ListView}):",
+            "    login_url = \"${3:/login/}\"",
+            "    redirect_field_name = \"${4:redirect_to}\"",
+            "    $0"
+        ],
+        "description": "View with LoginRequiredMixin"
+    },
+    "PermissionRequiredMixin": {
+        "prefix": "djpermission",
+        "body": [
+            "class ${1:ViewName}(PermissionRequiredMixin, ${2:ListView}):",
+            "    permission_required = \"${3:app_name.permission}\"",
+            "    $0"
+        ],
+        "description": "View with PermissionRequiredMixin"
+    },
+    "RedirectView": {
+        "prefix": "djredirectview",
+        "body": [
+            "class ${1:ViewName}(RedirectView):",
+            "    pattern_name = \"${2:url_name}\"",
+            "    permanent = ${3:False}",
+            "    query_string = ${4:True}$0"
+        ],
+        "description": "RedirectView"
+    },
+    "@require_http_methods": {
+        "prefix": "djrequirehttp",
+        "body": [
+            "@require_http_methods([${1:\"GET\", \"POST\"}])",
+            "def ${2:view_name}(request):",
+            "    $0"
+        ],
+        "description": "require_http_methods decorator"
+    },
+    "@login_required": {
+        "prefix": "djlogin",
+        "body": [
+            "@login_required(login_url=\"${1:/login/}\")",
+            "$0"
+        ],
+        "description": "login_required decorator"
+    },
+    "@permission_required": {
+        "prefix": "djperm",
+        "body": [
+            "@permission_required(\"${1:app_name.permission}\", raise_exception=${2:True})",
+            "$0"
+        ],
+        "description": "permission_required decorator"
+    },
+    "URL Pattern": {
+        "prefix": "djpath",
+        "body": [
+            "path(\"${1:route}/\", ${2:views}.${3:view_name}, name=\"${4:name}\"),$0"
+        ],
+        "description": "URL path"
+    },
+    "URL with pk": {
+        "prefix": "djpathpk",
+        "body": [
+            "path(\"${1:route}/<int:pk>/\", ${2:views}.${3:view_name}, name=\"${4:name}\"),$0"
+        ],
+        "description": "URL path with pk"
+    },
+    "URL with slug": {
+        "prefix": "djpathslug",
+        "body": [
+            "path(\"${1:route}/<slug:slug>/\", ${2:views}.${3:view_name}, name=\"${4:name}\"),$0"
+        ],
+        "description": "URL path with slug"
+    },
+    "re_path": {
+        "prefix": "djrepath",
+        "body": [
+            "re_path(r\"^${1:pattern}$\", ${2:views}.${3:view_name}, name=\"${4:name}\"),$0"
+        ],
+        "description": "Regex URL path"
+    },
+    "URL Include": {
+        "prefix": "djinclude",
+        "body": [
+            "path(\"${1:prefix}/\", include(\"${2:app_name}.urls\")),$0"
+        ],
+        "description": "URL include"
+    },
+    "URL Patterns List": {
+        "prefix": "djurlpatterns",
+        "body": [
+            "from django.urls import path",
+            "from . import views",
+            "",
+            "app_name = \"${1:app_name}\"",
+            "",
+            "urlpatterns = [",
+            "    path(\"\", views.${2:index}, name=\"index\"),",
+            "    $0",
+            "]"
+        ],
+        "description": "urlpatterns boilerplate"
+    },
+    "CRUD URL Pattern": {
+        "prefix": "djcrudurls",
+        "body": [
+            "path(\"\", views.${1:Model}ListView.as_view(), name=\"${2:$1}-list\"),",
+            "path(\"<int:pk>/\", views.${1:Model}DetailView.as_view(), name=\"${2:$1}-detail\"),",
+            "path(\"create/\", views.${1:Model}CreateView.as_view(), name=\"${2:$1}-create\"),",
+            "path(\"<int:pk>/update/\", views.${1:Model}UpdateView.as_view(), name=\"${2:$1}-update\"),",
+            "path(\"<int:pk>/delete/\", views.${1:Model}DeleteView.as_view(), name=\"${2:$1}-delete\"),$0"
+        ],
+        "description": "CRUD URL patterns"
+    },
+    "API URL Pattern": {
+        "prefix": "djapipath",
+        "body": [
+            "path(\"api/${1:endpoint}/\", ${2:views}.${3:view_name}, name=\"api-${4:name}\"),$0"
+        ],
+        "description": "API URL path"
+    },
+    "namespace URLs": {
+        "prefix": "djnamespace",
+        "body": [
+            "path(\"${1:prefix}/\", include((\"${2:app_name}.urls\", \"${2:app_name}\"), namespace=\"${3:namespace}\")),$0"
+        ],
+        "description": "URL with namespace"
+    },
+    "ModelForm": {
+        "prefix": "djmodelform",
+        "body": [
+            "class ${1:ModelName}Form(forms.ModelForm):",
+            "    class Meta:",
+            "        model = ${2:$1}",
+            "        fields = [${3:\"__all__\"}]",
+            "        ${4:exclude = []}",
+            "        ${5:widgets = {}}",
+            "    $0"
+        ],
+        "description": "ModelForm"
+    },
+    "ModelForm with widgets": {
+        "prefix": "djmodelformwidgets",
+        "body": [
+            "class ${1:ModelName}Form(forms.ModelForm):",
+            "    class Meta:",
+            "        model = ${2:$1}",
+            "        fields = [${3:\"__all__\"}]",
+            "        widgets = {",
+            "            \"${4:field_name}\": forms.${5:TextInput}(attrs={",
+            "                \"class\": \"${6:form-control}\",",
+            "                ${7:\"placeholder\": \"${8:placeholder}\"}",
+            "            }),",
+            "        }",
+            "    $0"
+        ],
+        "description": "ModelForm with custom widgets"
+    },
+    "Form": {
+        "prefix": "djform",
+        "body": [
+            "class ${1:FormName}(forms.Form):",
+            "    ${2:field_name} = forms.${3|CharField,EmailField,IntegerField,BooleanField|}(${4:required=True})$0"
+        ],
+        "description": "Form"
+    },
+    "Form CharField": {
+        "prefix": "djfchar",
+        "body": [
+            "${1:field_name} = forms.CharField(${2:max_length=${3:255}, required=${4:True}})$0"
+        ],
+        "description": "Form CharField"
+    },
+    "Form EmailField": {
+        "prefix": "djfemail",
+        "body": [
+            "${1:email} = forms.EmailField(${2:required=True})$0"
+        ],
+        "description": "Form EmailField"
+    },
+    "Form IntegerField": {
+        "prefix": "djfint",
+        "body": [
+            "${1:field_name} = forms.IntegerField(${2:required=True})$0"
+        ],
+        "description": "Form IntegerField"
+    },
+    "Form BooleanField": {
+        "prefix": "djfbool",
+        "body": [
+            "${1:field_name} = forms.BooleanField(${2:required=False})$0"
+        ],
+        "description": "Form BooleanField"
+    },
+    "Form ChoiceField": {
+        "prefix": "djfchoice",
+        "body": [
+            "${1:field_name} = forms.ChoiceField(choices=${2:CHOICES})$0"
+        ],
+        "description": "Form ChoiceField"
+    },
+    "Form DateField": {
+        "prefix": "djfdate",
+        "body": [
+            "${1:date} = forms.DateField(widget=forms.DateInput(attrs={\"type\": \"date\"}))$0"
+        ],
+        "description": "Form DateField"
+    },
+    "Form FileField": {
+        "prefix": "djffile",
+        "body": [
+            "${1:file} = forms.FileField(${2:required=True})$0"
+        ],
+        "description": "Form FileField"
+    },
+    "Form ImageField": {
+        "prefix": "djfimage",
+        "body": [
+            "${1:image} = forms.ImageField(${2:required=True})$0"
+        ],
+        "description": "Form ImageField"
+    },
+    "Form ModelChoiceField": {
+        "prefix": "djfmodelchoice",
+        "body": [
+            "${1:field_name} = forms.ModelChoiceField(queryset=${2:Model}.objects.all())$0"
+        ],
+        "description": "Form ModelChoiceField"
+    },
+    "Form ModelMultipleChoiceField": {
+        "prefix": "djfmodelmultiple",
+        "body": [
+            "${1:field_name} = forms.ModelMultipleChoiceField(queryset=${2:Model}.objects.all())$0"
+        ],
+        "description": "Form ModelMultipleChoiceField"
+    },
+    "Form Clean Method": {
+        "prefix": "djclean",
+        "body": [
+            "def clean_${1:field_name}(self):",
+            "    ${1:field_name} = self.cleaned_data.get(\"${1:field_name}\")",
+            "    ${2:# Validation logic}",
+            "    return ${1:field_name}$0"
+        ],
+        "description": "Form field clean method"
+    },
+    "Form Clean": {
+        "prefix": "djcleanall",
+        "body": [
+            "def clean(self):",
+            "    cleaned_data = super().clean()",
+            "    ${1:# Cross-field validation}",
+            "    return cleaned_data$0"
+        ],
+        "description": "Form clean method"
+    },
+    "Form __init__": {
+        "prefix": "djforminit",
+        "body": [
+            "def __init__(self, *args, **kwargs):",
+            "    ${1:# Extract custom kwargs}",
+            "    super().__init__(*args, **kwargs)",
+            "    ${2:# Custom initialization}$0"
+        ],
+        "description": "Form __init__ override"
+    },
+    "Form save": {
+        "prefix": "djformsave",
+        "body": [
+            "def save(self, commit=True):",
+            "    instance = super().save(commit=False)",
+            "    ${1:# Modify instance}",
+            "    if commit:",
+            "        instance.save()",
+            "    return instance$0"
+        ],
+        "description": "Form save method override"
+    },
+    "Formset": {
+        "prefix": "djformset",
+        "body": [
+            "${1:FormSet} = forms.modelformset_factory(",
+            "    ${2:Model},",
+            "    form=${3:ModelForm},",
+            "    extra=${4:1},",
+            "    can_delete=${5:True}",
+            ")$0"
+        ],
+        "description": "modelformset_factory"
+    },
+    "Inline Formset": {
+        "prefix": "djinlineformset",
+        "body": [
+            "${1:FormSet} = forms.inlineformset_factory(",
+            "    ${2:ParentModel},",
+            "    ${3:ChildModel},",
+            "    form=${4:ChildForm},",
+            "    extra=${5:1},",
+            "    can_delete=${6:True}",
+            ")$0"
+        ],
+        "description": "inlineformset_factory"
+    },
+    "FastAPI App Instance": {
+        "prefix": "fastapp",
+        "body": [
+            "from fastapi import FastAPI",
+            "",
+            "app = FastAPI(",
+            "    title=\"${1:My Super API}\",",
+            "    description=\"${2:A modern, high-performance API built with FastAPI.}\",",
+            "    version=\"${3:1.0.0}\",",
+            "    contact={",
+            "        \"name\": \"${4:API Support}\",",
+            "        \"url\": \"${5:http://example.com/contact}\",",
+            "        \"email\": \"${6:support@example.com}\",",
+            "    },",
+            "    license_info={",
+            "        \"name\": \"${7:Apache 2.0}\",",
+            "        \"url\": \"${8:https://www.apache.org/licenses/LICENSE-2.0.html}\",",
+            "    },",
+            "    docs_url=\"/docs\",",
+            "    redoc_url=\"/redoc\"",
+            ")"
+        ],
+        "description": "Creates a new FastAPI application instance with rich metadata."
+    },
+    "APIRouter Instance": {
+        "prefix": "fastrouter",
+        "body": [
+            "from fastapi import APIRouter",
+            "",
+            "router = APIRouter(",
+            "    prefix=\"/${1:prefix}\",",
+            "    tags=[\"${2:TagName}\"],",
+            "    responses={404: {\"description\": \"Not found\"}}",
+            ")"
+        ],
+        "description": "Creates a new APIRouter for modular endpoint organization."
+    },
+    "Pydantic Model (v2)": {
+        "prefix": "fastmodel",
+        "body": [
+            "from pydantic import BaseModel, Field, EmailStr, model_validator",
+            "from typing import List, Optional",
+            "",
+            "class ${1:MyModel}(BaseModel):",
+            "    id: int",
+            "    name: str = Field(..., min_length=3, max_length=50, example=\"John Doe\")",
+            "    email: EmailStr",
+            "    is_active: Optional[bool] = True",
+            "",
+            "    model_config = {",
+            "        \"json_schema_extra\": {",
+            "            \"examples\": [",
+            "                {",
+            "                    \"id\": 1,",
+            "                    \"name\": \"Jane Doe\",",
+            "                    \"email\": \"jane.doe@example.com\",",
+            "                    \"is_active\": True,",
+            "                }",
+            "            ]",
+            "        }",
+            "    }"
+        ],
+        "description": "Defines a Pydantic model with modern validation and schema examples (Pydantic v2)."
+    },
+    "GET Endpoint": {
+        "prefix": "fastget",
+        "body": [
+            "from typing import Annotated",
+            "from fastapi import Depends, Query, Path, HTTPException",
+            "",
+            "@router.get(\"/${1:items}/{item_id}\", response_model=${2:Item}, summary=\"${3:Get a single item}\")",
+            "async def get_item(",
+            "    item_id: Annotated[int, Path(title=\"The ID of the item to get\", gt=0)],",
+            "    current_user: Annotated[${4:User}, Depends(${5:get_current_user})]",
+            "):",
+            "    \"\"\"Fetches an item by its ID from the database.\"\"\"",
+            "    item = ${6:db_get_item(item_id=item_id)}",
+            "    if not item:",
+            "        raise HTTPException(status_code=404, detail=\"Item not found\")",
+            "    return item"
+        ],
+        "description": "Defines a GET endpoint with path variables, dependencies, and response model."
+    },
+    "POST Endpoint": {
+        "prefix": "fastpost",
+        "body": [
+            "from typing import Annotated",
+            "from fastapi import Depends, status, BackgroundTasks",
+            "",
+            "@router.post(\"/${1:items}/\", response_model=${2:Item}, status_code=status.HTTP_201_CREATED)",
+            "async def create_item(",
+            "    item: ${3:ItemCreate},",
+            "    background_tasks: BackgroundTasks,",
+            "    current_user: Annotated[${4:User}, Depends(${5:get_current_user})]",
+            "):",
+            "    \"\"\"Creates a new item and adds a background task.\"\"\"",
+            "    new_item = ${6:db_create_item(item=item)}",
+            "    background_tasks.add_task(${7:send_notification}, new_item.id, \"Item created\")",
+            "    return new_item"
+        ],
+        "description": "Defines a POST endpoint with a request body, background tasks, and a 201 status code."
+    },
+    "Generic CRUD Router": {
+        "prefix": "fastcrud",
+        "body": [
+            "from typing import List, Type, Annotated",
+            "from fastapi import APIRouter, Depends, HTTPException",
+            "from sqlalchemy.orm import Session",
+            "from pydantic import BaseModel",
+            "",
+            "def create_crud_router(",
+            "    *,",
+            "    prefix: str,",
+            "    tags: List[str],",
+            "    db_session: Session,",
+            "    db_model: Type[Base],",
+            "    schema_read: Type[BaseModel],",
+            "    schema_create: Type[BaseModel],",
+            "    schema_update: Type[BaseModel]",
+            ") -> APIRouter:",
+            "    router = APIRouter(prefix=prefix, tags=tags)",
+            "",
+            "    @router.post(\"/\", response_model=schema_read, status_code=201)",
+            "    def create_item(item: schema_create, db: Annotated[Session, Depends(db_session)]):",
+            "        db_item = db_model(**item.dict())",
+            "        db.add(db_item)",
+            "        db.commit()",
+            "        db.refresh(db_item)",
+            "        return db_item",
+            "",
+            "    @router.get(\"/{item_id}\", response_model=schema_read)",
+            "    def read_item(item_id: int, db: Annotated[Session, Depends(db_session)]):",
+            "        db_item = db.query(db_model).get(item_id)",
+            "        if not db_item:",
+            "            raise HTTPException(status_code=404, detail=\"Item not found\")",
+            "        return db_item",
+            "",
+            "    return router"
+        ],
+        "description": "Creates a generic CRUD router for a SQLAlchemy model."
+    },
+    "Streaming Response": {
+        "prefix": "faststream",
+        "body": [
+            "from fastapi.responses import StreamingResponse",
+            "import asyncio",
+            "",
+            "async def fake_video_streamer():",
+            "    for i in range(10):",
+            "        yield b\"some fake video data\\n\"",
+            "        await asyncio.sleep(0.1)",
+            "",
+            "@app.get(\"/video\")",
+            "async def stream_video():",
+            "    return StreamingResponse(fake_video_streamer(), media_type=\"video/mp4\")"
+        ],
+        "description": "Defines an endpoint that streams data, e.g., for large files or live data."
+    },
+    "Pydantic Settings": {
+        "prefix": "fastsettings",
+        "body": [
+            "from pydantic_settings import BaseSettings, SettingsConfigDict",
+            "",
+            "class Settings(BaseSettings):",
+            "    app_name: str = \"Awesome API\"",
+            "    database_url: str",
+            "    secret_key: str",
+            "",
+            "    model_config = SettingsConfigDict(env_file=\".env\")",
+            "",
+            "settings = Settings()"
+        ],
+        "description": "Manages application configuration using Pydantic's BaseSettings for env variables."
+    },
+    "JWT Security Setup": {
+        "prefix": "fastsecurity",
+        "body": [
+            "from datetime import datetime, timedelta, timezone",
+            "from typing import Annotated",
+            "from fastapi import Depends, HTTPException, status",
+            "from fastapi.security import OAuth2PasswordBearer",
+            "from jose import JWTError, jwt",
+            "from passlib.context import CryptContext",
+            "",
+            "SECRET_KEY = \"${1:your_super_secret_key}\"",
+            "ALGORITHM = \"HS256\"",
+            "ACCESS_TOKEN_EXPIRE_MINUTES = ${2:30}",
+            "",
+            "pwd_context = CryptContext(schemes=[\"bcrypt\"], deprecated=\"auto\")",
+            "oauth2_scheme = OAuth2PasswordBearer(tokenUrl=\"${3:token}\")",
+            "",
+            "def create_access_token(data: dict, expires_delta: timedelta | None = None):",
+            "    to_encode = data.copy()",
+            "    if expires_delta:",
+            "        expire = datetime.now(timezone.utc) + expires_delta",
+            "    else:",
+            "        expire = datetime.now(timezone.utc) + timedelta(minutes=15)",
+            "    to_encode.update({\"exp\": expire})",
+            "    return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)",
+            "",
+            "async def get_current_user(token: Annotated[str, Depends(oauth2_scheme)]):",
+            "    credentials_exception = HTTPException(",
+            "        status_code=status.HTTP_401_UNAUTHORIZED,",
+            "        detail=\"Could not validate credentials\",",
+            "        headers={\"WWW-Authenticate\": \"Bearer\"},",
+            "    )",
+            "    try:",
+            "        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])",
+            "        username: str = payload.get(\"sub\")",
+            "        if username is None:",
+            "            raise credentials_exception",
+            "        # token_data = TokenData(username=username) # Optional: Use a Pydantic model for payload",
+            "    except JWTError:",
+            "        raise credentials_exception",
+            "    # user = get_user(db, username=token_data.username) # Fetch user from DB",
+            "    # if user is None:",
+            "    #     raise credentials_exception",
+            "    return username # Replace with user object"
+        ],
+        "description": "Sets up JWT authentication with token creation and user dependency."
+    },
+    "Database Dependency": {
+        "prefix": "fastdep",
+        "body": [
+            "from sqlalchemy.orm import Session",
+            "from .database import SessionLocal",
+            "",
+            "def get_db():",
+            "    db = SessionLocal()",
+            "    try:",
+            "        yield db",
+            "    finally:",
+            "        db.close()"
+        ],
+        "description": "Creates a dependency for yielding a database session per request."
+    },
+    "CORS Middleware": {
+        "prefix": "fastcors",
+        "body": [
+            "from fastapi.middleware.cors import CORSMiddleware",
+            "",
+            "app.add_middleware(",
+            "    CORSMiddleware,",
+            "    allow_origins=[\"${1:http://localhost:3000}\"],",
+            "    allow_credentials=True,",
+            "    allow_methods=[\"GET\", \"POST\", \"PUT\", \"DELETE\"],",
+            "    allow_headers=[\"Authorization\", \"Content-Type\"],",
+            ")"
+        ],
+        "description": "Configures Cross-Origin Resource Sharing (CORS) middleware."
+    },
+    "File Upload Endpoint": {
+        "prefix": "fastupload",
+        "body": [
+            "from typing import Annotated",
+            "from fastapi import UploadFile, File",
+            "",
+            "@router.post(\"/files/\", summary=\"Upload a file\")",
+            "async def create_upload_file(file: Annotated[UploadFile, File(description=\"A file read as UploadFile\")]):",
+            "    \"\"\"Handles file uploads and returns file metadata.\"\"\"",
+            "    # For larger files, consider streaming the contents to disk.",
+            "    # contents = await file.read()",
+            "    return {\"filename\": file.filename, \"content_type\": file.content_type}"
+        ],
+        "description": "Defines an endpoint for handling file uploads."
+    },
+    "WebSocket Endpoint": {
+        "prefix": "fastws",
+        "body": [
+            "from fastapi import WebSocket, WebSocketDisconnect",
+            "",
+            "@app.websocket(\"/ws/{client_id}\")",
+            "async def websocket_endpoint(websocket: WebSocket, client_id: int):",
+            "    await websocket.accept()",
+            "    try:",
+            "        while True:",
+            "            data = await websocket.receive_text()",
+            "            await websocket.send_text(f\"Message text was: {data}, from client #{client_id}\")",
+            "    except WebSocketDisconnect:",
+            "        # await manager.disconnect(websocket, client_id) # Example with a connection manager",
+            "        print(f\"Client #{client_id} disconnected\")"
+        ],
+        "description": "Defines a basic WebSocket endpoint for real-time communication."
+    },
+    "Custom Middleware": {
+        "prefix": "fastmiddle",
+        "body": [
+            "import time",
+            "from fastapi import Request",
+            "",
+            "@app.middleware(\"http\")",
+            "async def add_process_time_header(request: Request, call_next):",
+            "    start_time = time.time()",
+            "    response = await call_next(request)",
+            "    process_time = time.time() - start_time",
+            "    response.headers[\"X-Process-Time\"] = str(process_time)",
+            "    return response"
+        ],
+        "description": "Adds custom middleware, e.g., to calculate and add process time to headers."
+    },
+    "Pytest Test Client": {
+        "prefix": "fasttest",
+        "body": [
+            "from fastapi.testclient import TestClient",
+            "from .main import app",
+            "",
+            "client = TestClient(app)",
+            "",
+            "def test_${1:read_main}():",
+            "    response = client.get(\"/\")",
+            "    assert response.status_code == 200",
+            "    assert response.json() == {\"msg\": \"Hello World\"}"
+        ],
+        "description": "Sets up a TestClient for use with Pytest to test API endpoints."
+    },
+    "Static Files Mounting": {
+        "prefix": "faststatic",
+        "body": [
+            "from fastapi.staticfiles import StaticFiles",
+            "",
+            "app.mount(\"/${1:static}\", StaticFiles(directory=\"${2:static}\"), name=\"${3:static}\")"
+        ],
+        "description": "Mounts a directory to serve static files like CSS, JS, and images."
+    },
+    "Jinja2 Templates": {
+        "prefix": "fasttemplates",
+        "body": [
+            "from fastapi.templating import Jinja2Templates",
+            "from fastapi.responses import HTMLResponse",
+            "from fastapi import Request",
+            "",
+            "templates = Jinja2Templates(directory=\"${1:templates}\")",
+            "",
+            "@app.get(\"/${2:path}\", response_class=HTMLResponse)",
+            "async def read_item(request: Request, id: str):",
+            "    return templates.TemplateResponse(",
+            "        \"${3:item.html}\",",
+            "        {\"request\": request, \"id\": id}",
+            "    )"
+        ],
+        "description": "Configures Jinja2 for rendering HTML templates."
+    },
+    "SQLAlchemy Sync Setup": {
+        "prefix": "fastdb",
+        "body": [
+            "from sqlalchemy import create_engine",
+            "from sqlalchemy.orm import sessionmaker, declarative_base",
+            "",
+            "SQLALCHEMY_DATABASE_URL = \"${1:sqlite:///./test.db}\"",
+            "# For PostgreSQL: \"postgresql://user:password@postgresserver/db\"",
+            "",
+            "engine = create_engine(",
+            "    SQLALCHEMY_DATABASE_URL,",
+            "    # connect_args is only needed for SQLite.",
+            "    connect_args={\"check_same_thread\": False}",
+            ")",
+            "SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)",
+            "",
+            "Base = declarative_base()"
+        ],
+        "description": "Sets up a synchronous SQLAlchemy engine and session maker."
+    },
+    "Rate Limiting": {
+        "prefix": "fastlimit",
+        "body": [
+            "from fastapi import FastAPI, Request",
+            "from slowapi import Limiter, _rate_limit_exceeded_handler",
+            "from slowapi.util import get_remote_address",
+            "from slowapi.errors import RateLimitExceeded",
+            "",
+            "limiter = Limiter(key_func=get_remote_address)",
+            "app = FastAPI()",
+            "app.state.limiter = limiter",
+            "app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)",
+            "",
+            "@app.get(\"/limited\")",
+            "@limiter.limit(\"${1:5/minute}\")",
+            "async def limited_endpoint(request: Request):",
+            "    return {\"message\": \"This is a rate-limited endpoint.\"}"
+        ],
+        "description": "Implements API rate limiting using the slowapi library."
+    },
+    "ORJSON Response": {
+        "prefix": "fastresponse",
+        "body": [
+            "from fastapi.responses import ORJSONResponse",
+            "",
+            "@app.get(\"/items/{item_id}\", response_class=ORJSONResponse)",
+            "async def read_item(item_id: int):",
+            "    return ORJSONResponse({\"item_id\": item_id})"
+        ],
+        "description": "Uses ORJSONResponse for faster JSON serialization in an endpoint."
+    },
+    "Health Check Endpoint": {
+        "prefix": "fasthealth",
+        "body": [
+            "from fastapi import APIRouter",
+            "",
+            "router = APIRouter()",
+            "",
+            "@router.get(\"/health\", tags=[\"Monitoring\"], include_in_schema=False)",
+            "async def health_check():",
+            "    return {\"status\": \"ok\"}"
+        ],
+        "description": "Creates a simple health check endpoint, often excluded from public docs."
+    },
+    "Pagination Helper": {
+        "prefix": "fastpage",
+        "body": [
+            "from typing import List, TypeVar, Generic",
+            "from pydantic import BaseModel, Field",
+            "from fastapi import Query",
+            "",
+            "T = TypeVar('T')",
+            "",
+            "class PaginatedResponse(BaseModel, Generic[T]):",
+            "    total: int",
+            "    page: int",
+            "    size: int",
+            "    results: List[T]",
+            "",
+            "def paginate(",
+            "    items: List[T],",
+            "    page: int = Query(1, gt=0),",
+            "    size: int = Query(10, gt=0, le=100)",
+            ") -> PaginatedResponse[T]:",
+            "    start = (page - 1) * size",
+            "    paginated_items = items[start : start + size]",
+            "    return PaginatedResponse(total=len(items), page=page, size=size, results=paginated_items)"
+        ],
+        "description": "Provides a generic, reusable pagination function and response model."
+    },
+    "WebSocket Broadcast Manager": {
+        "prefix": "fastbroadcast",
+        "body": [
+            "from typing import List",
+            "from fastapi import WebSocket",
+            "",
+            "class ConnectionManager:",
+            "    def __init__(self):",
+            "        self.active_connections: List[WebSocket] = []",
+            "",
+            "    async def connect(self, websocket: WebSocket):",
+            "        await websocket.accept()",
+            "        self.active_connections.append(websocket)",
+            "",
+            "    def disconnect(self, websocket: WebSocket):",
+            "        self.active_connections.remove(websocket)",
+            "",
+            "    async def broadcast(self, message: str):",
+            "        for connection in self.active_connections:",
+            "            await connection.send_text(message)",
+            "",
+            "manager = ConnectionManager()"
+        ],
+        "description": "Creates a manager to handle multiple WebSocket connections for broadcasting."
+    },
+    "SQLAlchemy ORM Model": {
+        "prefix": "fastsqla",
+        "body": [
+            "from sqlalchemy import Column, Integer, String, Boolean, DateTime",
+            "from sqlalchemy.sql import func",
+            "from .database import Base",
+            "",
+            "class ${1:Item}(Base):",
+            "    __tablename__ = \"${2:items}\"",
+            "",
+            "    id = Column(Integer, primary_key=True)",
+            "    name = Column(String, index=True)",
+            "    description = Column(String, index=True)",
+            "    is_active = Column(Boolean, default=True)",
+            "    created_at = Column(DateTime(timezone=True), server_default=func.now())"
+        ],
+        "description": "Defines a SQLAlchemy ORM model class for database table mapping."
+    },
+    "Role-Based Access Control": {
+        "prefix": "fastroles",
+        "body": [
+            "from typing import Annotated",
+            "from fastapi import Depends, HTTPException, status",
+            "",
+            "def role_checker(required_role: str):",
+            "    def check_user_role(current_user: Annotated[${1:User}, Depends(${2:get_current_user})]):",
+            "        if current_user.role != required_role:",
+            "            raise HTTPException(",
+            "                status_code=status.HTTP_403_FORBIDDEN,",
+            "                detail=\"Operation not permitted\"",
+            "            )",
+            "        return current_user",
+            "    return check_user_role",
+            "",
+            "admin_dependency = Depends(role_checker(\"admin\"))"
+        ],
+        "description": "Implements a flexible dependency for role-based access control (RBAC)."
+    },
+    "Async Database Connection": {
+        "prefix": "fastasyncdb",
+        "body": [
+            "import databases",
+            "from fastapi import FastAPI",
+            "",
+            "DATABASE_URL = \"${1:postgresql://user:password@host/database}\"",
+            "database = databases.Database(DATABASE_URL)",
+            "",
+            "app = FastAPI()",
+            "",
+            "@app.on_event(\"startup\")",
+            "async def startup():",
+            "    await database.connect()",
+            "",
+            "@app.on_event(\"shutdown\")",
+            "async def shutdown():",
+            "    await database.disconnect()"
+        ],
+        "description": "Handles the lifecycle of an asynchronous database connection."
+    },
+    "Custom Exception Handler": {
+        "prefix": "fastexcept",
+        "body": [
+            "from fastapi import Request, status",
+            "from fastapi.responses import JSONResponse",
+            "",
+            "class ${1:MyCustomException}(Exception):",
+            "    def __init__(self, name: str):",
+            "        self.name = name",
+            "",
+            "@app.exception_handler(${1:MyCustomException})",
+            "async def custom_exception_handler(request: Request, exc: ${1:MyCustomException}):",
+            "    return JSONResponse(",
+            "        status_code=status.HTTP_418_IM_A_TEAPOT,",
+            "        content={\"message\": f\"Oops! {exc.name} did something wrong.\"}",
+            "    )"
+        ],
+        "description": "Defines a custom exception and its corresponding handler."
+    },
+    "Background Email Sending": {
+        "prefix": "fastemail",
+        "body": [
+            "from fastapi import BackgroundTasks",
+            "",
+            "def ${1:send_email_background}(background_tasks: BackgroundTasks, subject: str, recipient: str, body: str):",
+            "    # Dummy email sending function",
+            "    def send(subject, recipient, body):",
+            "        print(f\"Sending email to {recipient} with subject '{subject}'\")",
+            "        # Add actual email sending logic here (e.g., using smtplib or a third-party service)",
+            "",
+            "    background_tasks.add_task(send, subject, recipient, body)"
+        ],
+        "description": "Adds an email sending function to run in the background."
+    },
+    "Redis Caching": {
+        "prefix": "fastcache",
+        "body": [
+            "from fastapi import FastAPI",
+            "from redis import asyncio as aioredis",
+            "from fastapi_cache import FastAPICache",
+            "from fastapi_cache.backends.redis import RedisBackend",
+            "from fastapi_cache.decorator import cache",
+            "",
+            "app = FastAPI()",
+            "",
+            "@app.on_event(\"startup\")",
+            "async def startup():",
+            "    redis = aioredis.from_url(\"redis://localhost\")",
+            "    FastAPICache.init(RedisBackend(redis), prefix=\"fastapi-cache\")",
+            "",
+            "@app.get(\"/cached-route\")",
+            "@cache(expire=${1:60}) # Cache for 60 seconds",
+            "async def get_cached_data():",
+            "    return {\"message\": \"This data is cached\"}"
+        ],
+        "description": "Integrates Redis for caching endpoint responses."
+    },
+    "Structured Logging": {
+        "prefix": "fastlog",
+        "body": [
+            "import logging",
+            "from logging.config import dictConfig",
+            "",
+            "LOGGING_CONFIG = {",
+            "    \"version\": 1,",
+            "    \"disable_existing_loggers\": False,",
+            "    \"formatters\": {",
+            "        \"default\": {",
+            "            \"format\": \"%(asctime)s - %(name)s - %(levelname)s - %(message)s\",",
+            "        },",
+            "    },",
+            "    \"handlers\": {",
+            "        \"console\": {",
+            "            \"class\": \"logging.StreamHandler\",",
+            "            \"formatter\": \"default\",",
+            "        },",
+            "    },",
+            "    \"root\": {",
+            "        \"level\": \"INFO\",",
+            "        \"handlers\": [\"console\"],",
+            "    },",
+            "}",
+            "",
+            "dictConfig(LOGGING_CONFIG)",
+            "logger = logging.getLogger(\"${1:my_app}\")"
+        ],
+        "description": "Configures structured logging using Python's dictConfig."
+    }
+}

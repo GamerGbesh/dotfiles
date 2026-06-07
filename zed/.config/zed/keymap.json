@@ -1,0 +1,154 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      // "shift shift": "file_finder::Toggle"
+      "alt-r": ["task::Spawn", { "task_name": "r/python" }],
+    },
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      // "j k": "vim::NormalBefore"
+    },
+  },
+  {
+    "context": "AcpThread > Editor && use_modifier_to_send",
+    "unbind": {
+      "ctrl-enter": "agent::Chat",
+    },
+  },
+  {
+    "context": "!AcpThread > Editor && mode == full",
+    "unbind": {
+      "ctrl-enter": "assistant::InlineAssist",
+    },
+  },
+  {
+    "context": "Terminal",
+    "unbind": {
+      "ctrl-enter": "assistant::InlineAssist",
+    },
+  },
+  {
+    "context": "AcpThread > Editor",
+    "unbind": {
+      "ctrl-shift-enter": "agent::SendImmediately",
+    },
+  },
+  {
+    "context": "Editor && mode == auto_height",
+    "unbind": {
+      "ctrl-shift-enter": "editor::NewlineBelow",
+    },
+  },
+  {
+    "context": "BufferSearchBar",
+    "unbind": {
+      "ctrl-shift-enter": "editor::ToggleFoldAll",
+    },
+  },
+  {
+    "context": "Editor && mode == full",
+    "bindings": {
+      "ctrl-shift-enter": "editor::NewlineAbove"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-alt-shift-k": "editor::DuplicateLineUp"
+    }
+  },
+  {
+    "context": "Editor",
+    "unbind": {
+      "ctrl-alt-shift-up": "editor::DuplicateLineUp"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-alt-shift-j": "editor::DuplicateLineDown"
+    }
+  },
+  {
+    "context": "Editor",
+    "unbind": {
+      "ctrl-alt-shift-down": "editor::DuplicateLineDown"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "alt-k": "editor::MoveLineUp"
+    }
+  },
+  {
+    "context": "Editor",
+    "unbind": {
+      "alt-up": "editor::MoveLineUp"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "alt-j": "editor::MoveLineDown"
+    }
+  },
+  {
+    "context": "Editor",
+    "unbind": {
+      "alt-down": "editor::MoveLineDown"
+    }
+  },
+  {
+    "context": "Editor",
+    "unbind": {
+      "ctrl-shift-k": "editor::DeleteLine"
+    }
+  },
+  {
+    "context": "Editor",
+    "unbind": {
+      "ctrl-shift-k": "editor::DeleteLine"
+    }
+  },
+  {
+    "context": "Editor",
+    "unbind": {
+      "ctrl-shift-k": "editor::DeleteLine"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-shift-k": "outline_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "Workspace",
+    "unbind": {
+      "ctrl-shift-b": "outline_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "Editor",
+    "unbind": {
+      "ctrl-shift-k": "editor::DeleteLine"
+    }
+  },
+  {
+    "context": "Editor",
+    "unbind": {
+      "ctrl-shift-k": "editor::DeleteLine"
+    }
+  }
+]
