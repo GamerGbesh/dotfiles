@@ -28,3 +28,10 @@ hl.window_rule({
 	float = true,
 	center = true,
 })
+
+hl.window_rule({
+	match = { class = "dev.zed.Zed", title = "Zed — Settings" },
+	float = true,
+	center = true,
+	size = { 1600, 1000 },
+})
