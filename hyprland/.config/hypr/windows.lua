@@ -35,3 +35,10 @@ hl.window_rule({
 	center = true,
 	size = { 1600, 1000 },
 })
+
+hl.window_rule({
+	match = { class = "com.app.bluetuith" },
+	float = true,
+	center = true,
+	size = { 700, 600 },
+})
