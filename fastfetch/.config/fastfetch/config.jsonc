@@ -113,6 +113,16 @@
       },
     },
     {
+      "type": "disk",
+      "key": "|{#white}| 󰋊 Windows   |{$4}|{#keys}|{$2}",
+      "folders": "/mnt/windows",
+      "percent": {
+        "type": 3,
+        "green": 30,
+        "yellow": 70,
+      },
+    },
+    {
       "type": "battery",
       "key": "│{#white}│  Battery │{$4}│{#keys}│{$2}",
       "percent": {
