@@ -42,3 +42,8 @@ hl.window_rule({
 	center = true,
 	size = { 700, 600 },
 })
+
+hl.window_rule({
+	match = { class = "edit68k.exe" },
+	float = false,
+})
