@@ -102,27 +102,7 @@
         "yellow": 70, // 30-70% is yellow, >70% is red
       },
     },
-    {
-      "type": "disk",
-      "key": "│{#white}│ 󰋊 Windows │{$4}│{#keys}│{$2}",
-      "folders": "/mnt/windows",
-      "percent": {
-        "type": 3,
-        "green": 30,
-        "yellow": 70,
-      },
-    },
-    {
-      "type": "disk",
-      "key": "│{#white}│ 󰋊 Games   │{$4}│{#keys}│{$2}",
-      "folders": "/mnt/games",
-      "percent": {
-        "type": 3,
-        "green": 30,
-        "yellow": 70,
-      },
-    },
-    {
+   {
       "type": "disk",
       "key": "│{#white}│ 󰋊 Data    │{$4}│{#keys}│{$2}",
       "folders": "/mnt/data",

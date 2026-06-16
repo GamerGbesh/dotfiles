@@ -16,7 +16,9 @@ UUID=1C08-160F                            /boot          vfat    defaults,umask=
 tmpfs                                     /tmp           tmpfs   defaults,noatime,mode=1777 0 0
 
 # Extra Btrfs partition
-UUID=e2d917e6-856a-42a4-9920-b3db7a6fc0e4 /mnt/Data btrfs subvol=/@data,defaults,noatime,compress=zstd:1 0 0
-UUID=e2d917e6-856a-42a4-9920-b3db7a6fc0e4 /home/gbesh/coding btrfs subvol=/@coding,defaults,noatime,compress=zstd:1 0 0
-UUID=e2d917e6-856a-42a4-9920-b3db7a6fc0e4 /home/gbesh/extra/uv btrfs subvol=/@uv,defaults,noatime,compress=zstd:1 0 0
-UUID=e2d917e6-856a-42a4-9920-b3db7a6fc0e4 /mnt/docker btrfs subvol=/@docker,defaults,noatime,compress=zstd:1 0 0
+UUID=dcdb31d7-a293-49cc-89a1-a9718aa81b24 /mnt/data btrfs subvol=/@data,defaults,noatime,compress=zstd:1 0 0
+UUID=dcdb31d7-a293-49cc-89a1-a9718aa81b24 /home/gbesh/coding btrfs subvol=/@coding,defaults,noatime,compress=zstd:1 0 0
+UUID=dcdb31d7-a293-49cc-89a1-a9718aa81b24 /home/gbesh/extra/uv btrfs subvol=/@uv,defaults,noatime,compress=zstd:1 0 0
+UUID=dcdb31d7-a293-49cc-89a1-a9718aa81b24 /mnt/docker btrfs subvol=/@docker,defaults,noatime,compress=zstd:1 0 0
+UUID=dcdb31d7-a293-49cc-89a1-a9718aa81b24 /home/gbesh/.ollama btrfs subvol=/@ollama,defaults,noatime,compress=zstd:1 0 0
+UUID=dcdb31d7-a293-49cc-89a1-a9718aa81b24 /mnt/games btrfs subvol=/@games,defaults,noatime,compress=zstd:1 0 0

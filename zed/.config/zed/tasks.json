@@ -63,4 +63,10 @@
     "use_new_terminal": false,
     "allow_concurrent_runs": true,
   },
+  {
+    "label": "r/rust",
+    "command": "cargo run ",
+    "use_new_terminal": false,
+    "allow_concurrent_runs": true
+  }
 ]
