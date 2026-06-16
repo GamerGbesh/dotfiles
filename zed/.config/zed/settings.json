@@ -8,7 +8,7 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   "vim": {
-    "toggle_relative_line_numbers": true
+    "toggle_relative_line_numbers": true,
   },
   "relative_line_numbers": "enabled",
   "project_panel": {
@@ -68,7 +68,7 @@
   },
   "languages": {
     "Python": {
-      "language_servers": ["pyrefly", "!pyright"],
+      "language_servers": ["pyrefly", "ruff", "!pyright"],
     },
   },
   "lsp": {

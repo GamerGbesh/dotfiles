@@ -97,12 +97,12 @@ hl.bind(mainMod .. " + ALT + " .. down, hl.dsp.window.move({ x = 0, y = 50, rela
 -- Volume
 hl.bind(
 	"XF86AudioRaiseVolume",
-	hl.dsp.exec_cmd("wpctl set-volume  @DEFAULT_AUDIO_SINK@ 5%+ --limit 1.5"),
+	hl.dsp.exec_cmd("wpctl set-volume  @DEFAULT_AUDIO_SINK@ 5%+ --limit 1.0"),
 	{ locked = true, repeating = true }
 )
 hl.bind(
 	"XF86AudioLowerVolume",
-	hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),
+	hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- --limit 0.0"),
 	{ locked = true, repeating = true }
 )
 hl.bind(
