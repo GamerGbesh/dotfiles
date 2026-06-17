@@ -45,7 +45,7 @@
     "format-disabled": " off",
     "format-connected": " {device_alias}",
     "tooltip-format": "{controller_alias}\n\n{num_connections} connected",
-    "on-click": "kitty --class=com.app.bluetuith -e bluetuith"
+    "on-click": "kitty --class=com.app.bluetui -e bluetui"
   },
   "tray": {
     "spacing": 10

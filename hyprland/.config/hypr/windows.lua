@@ -37,7 +37,7 @@ hl.window_rule({
 })
 
 hl.window_rule({
-	match = { class = "com.app.bluetuith" },
+	match = { class = "com.app.bluetui" },
 	float = true,
 	center = true,
 	size = { 700, 600 },
@@ -46,4 +46,11 @@ hl.window_rule({
 hl.window_rule({
 	match = { class = "edit68k.exe" },
 	float = false,
+})
+
+hl.window_rule({
+	match = { class = "com.ktechpit.whatsie", title = "Downloads" },
+	float = true,
+	center = true,
+	size = { 700, 600 },
 })
