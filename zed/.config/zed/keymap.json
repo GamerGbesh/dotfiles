@@ -192,5 +192,29 @@
     "unbind": {
       "ctrl-shift-v": "editor::Paste"
     }
+  },
+  {
+    "context": "ProjectPanel",
+    "bindings": {
+      "ctrl-y": "project_panel::Redo"
+    }
+  },
+  {
+    "context": "ProjectPanel",
+    "unbind": {
+      "ctrl-shift-z": "project_panel::Redo"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-y": "editor::Redo"
+    }
+  },
+  {
+    "context": "Editor",
+    "unbind": {
+      "ctrl-shift-z": "editor::Redo"
+    }
   }
 ]
