@@ -72,6 +72,9 @@ hl.bind(mainMod .. "+ mouse:273", hl.dsp.window.resize(), { mouse = true }) -- A
 hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
 
+hl.bind(mainMod .. "+ U", hl.dsp.workspace.toggle_special("hidden"))
+hl.bind(mainMod .. "+ SHIFT + U", hl.dsp.window.move({ workspace = "special:hidden" }))
+
 -- Focus movement: hl.dsp.focus({ direction = "..." }) — full word, not l/r/u/d
 hl.bind(mainMod .. " + " .. left, hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + " .. right, hl.dsp.focus({ direction = "right" }))
