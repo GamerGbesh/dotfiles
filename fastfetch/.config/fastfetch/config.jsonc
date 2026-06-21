@@ -114,7 +114,7 @@
     },
     {
       "type": "disk",
-      "key": "|{#white}| 󰋊 Windows   |{$4}|{#keys}|{$2}",
+      "key": "|{#white}| 󰋊 Windows |{$4}|{#keys}|{$2}",
       "folders": "/mnt/windows",
       "percent": {
         "type": 3,
