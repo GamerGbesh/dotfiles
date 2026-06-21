@@ -1,6 +1,7 @@
 hl.on("hyprland.start", function()
 	hl.exec_cmd("waybar")
 	hl.exec_cmd("swaync")
+	hl.exec_cmd("notify-usb")
 	hl.exec_cmd("hypridle")
 	hl.exec_cmd("wl-paste --type text --watch cliphist store -max-dedupe-search 10 -max-items 100")
 	hl.exec_cmd("wl-paste --type image --watch cliphist store -max-dedupe-search 10 -max-items 100")

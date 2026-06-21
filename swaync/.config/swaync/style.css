@@ -6,6 +6,11 @@
 @define-color hover           alpha(@selected, .35);
 @define-color urgent          @color2;
 
+/* Urgency colors */
+@define-color low_color      #4CAF50;  /* Green */
+@define-color normal_color   #2196F3;  /* Blue */
+@define-color critical_color #FF3B30;  /* Red */
+
 /* fallback: if @background is not injected by pywal/matugen,
    this ensures the control center and notifications are never transparent */
 @define-color background      #181b20;
@@ -33,10 +38,30 @@
 .floating-notifications.background .notification-row .notification-background {
   background: alpha(@background, .82);
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, .65);
-  border: 1px solid alpha(@selected, .6);
   border-radius: 18px;
   margin: 10px 14px;
   padding: 0;
+}
+
+.floating-notifications.background
+.notification-row
+.notification-background
+.notification.low {
+  border: 2px solid @low_color;
+}
+
+.floating-notifications.background
+.notification-row
+.notification-background
+.notification.normal {
+  border: 2px solid @normal_color;
+}
+
+.floating-notifications.background
+.notification-row
+.notification-background
+.notification.critical {
+  border: 2px solid @critical_color;
 }
 
 .floating-notifications.background .notification-row .notification-background .notification {
@@ -44,9 +69,7 @@
   border-radius: 14px;
 }
 
-.floating-notifications.background .notification-row .notification-background .notification.critical {
-  border: 2px solid @urgent;
-}
+
 
 .floating-notifications.background .notification-row .notification-background .notification .notification-content {
   margin: 8px 10px 6px 8px;
@@ -105,10 +128,16 @@
   color: alpha(@text, .85);
 }
 
-.notification.critical progress,
-.notification.low progress,
+.notification.low progress {
+  background-color: @low_color;
+}
+
 .notification.normal progress {
-  background-color: @selected;
+  background-color: @normal_color;
+}
+
+.notification.critical progress {
+  background-color: @critical_color;
 }
 
 /* ── Control center ── */
@@ -128,10 +157,25 @@
   padding: 3px;
 }
 
-.control-center .notification-row .notification-background .notification.critical {
-  color: @urgent;
-  border: 1px solid @urgent;
-  border-radius: 12px;
+.control-center
+.notification-row
+.notification-background
+.notification.low {
+  border: 1px solid @low_color;
+}
+
+.control-center
+.notification-row
+.notification-background
+.notification.normal {
+  border: 1px solid @normal_color;
+}
+
+.control-center
+.notification-row
+.notification-background
+.notification.critical {
+  border: 1px solid @critical_color;
 }
 
 .control-center .notification-row .notification-background .notification .notification-content {
