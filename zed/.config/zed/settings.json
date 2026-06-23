@@ -66,6 +66,18 @@
     "light": "One Light",
     "dark": "Catppuccin Mocha",
   },
+  "diagnostics": {
+    "inline": {
+      "enabled": true,
+    },
+  },
+  "inlay_hints": {
+    "enabled": true,
+    "show_other_hints": true,
+    "show_parameter_hints": true,
+    "show_type_hints": true,
+  },
+  "auto_signature_help": true,
   "languages": {
     "Python": {
       "language_servers": ["pyrefly", "ruff", "!pyright"],
@@ -94,6 +106,11 @@
             "enable": "always",
           },
         },
+      },
+    },
+    "pyrefly": {
+      "settings": {
+        "preset": "strict",
       },
     },
   },
