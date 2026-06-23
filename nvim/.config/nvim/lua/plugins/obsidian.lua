@@ -10,11 +10,15 @@ return {
     workspaces = {
       {
         name = 'personal',
-        path = '/mnt/data/Obsidian/Personal/', -- point this to your vault
+        path = '/mnt/data/Obsidian/Personal/',
       },
       {
         name = 'Work',
         path = '/mnt/data/Obsidian/Work/',
+      },
+      {
+        name = 'School',
+        path = '/mnt/data/Obsidian/School/',
       },
     },
   },
