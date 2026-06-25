@@ -216,5 +216,94 @@
     "unbind": {
       "ctrl-shift-z": "editor::Redo"
     }
+  },
+  {
+    "context": "vim_operator == helix_previous",
+    "unbind": {
+      "space": "vim::InsertEmptyLineAbove"
+    }
+  },
+  {
+    "context": "vim_operator == helix_next",
+    "unbind": {
+      "space": "vim::InsertEmptyLineBelow"
+    }
+  },
+  {
+    "context": "VimControl && !menu",
+    "unbind": {
+      "ctrl-b": "vim::PageUp"
+    }
+  },
+  {
+    "context": "vim_mode == insert",
+    "bindings": {
+      "shift-tab": "vim::Outdent"
+    }
+  },
+  {
+    "context": "vim_mode == insert",
+    "unbind": {
+      "ctrl-d": "vim::Outdent"
+    }
+  },
+  {
+    "context": "VimControl && !menu",
+    "unbind": {
+      "ctrl-d": "vim::ScrollDown"
+    }
+  },
+  {
+    "context": "showing_completions",
+    "unbind": {
+      "ctrl-d": "vim::ScrollDown"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-d": [
+        "editor::SelectNext",
+        {
+          "replace_newest": false
+        }
+      ]
+    }
+  },
+  {
+    "context": "GitGraph && !GitGraphSearchBar",
+    "unbind": {
+      "ctrl-d": "git_graph::ScrollDown"
+    }
+  },
+  {
+    "context": "MarkdownPreview",
+    "unbind": {
+      "ctrl-d": "markdown::ScrollPageDown"
+    }
+  },
+  {
+    "context": "OutlinePanel && not_editing",
+    "unbind": {
+      "ctrl-d": "outline_panel::ScrollDown"
+    }
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "unbind": {
+      "ctrl-d": "project_panel::ScrollDown"
+    }
+  },
+  {
+    "context": "vim_mode == literal",
+    "unbind": {
+      "ctrl-d": [
+        "vim::Literal",
+        [
+          "ctrl-d",
+          "\u0004"
+        ]
+      ]
+    }
   }
 ]

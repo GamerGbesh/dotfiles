@@ -69,4 +69,16 @@
     "use_new_terminal": false,
     "allow_concurrent_runs": true,
   },
+  {
+    "label": "typo",
+    "command": "typos",
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+  },
+  {
+    "label": "cor_typo",
+    "command": "typos -w",
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+  },
 ]
