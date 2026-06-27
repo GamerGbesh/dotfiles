@@ -305,5 +305,77 @@
         ]
       ]
     }
-  }
+  },
+  {
+    "context": "GitGraph",
+    "unbind": {
+      "shift-tab": "git_graph::FocusPreviousTabStop"
+    }
+  },
+  {
+    "context": "GitGraphSearchBar > Editor",
+    "unbind": {
+      "shift-tab": "git_graph::FocusPreviousTabStop"
+    }
+  },
+  {
+    "context": "VimControl && !menu",
+    "unbind": {
+      "shift-tab": "vim::Tab"
+    }
+  },
+  {
+    "context": "GitGraph",
+    "unbind": {
+      "tab": "git_graph::FocusNextTabStop"
+    }
+  },
+  {
+    "context": "GitGraphSearchBar > Editor",
+    "unbind": {
+      "tab": "git_graph::FocusNextTabStop"
+    }
+  },
+  {
+    "context": "CommitEditor > Editor",
+    "unbind": {
+      "tab": "git_panel::FocusChanges"
+    }
+  },
+  {
+    "context": "GitPanel && ChangesList && !GitBranchSelector",
+    "unbind": {
+      "tab": "git_panel::FocusEditor"
+    }
+  },
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      "tab": "vim::Indent"
+    }
+  },
+  {
+    "context": "vim_mode == visual",
+    "unbind": {
+      ">": "vim::Indent"
+    }
+  },
+  {
+    "context": "(vim_mode == helix_normal || vim_mode == helix_select) && !menu",
+    "unbind": {
+      ">": "vim::Indent"
+    }
+  },
+  {
+    "context": "vim_mode == literal",
+    "unbind": {
+      "tab": [
+        "vim::Literal",
+        [
+          "tab",
+          "\t"
+        ]
+      ]
+    }
+  },
 ]
