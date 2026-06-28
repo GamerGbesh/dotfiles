@@ -61,3 +61,8 @@ hl.window_rule({
 	center = true,
 	size = { 700, 600 },
 })
+
+hl.window_rule({
+	match = { class = "dev.zed.Zed" },
+	opacity = 0.95,
+})
