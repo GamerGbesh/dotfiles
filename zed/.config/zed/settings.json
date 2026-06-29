@@ -13,6 +13,7 @@
   },
   "relative_line_numbers": "enabled",
   "project_panel": {
+    "hide_gitignore": false,
     "dock": "left",
   },
   "focus_follows_mouse": {
@@ -68,7 +69,7 @@
   "theme": {
     "mode": "dark",
     "light": "One Light",
-    "dark": "Catppuccin Mocha",
+    "dark": "VSCode Modern Dark",
   },
   "diagnostics": {
     "inline": {
