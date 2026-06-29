@@ -66,3 +66,14 @@ hl.window_rule({
 	match = { class = "dev.zed.Zed" },
 	opacity = 0.95,
 })
+
+hl.layer_rule({
+	match = { title = "noctalia", namespace = "noctalia-background-.*$" },
+	ignore_alpha = 0.5,
+	blur = true,
+	blur_popups = true,
+})
+
+hl.workspace_rule({ workspace = "1", layout = "master" })
+hl.workspace_rule({ workspace = "2", layout = "scrolling" })
+hl.workspace_rule({ workspace = "3", layout = "scrolling" })
