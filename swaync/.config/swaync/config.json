@@ -24,13 +24,13 @@
   "keyboard-shortcuts": true,
   "image-visibility": "when-available",
   "transition-time": 200,
-  "hide-on-clear": false,
-  "hide-on-action": false,
+  "hide-on-clear": true,
+  "hide-on-action": true,
   "script-fail-notify": true,
   "scripts": {
-    "example-script": {
-      "exec": "echo 'Do something...'",
-      "urgency": "Normal"
+    "sound-script": {
+      "exec": "/home/gbesh/.config/swaync/scripts/notify.sh",
+      "app-name": ".*"
     }
   },
   "notification-visibility": {
@@ -41,10 +41,10 @@
     }
   },
   "widgets": [
-    "label",
+    "title",
+    "dnd",
     "buttons-grid",
     "mpris",
-    "title",
     "notifications",
     "volume"
   ],
@@ -52,7 +52,7 @@
     "title": {
       "text": "Notifications",
       "clear-all-button": true,
-      "button-text": " 󰎟 "
+      "button-text": "󰆴 Clear all"
     },
     "label": {
       "max-lines": 1,
@@ -60,7 +60,11 @@
     },
     "mpris": {
       "image-size": 96,
-      "image-radius": 12
+      "image-radius": 12,
+      "blacklist": ["playerctl"],
+      "autohide": false,
+      "show-album-art": "always",
+      "loop-carousel": true
     },
     "volume": {
       "label": "󰕾",

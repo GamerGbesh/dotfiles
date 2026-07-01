@@ -14,6 +14,7 @@
 /* fallback: if @background is not injected by pywal/matugen,
    this ensures the control center and notifications are never transparent */
 @define-color background      #181b20;
+@import 'colors.css';
 
 /* ── Reset ── */
 * {
@@ -255,22 +256,30 @@ progressbar {
 
 /* ── Widget: title ── */
 .widget-title {
-  font-size: 1.1em;
-  margin: 6px;
+  color: @cyan-accent;
+  background: @noti-bg-alt;
+  border: 1px solid @accent;
+  border-radius: 8px;
+  padding: 6px 10px;
+  margin: 8px 8px 8px;
+  font-size: 1.2rem;
+  font-weight: 700;
 }
 
-.widget-title button {
-  background: @background-alt;
-  border-radius: 6px;
-  padding: 4px 14px;
+.widget-title > button {
+  font-size: 0.85rem;
+  color: @text-muted;
+  margin: 4px 1px 4px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  box-shadow: none;
 }
 
-.widget-title button:hover {
-  background-color: @hover;
-}
-
-.widget-title button:active {
-  background-color: @selected;
+.widget-title > button:hover {
+  background: @noti-hover;
+  color: @blue-gray;
+  border-color: @noti-hover-button;
 }
 
 /* ── Widget: label ── */
@@ -280,34 +289,34 @@ progressbar {
 
 /* ── Widget: DnD ── */
 .widget-dnd {
-  margin: 6px;
-  font-size: 1.1rem;
+  background: @noti-bg-alt;
+  border: 1px solid @accent;
+  border-radius: 8px;
+  padding: 6px 10px;
+  margin: 2px 8px 4px;
+  color: @text-primary;
+  font-size: 0.85rem;
 }
 
 .widget-dnd > switch {
-  background: @background-alt;
-  font-size: initial;
-  border-radius: 8px;
-  box-shadow: none;
+  background: @bg-dnd-off;
+  border-radius: 99px;        /* rounded rectangle track */
+  border: none;
   padding: 2px;
-  border: 1px solid rgba(255, 255, 255, .08);
-}
-
-.widget-dnd > switch:hover {
-  background: @hover;
-}
-
-.widget-dnd > switch:checked {
-  background: @selected;
-}
-
-.widget-dnd > switch:checked:hover {
-  background: @hover;
+  min-width: 24px;
+  min-height: 15px;
 }
 
 .widget-dnd > switch slider {
-  background: @text;
-  border-radius: 6px;
+  background: @bg;
+  border-radius: 99px;       /* perfect circle */
+  min-width: 18px;
+  min-height: 18px;
+  margin: 0;
+}
+
+.widget-dnd > switch:checked {
+  background: @accent;
 }
 
 /* ── Widget: buttons grid ── */
