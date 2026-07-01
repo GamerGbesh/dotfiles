@@ -73,11 +73,6 @@
     "buttons-grid": {
       "actions": [
         {
-          "label": "󰂛",
-          "type": "dnd",
-          "command": "/home/gbesh/.config/swaync/scripts/dnd-notify.sh"
-        },
-        {
           "label": "󰕾",
           "command": "amixer set Master toggle"
         },
