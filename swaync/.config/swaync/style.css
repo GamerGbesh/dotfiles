@@ -163,6 +163,7 @@
 .notification-background
 .notification.low {
   border: 1px solid @low_color;
+  border-radius: 14px;
 }
 
 .control-center
@@ -170,6 +171,7 @@
 .notification-background
 .notification.normal {
   border: 1px solid @normal_color;
+  border-radius: 14px;
 }
 
 .control-center
@@ -177,6 +179,7 @@
 .notification-background
 .notification.critical {
   border: 1px solid @critical_color;
+  border-radius: 14px;
 }
 
 .control-center .notification-row .notification-background .notification .notification-content {
