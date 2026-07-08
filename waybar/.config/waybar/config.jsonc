@@ -1,7 +1,7 @@
 {
   "position": "top",
   "margin-top": 5,
-  "modules-left": ["custom/cpu", "custom/ram", "custom/gpu" ,"custom/temps"],
+  "modules-left": ["custom/cpu", "custom/ram", "custom/gpu" ,"custom/temps", "mpris"],
   "modules-center": ["hyprland/workspaces"],
   "modules-right": ["tray", "network", "bluetooth", "pulseaudio", "battery", "clock"],
   "clock": {
@@ -40,6 +40,30 @@
       },
       "on-click": "pavucontrol"
   },
+  "mpris": {
+    "format": "{status_icon}  {artist} - {title}",
+    "format-paused": "  {artist} - {title}",
+    "format-stopped": "",
+    "max-length": 35,
+
+    "player-icons": {
+      "default": "󰎆",
+      "spotify": "",
+      "firefox": "",
+      "mpv": "󰐹"
+    },
+
+    "status-icons": {
+      "playing": "",
+      "paused": ""
+    },
+
+    "tooltip-format": "{player}\n{artist} - {title}\n{album}",
+    "tooltip": true,
+    "on-click": "playerctl play-pause",
+    "on-click-middle": "playerctl previous",
+    "on-click-right": "playerctl next" 
+  },
   "bluetooth": {
     "format": " {status}",
     "format-disabled": " off",
@@ -55,31 +79,31 @@
 // Then reference them in your "modules-left/center/right" array, e.g.:
 //   "modules-right": ["custom/cpu", "custom/ram", "custom/gpu", "custom/temps", ...]
 
-"custom/cpu": {
-    "exec": "~/.local/bin/sysmon-cpu.sh",
-    "interval": 2,
-    "format": "  {}% cpu",
-    "tooltip": false
-},
+  "custom/cpu": {
+      "exec": "~/.local/bin/sysmon-cpu.sh",
+      "interval": 2,
+      "format": "  {}% cpu",
+      "tooltip": false
+  },
 
-"custom/ram": {
-    "exec": "free -m | awk '/^Mem:/{printf \"%.0f%%\", $3/$2*100}'",
-    "interval": 2,
-    "format": "  {} ram",
-    "tooltip": false
-},
+  "custom/ram": {
+      "exec": "free -m | awk '/^Mem:/{printf \"%.0f%%\", $3/$2*100}'",
+      "interval": 2,
+      "format": "  {} ram",
+      "tooltip": false
+  },
 
-"custom/gpu": {
-    "exec": "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits 2>/dev/null | tr -d ' '",
-    "interval": 2,
-    "format": "󰢮  {}% gpu",
-    "tooltip": false
-},
+  "custom/gpu": {
+      "exec": "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits 2>/dev/null | tr -d ' '",
+      "interval": 2,
+      "format": "󰢮  {}% gpu",
+      "tooltip": false
+  },
 
-"custom/temps": {
-    "exec": "~/.local/bin/sysmon-temps.sh | python3 -c \"import sys,json; d=json.load(sys.stdin); print(f\\\"{d['cpu']}° cpu | {d['gpu']}° gpu\\\")\"",
-    "interval": 3,
-    "format": "  {}",
-    "tooltip": false
-}
+  "custom/temps": {
+      "exec": "~/.local/bin/sysmon-temps.sh | python3 -c \"import sys,json; d=json.load(sys.stdin); print(f\\\"{d['cpu']}° cpu | {d['gpu']}° gpu\\\")\"",
+      "interval": 3,
+      "format": "  {}",
+      "tooltip": false
+  }
 }

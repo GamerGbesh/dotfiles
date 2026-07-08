@@ -30,7 +30,37 @@ tooltip {
     color: @text;
     font-size: 11px;
 }
+/* ─────────────────────────────────────── */
+/* MEDIA PLAYER */
+/* ─────────────────────────────────────── */
 
+#mpris {
+    background: rgba(203, 166, 247, 0.18);
+    color: @mauve;
+    margin: 3px 3px;
+    padding: 2px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(203, 166, 247, 0.25);
+    transition: all 0.2s ease;
+}
+
+#mpris:hover {
+    background: rgba(203, 166, 247, 0.30);
+    color: @text;
+}
+
+#mpris.playing {
+    color: @mauve;
+}
+
+#mpris.paused {
+    color: @overlay1;
+    background: rgba(108, 112, 134, 0.25);
+}
+
+#mpris.stopped {
+    color: @overlay0;
+}
 /* ─────────────────────────────────────── */
 /* WORKSPACES */
 /* ─────────────────────────────────────── */
