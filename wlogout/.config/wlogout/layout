@@ -17,12 +17,6 @@
     "keybind" : "e"
 }
 {
-    "label" : "hibernate",
-    "action" : "hyprlock && systemctl hibernate",
-    "text" : "Hibernate [H]",
-    "keybind" : "h"
-}
-{
     "label" : "lock",
     "action" : "hyprlock",
     "text" : "Lock [L]",
