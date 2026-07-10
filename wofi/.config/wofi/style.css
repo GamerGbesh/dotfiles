@@ -3,7 +3,7 @@
  * Dynamic colors from ~/.cache/wal/colors-waybar.css
  * ========================================================== */
 
-@import url("/home/gbesh/.cache/wal/colors-waybar.css");
+@import url(".cache/wal/colors-waybar.css");
 
 
 /* Catppuccin -> Pywal compatibility mapping */
