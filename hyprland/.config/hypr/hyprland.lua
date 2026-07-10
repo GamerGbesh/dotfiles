@@ -10,6 +10,7 @@ require("animation")
 require("keybinds")
 require("autostart")
 require("windows")
+local pywal = require("pywal").load()
 
 hl.config({
 	cursor = {
@@ -26,8 +27,15 @@ hl.config({
 		border_size = 2,
 
 		col = {
-			active_border = { colors = { "rgba(ffccffee)", "rgba(00ff99ee)" }, angle = 45 },
-			inactive_border = "rgba(595959aa)",
+			active_border = {
+				colors = {
+					"rgb(" .. pywal.color4:gsub("#", "") .. ")",
+					"rgb(" .. pywal.color5:gsub("#", "") .. ")",
+				},
+				angle = 45,
+			},
+
+			inactive_border = "rgb(" .. pywal.color8:gsub("#", "") .. ")",
 		},
 
 		resize_on_border = false,
