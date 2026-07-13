@@ -3,6 +3,6 @@
 STATE=$(swaync-client -D)
 
 if [ "$STATE" = "false" ]; then
-    paplay ~/.config/swaync/notification.ogg
+    paplay --volume=32768 ~/.config/swaync/notification.ogg
 fi
 
