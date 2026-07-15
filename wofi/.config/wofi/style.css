@@ -1,12 +1,22 @@
 /* ==========================================================
- * WOFI PYWAL THEME
- * Dynamic colors from ~/.cache/wal/colors-waybar.css
+ *  WOFI · PYWAL
+ *  Colors:  ~/.cache/wal/colors-waybar.css
+ *
+ *  Quiet rows, one bold signature (the selected entry, a
+ *  filled accent pill — same language as the waybar active
+ *  workspace), a single coherent accent (@lavender), and
+ *  motion only on selection/focus.
+ *
+ *  Save as:  ~/.config/wofi/style.css
  * ========================================================== */
 
 @import url(".cache/wal/colors-waybar.css");
 
 
-/* Catppuccin -> Pywal compatibility mapping */
+/* ----------------------------------------------------------
+ *  Catppuccin -> Pywal compatibility mapping
+ *  (semantic names -> pywal slots, so rules stay readable)
+ * ---------------------------------------------------------- */
 
 @define-color rosewater @color11;
 @define-color flamingo  @color13;
@@ -24,7 +34,7 @@
 @define-color sapphire  @color4;
 
 @define-color blue      @color4;
-@define-color lavender  @color12;
+@define-color lavender  @color12;   /* primary accent */
 
 @define-color text      @foreground;
 @define-color subtext1  @color7;
@@ -44,7 +54,7 @@
 
 
 /* ==========================================================
- * GLOBAL
+ *  GLOBAL
  * ========================================================== */
 
 * {
@@ -54,115 +64,131 @@
 
 
 /* ==========================================================
- * WINDOW
+ *  WINDOW  — the frame is the signature border
  * ========================================================== */
 
 window {
     margin: 0px;
-    padding: 10px;
+    padding: 12px;
 
     border: 2px solid @lavender;
-    border-radius: 12px;
+    border-radius: 14px;
 
-    background-color: alpha(@base, 0.90);
+    background-color: alpha(@base, 0.92);
 }
 
 
 /* ==========================================================
- * BOXES
+ *  BOXES
  * ========================================================== */
 
-#inner-box,
 #outer-box,
+#inner-box,
 #scroll {
     margin: 5px;
-    padding: 10px;
+    padding: 8px;
 
     border: none;
-
     background-color: transparent;
 }
 
+/* let the results list breathe under the search field */
+#scroll {
+    margin-top: 4px;
+}
+
 
 /* ==========================================================
- * SEARCH INPUT
+ *  SEARCH INPUT  — the focal point
  * ========================================================== */
 
 #input {
-    margin: 5px 20px;
-    padding: 10px;
+    margin: 6px 8px;
+    padding: 12px 16px;
 
     border-radius: 10px;
-    border: 1px solid alpha(@foreground, 0.15);
+    border: 1px solid alpha(@foreground, 0.14);
 
     color: @text;
-    background-color: alpha(@surface0, 0.45);
+    background-color: alpha(@surface0, 0.50);
+
+    transition:
+        border-color 0.2s ease,
+        background-color 0.2s ease;
 }
-
-
-#input image {
-    border: none;
-    color: @red;
-}
-
 
 #input:focus {
     border-color: @lavender;
+    background-color: alpha(@surface0, 0.70);
 }
 
-
-/* ==========================================================
- * ENTRIES
- * ========================================================== */
-
-#entry {
-    margin: 3px;
-    padding: 6px 10px;
-
-    border-radius: 8px;
-
-    background-color: transparent;
-}
-
-
-#text {
-    margin: 5px;
-
-    color: @text;
-}
-
-
-#entry arrow {
+/* search icon: accent instead of the old alarming red */
+#input image {
     border: none;
     color: @lavender;
 }
 
 
 /* ==========================================================
- * SELECTED ENTRY
+ *  ENTRIES  (quiet by default)
+ * ========================================================== */
+
+#entry {
+    margin: 2px 4px;
+    padding: 8px 12px;
+
+    border-radius: 8px;
+    border: 1px solid transparent;   /* reserve the border box so
+                                         selection doesn't shift rows */
+    background-color: transparent;
+
+    transition:
+        background-color 0.15s ease,
+        box-shadow 0.15s ease,
+        border-color 0.15s ease;
+}
+
+#text {
+    margin: 0px 6px;
+    color: @text;
+}
+
+#entry arrow {
+    border: none;
+    color: @subtext0;
+}
+
+/* mouse hover: soft neutral lift (keyboard still drives :selected) */
+#entry:hover {
+    background-color: alpha(@foreground, 0.06);
+}
+/* ==========================================================
+ *  SELECTED ENTRY  — signature: one bold filled pill
+ *  Mirrors the waybar's active-workspace treatment.
  * ========================================================== */
 
 #entry:selected {
-    border: 0.11em solid @lavender;
+    border: 1px solid @lavender;
+    background-color: @lavender;
 
-    background-color: alpha(@lavender, 0.15);
+    box-shadow: 0 4px 14px alpha(@lavender, 0.35);
 }
-
 
 #entry:selected #text {
-    color: @mauve;
+    color: @base;              /* dark text on the bright accent */
+    font-weight: bold;
 }
 
-
 #entry:selected arrow {
-    color: @mauve;
+    color: @base;
 }
 
 
 /* ==========================================================
- * DRAG AND DROP
+ *  DRAG AND DROP
  * ========================================================== */
 
 #entry:drop(active) {
-    background-color: alpha(@lavender, 0.3);
+    background-color: alpha(@lavender, 0.30);
+    border-color: @lavender;
 }
