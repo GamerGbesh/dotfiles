@@ -1,37 +1,42 @@
 /* ==========================================================
- *  SWAYNC · CATPPUCCIN MOCHA
+ *  SWAYNC · PYWAL (floating-islands)
  *
  *  quiet translucent pills, accent reserved for meaning,
  *  one soft glow shadow, minimal purposeful motion —
+ *  driven entirely by the current wallpaper via pywal.
  *
- *  ROLE MAP:
- *    base/mantle/crust ... backgrounds (darkest -> darker)
- *    text / subtext1 ..... primary / secondary text
- *    overlay0 ............ muted / disabled
- *    red ................. critical urgency, destructive hover
- *    blue ................ normal urgency, network-ish actions
- *    green ............... low urgency
- *    mauve ............... selection / primary accent (title, dnd)
- *    pink ................ media (mpris, volume)
- *    sky ................. buttons-grid accent
+ *  ROLE MAP (aliased from colors-waybar.css, ANSI-slot convention
+ *  matching the Waybar rice: color1=red, color2=green, color3=yellow/
+ *  mauve, color4=blue, color5=magenta/pink, color6=cyan/sky):
+ *    base/mantle/crust ... backgrounds (darkest -> darker, derived from @background)
+ *    text / subtext1 ..... primary / secondary text (from @foreground)
+ *    overlay0/overlay1 ... muted / disabled (from @color8)
+ *    red ................. critical urgency, destructive hover   -> @color1
+ *    blue ................ normal urgency, network-ish actions   -> @color4
+ *    green ............... low urgency                            -> @color2
+ *    mauve ............... selection / primary accent (title, dnd) -> @color3
+ *    pink ................ media (mpris, volume)                  -> @color5
+ *    sky ................. buttons-grid accent                    -> @color6
  * ========================================================== */
 
-@define-color base       #1e1e2e;
-@define-color mantle     #181825;
-@define-color crust      #11111b;
-@define-color text       #cdd6f4;
-@define-color subtext1   #bac2de;
-@define-color subtext0   #a6adc8;
-@define-color overlay1   #7f849c;
-@define-color overlay0   #6c7086;
-@define-color surface1   #45475a;
-@define-color surface0   #313244;
-@define-color red        #f38ba8;
-@define-color green      #a6e3a1;
-@define-color blue       #89b4fa;
-@define-color mauve      #cba6f7;
-@define-color pink       #f5c2e7;
-@define-color sky        #89dceb;
+@import url("file:///home/gbesh/.cache/wal/colors-waybar.css");
+
+@define-color base       @background;
+@define-color mantle     shade(@background, 0.8);
+@define-color crust      shade(@background, 0.6);
+@define-color text       @foreground;
+@define-color subtext1   alpha(@foreground, 0.85);
+@define-color subtext0   @color8;
+@define-color overlay1   shade(@color8, 0.9);
+@define-color overlay0   shade(@color8, 0.75);
+@define-color surface1   shade(@background, 2.4);
+@define-color surface0   shade(@background, 1.9);
+@define-color red        @color1;
+@define-color green      @color2;
+@define-color blue       @color4;
+@define-color mauve      @color3;
+@define-color pink       @color5;
+@define-color sky        @color6;
 @define-color mauve-dim  shade(@mauve, 0.45); /* darkened mauve for the title bar */
 
 /* ----------------------------------------------------------
