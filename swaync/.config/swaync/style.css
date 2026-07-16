@@ -5,18 +5,22 @@
  *  one soft glow shadow, minimal purposeful motion —
  *  driven entirely by the current wallpaper via pywal.
  *
- *  ROLE MAP (aliased from colors-waybar.css, ANSI-slot convention
- *  matching the Waybar rice: color1=red, color2=green, color3=yellow/
- *  mauve, color4=blue, color5=magenta/pink, color6=cyan/sky):
+ *  ROLE MAP (aliased from colors-waybar.css). This palette is mostly
+ *  warm tans (color1/4/5/6 all sit close in hue), with only color2
+ *  (cool dark slate) and color3 (cool light lavender) standing apart.
+ *  Urgency colors need to be tellable apart at a glance in the same
+ *  notification list, so they claim the three most distinct slots
+ *  (one warm, one cool-dark, one cool-light); the remaining warm tans
+ *  go to the accents that don't need to compete against urgency colors:
  *    base/mantle/crust ... backgrounds (darkest -> darker, derived from @background)
  *    text / subtext1 ..... primary / secondary text (from @foreground)
  *    overlay0/overlay1 ... muted / disabled (from @color8)
- *    red ................. critical urgency, destructive hover   -> @color1
- *    blue ................ normal urgency, network-ish actions   -> @color4
- *    green ............... low urgency                            -> @color2
- *    mauve ............... selection / primary accent (title, dnd) -> @color3
- *    pink ................ media (mpris, volume)                  -> @color5
- *    sky ................. buttons-grid accent                    -> @color6
+ *    red ................. critical urgency, destructive hover   -> @color1  (warm gold)
+ *    blue ................ normal urgency, network-ish actions   -> @color2  (cool dark slate)
+ *    green ............... low urgency                          -> @color3  (cool light lavender)
+ *    mauve ............... selection / primary accent (title, dnd) -> @color5 (warm tan)
+ *    pink ................ media (mpris, volume)                  -> @color4 (warm tan)
+ *    sky ................. buttons-grid accent                    -> @color6 (warm peach)
  * ========================================================== */
 
 @import url("file:///home/gbesh/.cache/wal/colors-waybar.css");
@@ -32,10 +36,10 @@
 @define-color surface1   shade(@background, 2.4);
 @define-color surface0   shade(@background, 1.9);
 @define-color red        @color1;
-@define-color green      @color2;
-@define-color blue       @color4;
-@define-color mauve      @color3;
-@define-color pink       @color5;
+@define-color blue       @color2;
+@define-color green      @color3;
+@define-color mauve      @color5;
+@define-color pink       @color4;
 @define-color sky        @color6;
 @define-color mauve-dim  shade(@mauve, 0.45); /* darkened mauve for the title bar */
 
