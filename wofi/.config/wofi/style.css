@@ -10,12 +10,29 @@
  *  Save as:  ~/.config/wofi/style.css
  * ========================================================== */
 
-@import url(".cache/wal/colors-waybar.css");
+@import url("file:///home/gbesh/.cache/wal/colors-waybar.css");
 
 
 /* ----------------------------------------------------------
  *  Catppuccin -> Pywal compatibility mapping
  *  (semantic names -> pywal slots, so rules stay readable)
+ *
+ *  This palette only has 6 real accent hues (color1-6); colors
+ *  8-15 just mirror 0-7 rather than adding brighter variants, so
+ *  most of the extra Catppuccin names below necessarily collapse
+ *  onto the same hex as another name — that's expected and fine
+ *  since only a handful of these variables are actually used in
+ *  the rules further down.
+ *
+ *  @lavender is the one that matters: it's the single accent this
+ *  whole file hangs on (border, focus, selected-entry pill), so it
+ *  needs to actually look distinct against the rest of the warm
+ *  palette. It was previously aliased to @color12, which in this
+ *  wallpaper's palette resolves to the same warm tan as @blue/
+ *  @sapphire (#CB9E81) — not lavender at all, and not visually
+ *  distinct from the accents around it. @color3 (#A8A4B7) is the
+ *  one genuinely cool, lavender-grey tone in the palette, so it's
+ *  reassigned there.
  * ---------------------------------------------------------- */
 
 @define-color rosewater @color11;
@@ -34,7 +51,7 @@
 @define-color sapphire  @color4;
 
 @define-color blue      @color4;
-@define-color lavender  @color12;   /* primary accent */
+@define-color lavender  @color3;   /* primary accent — the one cool, lavender-grey hue in the palette */
 
 @define-color text      @foreground;
 @define-color subtext1  @color7;
