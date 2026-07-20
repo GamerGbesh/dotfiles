@@ -63,6 +63,7 @@ hl.config({
 
 	master = {
 		new_status = "master",
+		focus_master_on_close = true,
 	},
 
 	misc = {
