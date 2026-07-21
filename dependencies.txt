@@ -1,0 +1,4 @@
+## Plugins with hyprpm
+hyprpm add https://github.com/gfhdhytghd/hymission
+hyprpm add https://github.com/hyprwm/hyprland-plugins
+hyprpm add https://github.com/levnikmyskin/hyprland-virtual-desktops.git

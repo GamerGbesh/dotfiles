@@ -10,6 +10,7 @@ require("animation")
 require("keybinds")
 require("autostart")
 require("windows")
+require("plugins")
 
 hl.config({
 	cursor = {
