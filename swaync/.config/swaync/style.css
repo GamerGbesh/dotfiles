@@ -43,6 +43,42 @@
 @define-color sky        @color6;
 @define-color mauve-dim  shade(@mauve, 0.45); /* darkened mauve for the title bar */
 
+=======
+ *  SWAYNC · CATPPUCCIN MOCHA
+ *
+ *  quiet translucent pills, accent reserved for meaning,
+ *  one soft glow shadow, minimal purposeful motion —
+ *
+ *  ROLE MAP:
+ *    base/mantle/crust ... backgrounds (darkest -> darker)
+ *    text / subtext1 ..... primary / secondary text
+ *    overlay0 ............ muted / disabled
+ *    red ................. critical urgency, destructive hover
+ *    blue ................ normal urgency, network-ish actions
+ *    green ............... low urgency
+ *    mauve ............... selection / primary accent (title, dnd)
+ *    pink ................ media (mpris, volume)
+ *    sky ................. buttons-grid accent
+ * ========================================================== */
+
+@define-color base       #1e1e2e;
+@define-color mantle     #181825;
+@define-color crust      #11111b;
+@define-color text       #cdd6f4;
+@define-color subtext1   #bac2de;
+@define-color subtext0   #a6adc8;
+@define-color overlay1   #7f849c;
+@define-color overlay0   #6c7086;
+@define-color surface1   #45475a;
+@define-color surface0   #313244;
+@define-color red        #f38ba8;
+@define-color green      #a6e3a1;
+@define-color blue       #89b4fa;
+@define-color mauve      #cba6f7;
+@define-color pink       #f5c2e7;
+@define-color sky        #89dceb;
+@define-color mauve-dim  shade(@mauve, 0.45); /* darkened mauve for the title bar */
+
 /* ----------------------------------------------------------
  *  RESET & TYPE
  * ---------------------------------------------------------- */
