@@ -75,5 +75,4 @@ hl.layer_rule({
 })
 
 hl.workspace_rule({ workspace = "1", layout = "master" })
-hl.workspace_rule({ workspace = "2", layout = "scrolling" })
 hl.workspace_rule({ workspace = "3", layout = "scrolling" })
