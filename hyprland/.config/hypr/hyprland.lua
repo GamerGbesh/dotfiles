@@ -10,7 +10,7 @@ require("animation")
 require("keybinds")
 require("autostart")
 require("windows")
-require("plugins")
+-- require("plugins")
 
 local pywal = require("pywal").load()
 
