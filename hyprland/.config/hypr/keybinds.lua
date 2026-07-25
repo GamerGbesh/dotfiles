@@ -41,7 +41,7 @@ hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("hyprpicker | wl-copy"))
 
 -- Power / Calculator
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd("wlogout -b 4"), { locked = true, repeating = true })
-hl.bind("XF86Calculator", hl.dsp.exec_cmd("kcalc"), { locked = true, repeating = true })
+hl.bind("XF86Calculator", hl.dsp.exec_cmd("gnome-calculator"), { locked = true, repeating = true })
 
 -- Workspace switching: hl.dsp.focus({ workspace = id })
 -- Relative switching: "e+1" / "e-1"
