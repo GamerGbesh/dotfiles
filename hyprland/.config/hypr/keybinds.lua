@@ -38,6 +38,7 @@ hl.bind("CTRL + print", hl.dsp.exec_cmd("hyprshot -m output -o ~/Pictures/Screen
 hl.bind(mainMod .. " + print", hl.dsp.exec_cmd("hyprshot -m window -o ~/Pictures/Screenshots"))
 hl.bind("ALT + print", hl.dsp.exec_cmd("hyprshot -m active -o ~/Pictures/Screenshots"))
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("hyprpicker | wl-copy"))
+hl.bind(mainMod .. " + SHIFT + T", hl.dsp.exec_cmd("normcap"))
 
 -- Power / Calculator
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd("wlogout -b 4"), { locked = true, repeating = true })
