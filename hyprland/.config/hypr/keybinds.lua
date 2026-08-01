@@ -60,6 +60,11 @@ hl.bind(mainMod .. " + CTRL + " .. left, hl.dsp.focus({ workspace = "e-1" }))
 -- Scroll through workspaces with mouse wheel
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
+
+-- Cycle through windows (mainly for monocle layout)
+hl.bind(mainMod .. " + TAB", hl.dsp.window.cycle_next({ tiled = true }))
+hl.bind(mainMod .. " + SHIFT + TAB", hl.dsp.window.cycle_next({ tiled = true, next = false }))
+
 -- Drag the mouse wheel
 hl.config({
 	binds = {
