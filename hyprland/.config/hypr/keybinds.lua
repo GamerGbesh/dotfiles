@@ -37,8 +37,9 @@ hl.bind("print", hl.dsp.exec_cmd("hyprshot -m region -o ~/Pictures/Screenshots")
 hl.bind("CTRL + print", hl.dsp.exec_cmd("hyprshot -m output -o ~/Pictures/Screenshots"))
 hl.bind(mainMod .. " + print", hl.dsp.exec_cmd("hyprshot -m window -o ~/Pictures/Screenshots"))
 hl.bind("ALT + print", hl.dsp.exec_cmd("hyprshot -m active -o ~/Pictures/Screenshots"))
-hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("hyprpicker | wl-copy"))
+hl.bind(mainMod .. "+ SHIFT + P", hl.dsp.exec_cmd("hyprpicker | wl-copy"))
 hl.bind(mainMod .. " + SHIFT + T", hl.dsp.exec_cmd("normcap"))
+hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 
 -- Power / Calculator
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd("wlogout -b 4"), { locked = true, repeating = true })
@@ -65,8 +66,8 @@ hl.config({
 		drag_threshold = 10, -- Fire a drag event only after dragging for more than 10px
 	},
 })
-hl.bind(mainMod .. "+ mouse:272", hl.dsp.window.drag(), { mouse = true }) -- ALT + LMB: Move a window by dragging more than 10px.
-hl.bind(mainMod .. "+ mouse:273", hl.dsp.window.resize(), { mouse = true }) -- ALT + LMB: Floats a window by clicking
+hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true }) -- ALT + LMB: Move a window by dragging more than 10px.
+hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true }) -- ALT + LMB: Floats a window by clicking
 
 -- Special workspace (scratchpad)
 hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
