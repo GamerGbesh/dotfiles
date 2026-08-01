@@ -49,17 +49,17 @@ hl.window_rule({
 })
 
 hl.window_rule({
-	match = { class = "com.ktechpit.whatsie", title = "Downloads" },
+	match = { class = "org.mozilla.Thunderbird", title = [[^Write.*]] },
 	float = true,
 	center = true,
 	size = { 700, 600 },
 })
 
 hl.window_rule({
-	match = { class = "org.mozilla.Thunderbird", title = [[^Write.*]] },
+	match = { class = "thunar", title = [[^Rename.*]] },
 	float = true,
-	center = true,
-	size = { 700, 600 },
+	size = { 200, 100 },
+	move = { "(cursor_x-(window_w*0.5))", "(cursor_y-(window_h*0.5))" },
 })
 
 hl.window_rule({
