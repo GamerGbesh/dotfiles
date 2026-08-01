@@ -37,8 +37,9 @@ hl.bind("print", hl.dsp.exec_cmd("hyprshot -m region -o ~/Pictures/Screenshots")
 hl.bind("CTRL + print", hl.dsp.exec_cmd("hyprshot -m output -o ~/Pictures/Screenshots"))
 hl.bind(mainMod .. " + print", hl.dsp.exec_cmd("hyprshot -m window -o ~/Pictures/Screenshots"))
 hl.bind("ALT + print", hl.dsp.exec_cmd("hyprshot -m active -o ~/Pictures/Screenshots"))
-hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("hyprpicker | wl-copy"))
+hl.bind(mainMod .. "+ SHIFT + P", hl.dsp.exec_cmd("hyprpicker | wl-copy"))
 hl.bind(mainMod .. " + SHIFT + T", hl.dsp.exec_cmd("normcap"))
+hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 
 -- Power / Calculator
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd("wlogout -b 4"), { locked = true, repeating = true })
@@ -59,14 +60,19 @@ hl.bind(mainMod .. " + CTRL + " .. left, hl.dsp.focus({ workspace = "e-1" }))
 -- Scroll through workspaces with mouse wheel
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
+
+-- Cycle through windows (mainly for monocle layout)
+hl.bind(mainMod .. " + TAB", hl.dsp.window.cycle_next({ tiled = true }))
+hl.bind(mainMod .. " + SHIFT + TAB", hl.dsp.window.cycle_next({ tiled = true, next = false }))
+
 -- Drag the mouse wheel
 hl.config({
 	binds = {
 		drag_threshold = 10, -- Fire a drag event only after dragging for more than 10px
 	},
 })
-hl.bind(mainMod .. "+ mouse:272", hl.dsp.window.drag(), { mouse = true }) -- ALT + LMB: Move a window by dragging more than 10px.
-hl.bind(mainMod .. "+ mouse:273", hl.dsp.window.resize(), { mouse = true }) -- ALT + LMB: Floats a window by clicking
+hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true }) -- ALT + LMB: Move a window by dragging more than 10px.
+hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true }) -- ALT + LMB: Floats a window by clicking
 
 -- Special workspace (scratchpad)
 hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
