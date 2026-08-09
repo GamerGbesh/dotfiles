@@ -22,3 +22,10 @@ UUID=dcdb31d7-a293-49cc-89a1-a9718aa81b24 /home/gbesh/extra/uv btrfs subvol=/@uv
 UUID=dcdb31d7-a293-49cc-89a1-a9718aa81b24 /mnt/docker btrfs subvol=/@docker,defaults,noatime,compress=zstd:1 0 0
 UUID=dcdb31d7-a293-49cc-89a1-a9718aa81b24 /home/gbesh/.ollama btrfs subvol=/@ollama,defaults,noatime,compress=zstd:1 0 0
 UUID=dcdb31d7-a293-49cc-89a1-a9718aa81b24 /mnt/games btrfs subvol=/@games,defaults,noatime,compress=zstd:1 0 0
+UUID=dcdb31d7-a293-49cc-89a1-a9718aa81b24 /var/cache/pacman/pkg btrfs subvol=/@pacman-cache,defaults,noatime,compress=zstd:1 0 0
+UUID=dcdb31d7-a293-49cc-89a1-a9718aa81b24 /home/gbesh/.cache btrfs subvol=/@cache,defaults,noatime,compress=zstd:1 0 0
+UUID=dcdb31d7-a293-49cc-89a1-a9718aa81b24 /var/log btrfs subvol=/@log,defaults,noatime,compress=zstd:1 0 0
+UUID=dcdb31d7-a293-49cc-89a1-a9718aa81b24 /var/lib/flatpak btrfs subvol=/@flatpak,defaults,noatime,compress=zstd:1 0 0
+UUID=dcdb31d7-a293-49cc-89a1-a9718aa81b24 /home/gbesh/.local/share/Steam btrfs subvol=/@steam,defaults,noatime,compress=zstd:1 0 0
+UUID=dcdb31d7-a293-49cc-89a1-a9718aa81b24 /home/gbesh/.rustup btrfs subvol=/@rustup,defaults,noatime,compress=zstd:1 0 0
+UUID=dcdb31d7-a293-49cc-89a1-a9718aa81b24 /home/gbesh/.npm btrfs subvol=/@npm,defaults,noatime,compress=zstd:1 0 0
