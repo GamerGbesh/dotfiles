@@ -40,7 +40,7 @@ hl.bind("ALT + print", hl.dsp.exec_cmd("hyprshot -m active -o ~/Pictures/Screens
 hl.bind(mainMod .. "+ SHIFT + P", hl.dsp.exec_cmd("hyprpicker | wl-copy"))
 hl.bind(mainMod .. " + SHIFT + T", hl.dsp.exec_cmd("normcap"))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
-
+hl.bind(mainMod .. " + I", hl.dsp.window.pin())
 -- Power / Calculator
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd("wlogout -b 4"), { locked = true, repeating = true })
 hl.bind("XF86Calculator", hl.dsp.exec_cmd("gnome-calculator"), { locked = true, repeating = true })
