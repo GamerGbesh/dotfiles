@@ -372,4 +372,94 @@
       "s": "vim::PushDeleteSurrounds",
     },
   },
+  {
+    "context": "VimControl && !menu",
+    "unbind": {
+      "ctrl-f": "vim::PageDown"
+    }
+  },
+  {
+    "context": "Editor && mode == full",
+    "unbind": {
+      "ctrl-f": "buffer_search::Deploy"
+    }
+  },
+  {
+    "context": "MarkdownPreview",
+    "unbind": {
+      "ctrl-f": "buffer_search::Deploy"
+    }
+  },
+  {
+    "context": "Editor && mode == full",
+    "bindings": {
+      "ctrl-f": "buffer_search::DeployReplace"
+    }
+  },
+  {
+    "context": "Editor && mode == full",
+    "unbind": {
+      "ctrl-h": "buffer_search::DeployReplace"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "alt-l": "editor::SelectLine"
+    }
+  },
+  {
+    "context": "Editor",
+    "unbind": {
+      "ctrl-l": "editor::SelectLine"
+    }
+  },
+  {
+    "context": "(VimControl && !menu) || (!Editor && !Terminal)",
+    "bindings": {
+      "ctrl-l": "workspace::ActivatePaneRight"
+    }
+  },
+  {
+    "context": "(VimControl && !menu) || (!Editor && !Terminal)",
+    "unbind": {
+      "ctrl-w right": "workspace::ActivatePaneRight"
+    }
+  },
+  {
+    "context": "(VimControl && !menu) || (!Editor && !Terminal)",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft"
+    }
+  },
+  {
+    "context": "(VimControl && !menu) || (!Editor && !Terminal)",
+    "unbind": {
+      "ctrl-w left": "workspace::ActivatePaneLeft"
+    }
+  },
+  {
+    "context": "(VimControl && !menu) || (!Editor && !Terminal)",
+    "bindings": {
+      "ctrl-j": "workspace::ActivatePaneDown"
+    }
+  },
+  {
+    "context": "(VimControl && !menu) || (!Editor && !Terminal)",
+    "unbind": {
+      "ctrl-w down": "workspace::ActivatePaneDown"
+    }
+  },
+  {
+    "context": "(VimControl && !menu) || (!Editor && !Terminal)",
+    "bindings": {
+      "ctrl-k": "workspace::ActivatePaneUp"
+    }
+  },
+  {
+    "context": "(VimControl && !menu) || (!Editor && !Terminal)",
+    "unbind": {
+      "ctrl-w up": "workspace::ActivatePaneUp"
+    }
+  }
 ]
