@@ -1,3 +1,4 @@
+
 # /etc/fstab: static file system information.
 #
 # Use 'blkid' to print the universally unique identifier for a device; this may
@@ -20,6 +21,7 @@ UUID=dcdb31d7-a293-49cc-89a1-a9718aa81b24 /mnt/data btrfs subvol=/@data,defaults
 UUID=dcdb31d7-a293-49cc-89a1-a9718aa81b24 /home/gbesh/coding btrfs subvol=/@coding,defaults,noatime,compress=zstd:1 0 0
 UUID=dcdb31d7-a293-49cc-89a1-a9718aa81b24 /home/gbesh/extra/uv btrfs subvol=/@uv,defaults,noatime,compress=zstd:1 0 0
 UUID=dcdb31d7-a293-49cc-89a1-a9718aa81b24 /mnt/docker btrfs subvol=/@docker,defaults,noatime,compress=zstd:1 0 0
+UUID=dcdb31d7-a293-49cc-89a1-a9718aa81b24 /var/lib/containerd btrfs subvol=/@containerd,defaults,noatime,compress=zstd:1 0 0
 UUID=dcdb31d7-a293-49cc-89a1-a9718aa81b24 /home/gbesh/.ollama btrfs subvol=/@ollama,defaults,noatime,compress=zstd:1 0 0
 UUID=dcdb31d7-a293-49cc-89a1-a9718aa81b24 /mnt/games btrfs subvol=/@games,defaults,noatime,compress=zstd:1 0 0
 UUID=dcdb31d7-a293-49cc-89a1-a9718aa81b24 /var/cache/pacman/pkg btrfs subvol=/@pacman-cache,defaults,noatime,compress=zstd:1 0 0
@@ -29,3 +31,4 @@ UUID=dcdb31d7-a293-49cc-89a1-a9718aa81b24 /var/lib/flatpak btrfs subvol=/@flatpa
 UUID=dcdb31d7-a293-49cc-89a1-a9718aa81b24 /home/gbesh/.local/share/Steam btrfs subvol=/@steam,defaults,noatime,compress=zstd:1 0 0
 UUID=dcdb31d7-a293-49cc-89a1-a9718aa81b24 /home/gbesh/.rustup btrfs subvol=/@rustup,defaults,noatime,compress=zstd:1 0 0
 UUID=dcdb31d7-a293-49cc-89a1-a9718aa81b24 /home/gbesh/.npm btrfs subvol=/@npm,defaults,noatime,compress=zstd:1 0 0
+

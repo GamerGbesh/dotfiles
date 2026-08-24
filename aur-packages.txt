@@ -2,12 +2,7 @@ antigravity 2.8.1-1
 arduino-ide-bin 2.3.10-1
 bibata-cursor-git 1.0.0.r0.f4ccfe8-1
 electron37 37.5.1-1
-elephant-bin 2.22.0-1
-elephant-desktopapplications-bin 2.22.0-1
-elephant-providerlist-bin 2.22.0-1
 envycontrol 3.5.2-2
-eww 0.6.0-1
-k6 2.1.0-2
 lib32-mpg123 1.33.7-1
 litehtml0.9 0.9-4
 ngrok 3.39.11-1
@@ -19,7 +14,6 @@ pgadmin4-server 9.14-1
 python-geventhttpclient 2.3.7-1
 python-locust 2.42.6-1
 python-pkg_resources 81.0.0-1
-spicetify-bin 2.44.0-1
 ttf-ms-fonts 2.0-12
 victus-control-bin 0.2.1-1
 visual-studio-code-bin 1.134.0-1
