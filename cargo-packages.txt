@@ -1,0 +1,7 @@
+notify-usb v0.2.4:
+    notify-usb
+sqlx-cli v0.9.0:
+    cargo-sqlx
+    sqlx
+tree-sitter-cli v0.26.8:
+    tree-sitter
