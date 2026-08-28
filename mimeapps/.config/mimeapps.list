@@ -26,3 +26,4 @@ x-scheme-handler/unknown=firefox.desktop
 application/pdf=firefox.desktop
 x-scheme-handler/claude-cli=claude-code-url-handler.desktop
 x-scheme-handler/antigravity=antigravity.desktop
+x-scheme-handler/everest=/home/gbesh/.local/share/applications/Olympus.desktop
