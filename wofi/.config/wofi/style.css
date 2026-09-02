@@ -1,73 +1,56 @@
 /* ==========================================================
- *  WOFI · PYWAL
- *  Colors:  ~/.cache/wal/colors-waybar.css
+ *  WOFI · CATPPUCCIN MOCHA
  *
- *  Quiet rows, one bold signature (the selected entry, a
- *  filled accent pill — same language as the waybar active
- *  workspace), a single coherent accent (@lavender), and
- *  motion only on selection/focus.
+ *  Primary accent: Lavender
+ *  Secondary accent: Peach
  *
- *  Save as:  ~/.config/wofi/style.css
  * ========================================================== */
 
-@import url("file:///home/gbesh/.cache/wal/colors-waybar.css");
+
+/* ==========================================================
+ *  CATPPUCCIN MOCHA PALETTE
+ * ========================================================== */
+
+@define-color rosewater #f5e0dc;
+@define-color flamingo  #f2cdcd;
+@define-color pink      #f5c2e7;
+@define-color mauve     #cba6f7;
+
+@define-color red       #f38ba8;
+@define-color maroon    #eba0ac;
+@define-color peach     #fab387;
+@define-color yellow    #f9e2af;
+
+@define-color green     #a6e3a1;
+@define-color teal      #94e2d5;
+@define-color sky       #89dceb;
+@define-color sapphire  #74c7ec;
+
+@define-color blue      #89b4fa;
+@define-color lavender  #b4befe;
+
+@define-color text      #cdd6f4;
+@define-color subtext1  #bac2de;
+@define-color subtext0  #a6adc8;
+
+@define-color overlay2  #9399b2;
+@define-color overlay1  #7f849c;
+@define-color overlay0  #6c7086;
+
+@define-color surface2  #585b70;
+@define-color surface1  #45475a;
+@define-color surface0  #313244;
+
+@define-color base      #1e1e2e;
+@define-color mantle    #181825;
+@define-color crust     #11111b;
 
 
-/* ----------------------------------------------------------
- *  Catppuccin -> Pywal compatibility mapping
- *  (semantic names -> pywal slots, so rules stay readable)
- *
- *  This palette only has 6 real accent hues (color1-6); colors
- *  8-15 just mirror 0-7 rather than adding brighter variants, so
- *  most of the extra Catppuccin names below necessarily collapse
- *  onto the same hex as another name — that's expected and fine
- *  since only a handful of these variables are actually used in
- *  the rules further down.
- *
- *  @lavender is the one that matters: it's the single accent this
- *  whole file hangs on (border, focus, selected-entry pill), so it
- *  needs to actually look distinct against the rest of the warm
- *  palette. It was previously aliased to @color12, which in this
- *  wallpaper's palette resolves to the same warm tan as @blue/
- *  @sapphire (#CB9E81) — not lavender at all, and not visually
- *  distinct from the accents around it. @color3 (#A8A4B7) is the
- *  one genuinely cool, lavender-grey tone in the palette, so it's
- *  reassigned there.
- * ---------------------------------------------------------- */
+/* ==========================================================
+ *  THEME ALIASES
+ * ========================================================== */
 
-@define-color rosewater @color11;
-@define-color flamingo  @color13;
-@define-color pink      @color13;
-@define-color mauve     @color5;
-
-@define-color red       @color1;
-@define-color maroon    @color9;
-@define-color peach     @color11;
-@define-color yellow    @color3;
-
-@define-color green     @color2;
-@define-color teal      @color6;
-@define-color sky       @color6;
-@define-color sapphire  @color4;
-
-@define-color blue      @color4;
-@define-color lavender  @color3;   /* primary accent — the one cool, lavender-grey hue in the palette */
-
-@define-color text      @foreground;
-@define-color subtext1  @color7;
-@define-color subtext0  @color8;
-
-@define-color overlay2  @color15;
-@define-color overlay1  @color8;
-@define-color overlay0  @color8;
-
-@define-color surface2  @color8;
-@define-color surface1  @color0;
-@define-color surface0  @color0;
-
-@define-color base      @background;
-@define-color mantle    @background;
-@define-color crust     @background;
+@define-color accent @lavender;
 
 
 /* ==========================================================
@@ -75,13 +58,15 @@
  * ========================================================== */
 
 * {
-    font-family: "CaskaydiaCove Nerd Font", monospace;
+    font-family: "CaskaydiaCove Nerd Font",
+                 "CaskaydiaCove Nerd Font Mono",
+                 monospace;
     font-size: 18px;
 }
 
 
 /* ==========================================================
- *  WINDOW  — the frame is the signature border
+ *  WINDOW — signature border
  * ========================================================== */
 
 window {
@@ -109,14 +94,13 @@ window {
     background-color: transparent;
 }
 
-/* let the results list breathe under the search field */
 #scroll {
     margin-top: 4px;
 }
 
 
 /* ==========================================================
- *  SEARCH INPUT  — the focal point
+ *  SEARCH INPUT
  * ========================================================== */
 
 #input {
@@ -124,14 +108,10 @@ window {
     padding: 12px 16px;
 
     border-radius: 10px;
-    border: 1px solid alpha(@foreground, 0.14);
+    border: 1px solid alpha(@text, 0.14);
 
     color: @text;
     background-color: alpha(@surface0, 0.50);
-
-    transition:
-        border-color 0.2s ease,
-        background-color 0.2s ease;
 }
 
 #input:focus {
@@ -139,7 +119,7 @@ window {
     background-color: alpha(@surface0, 0.70);
 }
 
-/* search icon: accent instead of the old alarming red */
+/* Search icon */
 #input image {
     border: none;
     color: @lavender;
@@ -147,7 +127,7 @@ window {
 
 
 /* ==========================================================
- *  ENTRIES  (quiet by default)
+ *  ENTRIES — quiet by default
  * ========================================================== */
 
 #entry {
@@ -155,14 +135,9 @@ window {
     padding: 8px 12px;
 
     border-radius: 8px;
-    border: 1px solid transparent;   /* reserve the border box so
-                                         selection doesn't shift rows */
-    background-color: transparent;
+    border: 1px solid transparent;
 
-    transition:
-        background-color 0.15s ease,
-        box-shadow 0.15s ease,
-        border-color 0.15s ease;
+    background-color: transparent;
 }
 
 #text {
@@ -175,24 +150,32 @@ window {
     color: @subtext0;
 }
 
-/* mouse hover: soft neutral lift (keyboard still drives :selected) */
-#entry:hover {
-    background-color: alpha(@foreground, 0.06);
-}
+
 /* ==========================================================
- *  SELECTED ENTRY  — signature: one bold filled pill
- *  Mirrors the waybar's active-workspace treatment.
+ *  HOVER
+ * ========================================================== */
+
+#entry:hover {
+    background-color: alpha(@text, 0.06);
+}
+
+
+/* ==========================================================
+ *  SELECTED ENTRY
+ *
+ *  Bold filled Lavender pill.
  * ========================================================== */
 
 #entry:selected {
     border: 1px solid @lavender;
     background-color: @lavender;
 
-    box-shadow: 0 4px 14px alpha(@lavender, 0.35);
+    box-shadow:
+        0 4px 14px alpha(@lavender, 0.35);
 }
 
 #entry:selected #text {
-    color: @base;              /* dark text on the bright accent */
+    color: @base;
     font-weight: bold;
 }
 
@@ -209,3 +192,4 @@ window {
     background-color: alpha(@lavender, 0.30);
     border-color: @lavender;
 }
+

@@ -5,9 +5,9 @@
   "modules-center": ["hyprland/workspaces"],
   "modules-right": ["tray", "network", "bluetooth", "pulseaudio", "battery", "clock"],
   "clock": {
-    "format": "<span foreground='#f5c2e7'>   </span>{:%a %d %H:%M}",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "on-click": "yad --calendar --no-buttons --fixed --title=Calendar"
+      "format": "<span size='13000' foreground='#f5c2e7'></span>  {:%a %d %H:%M}",
+      "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+      "on-click": "yad --calendar --no-buttons --fixed --title=Calendar"
   },
   "battery": {
     "states": {
@@ -32,11 +32,12 @@
     "tooltip-format-wifi": "Signal Strenght: {signalStrength}%",
     "on-click": "bash /home/gbesh/.config/wofi/wifi-menu.sh"
   },
+  
   "pulseaudio": {
-      "format": "{icon}  {volume}%",
-      "format-muted": "",
+      "format": "<span size='13000' foreground='#89b4fa'>{icon}</span>  {volume}%",
+      "format-muted": "<span size='13000' foreground='#89b4fa'></span>  muted",
       "format-icons": {
-          "default": ["", "", " "]
+          "default": ["", "", ""]
       },
       "on-click": "pavucontrol"
   },
@@ -79,17 +80,18 @@
 // Then reference them in your "modules-left/center/right" array, e.g.:
 //   "modules-right": ["custom/cpu", "custom/ram", "custom/gpu", "custom/temps", ...]
 
+  
   "custom/cpu": {
       "exec": "~/.local/bin/sysmon-cpu.sh",
       "interval": 2,
-      "format": "  {}% cpu",
+      "format": "  {}% cpu",
       "tooltip": false
   },
 
   "custom/ram": {
       "exec": "free -m | awk '/^Mem:/{printf \"%.0f%%\", $3/$2*100}'",
       "interval": 2,
-      "format": "  {} ram",
+      "format": "  {} ram",
       "tooltip": false
   },
 
@@ -103,7 +105,8 @@
   "custom/temps": {
       "exec": "~/.local/bin/sysmon-temps.sh | python3 -c \"import sys,json; d=json.load(sys.stdin); print(f\\\"{d['cpu']}° cpu | {d['gpu']}° gpu\\\")\"",
       "interval": 3,
-      "format": "  {}",
+      "format": "  {}",
       "tooltip": false
-  }
+  },
+
 }

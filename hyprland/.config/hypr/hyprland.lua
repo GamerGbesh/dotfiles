@@ -13,8 +13,6 @@ require("windows")
 require("layouts")
 -- require("plugins")
 
-local pywal = require("pywal").load()
-
 hl.config({
 	cursor = {
 		no_hardware_cursors = false,
@@ -26,19 +24,12 @@ hl.config({
 
 	general = {
 		gaps_in = 5,
-		gaps_out = 10,
+		gaps_out = 20,
 		border_size = 2,
 
 		col = {
-			active_border = {
-				colors = {
-					"rgb(" .. pywal.color4:gsub("#", "") .. ")",
-					"rgb(" .. pywal.color5:gsub("#", "") .. ")",
-				},
-				angle = 45,
-			},
-
-			inactive_border = "rgb(" .. pywal.color8:gsub("#", "") .. ")",
+			active_border = { colors = { "rgba(ffccffee)", "rgba(00ff99ee)" }, angle = 45 },
+			inactive_border = "rgba(595959aa)",
 		},
 
 		resize_on_border = false,

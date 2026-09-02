@@ -1,309 +1,350 @@
+@import "mocha.css";
+
 /* ==========================================================
- *  PYWAL · WAYBAR
- *  Colors:  ~/.cache/wal/colors-waybar.css
- *
- *  Floating-islands theme. Quiet neutral pills, accent color
- *  only in text/icons, one high-contrast signature (active
- *  workspace + window title), and a few purposeful animations.
- *
- *  COLOR-POSITION MAP (how pywal usually assigns slots):
- *    @background / @color0 .. base + shadow tint (darkest)
- *    @color8 ............... muted grey  -> inactive / disabled
- *    @color7 ............... light grey  -> secondary text
- *    @foreground / @color15 brightest   -> active / emphasis
- *    @color1 (red)  -> load / critical      @color4 (blue)   -> net / gpu
- *    @color2 (green)-> battery / ok         @color5 (magenta)-> media / audio
- *    @color3 (yellow)-> ram / warning       @color6 (cyan)   -> temps / bt
+ * GLOBAL
  * ========================================================== */
 
-@import url("../../.cache/wal/colors-waybar.css");
-
-/* ----------------------------------------------------------
- *  RESET & TYPE
- * ---------------------------------------------------------- */
 
 * {
     border: none;
     border-radius: 0;
-    box-shadow: none;               /* kill stray GTK focus rings */
-    font-family: "Fira Code", "FontAwesome";
-    font-size: 13px;
-    font-weight: 600;
+    font-family: "CaskaydiaCove Nerd Font", "CaskaydiaCove Nerd Font Mono";
+    font-size: 12px;
+    font-weight: 700;
     min-height: 0;
+    box-shadow: none;
 }
 
-/* ----------------------------------------------------------
- *  BAR
- * ---------------------------------------------------------- */
 
 window#waybar {
     background: transparent;
-    color: @foreground;
-    transition: background 0.25s ease;
-}
-
-/* ----------------------------------------------------------
- *  ANIMATIONS
- * ---------------------------------------------------------- */
-
-/* hard flash for a dying battery */
-@keyframes blink {
-    to {
-        background: @color1;
-        color: @background;
-    }
-}
-
-/* gentle breathing glow while charging */
-@keyframes pulse {
-    0%   { background: alpha(@color2, 0.14); }
-    50%  { background: alpha(@color2, 0.30); }
-    100% { background: alpha(@color2, 0.14); }
-}
-
-/* ----------------------------------------------------------
- *  TOOLTIPS
- * ---------------------------------------------------------- */
-
-tooltip {
-    background: alpha(@background, 0.95);
-    color: @foreground;
-    border-radius: 12px;
-    border: 1px solid alpha(@foreground, 0.10);
-    padding: 2px;
-}
-
-tooltip label {
-    padding: 4px 8px;
-    font-size: 11px;
-    font-weight: 500;
+    color: @text;
 }
 
 /* ==========================================================
- *  COMMON ISLAND
- *  Shared neutral pill for every module. Accents come from
- *  the per-module color rules further down.
+ * COMPACT MODULES
  * ========================================================== */
 
-#clock,
-#network,
-#pulseaudio,
-#battery,
-#tray,
-#bluetooth,
 #custom-cpu,
 #custom-ram,
 #custom-gpu,
 #custom-temps,
-#mpris {
-    background: alpha(@background, 0.55);
-    margin: 5px 3px;
-    padding: 3px 11px;
-    border-radius: 10px;
-    border: 1px solid alpha(@foreground, 0.06);
-    box-shadow:
-        0 2px 6px alpha(@color0, 0.35),        /* soft drop, palette-tinted */
-        inset 0 1px 0 alpha(@foreground, 0.05); /* thin top highlight        */
-    transition:
-        background 0.2s ease,
-        box-shadow 0.2s ease,
-        border-color 0.2s ease;
-}
-
-/* neutral hover fallback (specific accent tints override below) */
-#clock:hover,
-#network:hover,
-#pulseaudio:hover,
-#battery:hover,
-#bluetooth:hover,
-#custom-cpu:hover,
-#custom-ram:hover,
-#custom-gpu:hover,
-#custom-temps:hover {
-    border-color: alpha(@foreground, 0.14);
-    box-shadow:
-        0 4px 12px alpha(@color0, 0.45),
-        inset 0 1px 0 alpha(@foreground, 0.08);
-}
-
-/* ==========================================================
- *  SYSTEM MONITORS (left)
- *  Accent text on neutral pills; hover tints the pill with
- *  the module's own accent so the color-coding is reinforced.
- * ========================================================== */
-#custom-cpu   { color: @color1; }   /* red    - load runs hot */
-#custom-ram   { color: @color3; }   /* yellow                 */
-#custom-gpu   { color: @color4; }   /* blue                   */
-#custom-temps { color: @color6; }   /* cyan                   */
-
-#custom-cpu:hover   { background: alpha(@color1, 0.16); }
-#custom-ram:hover   { background: alpha(@color3, 0.16); }
-#custom-gpu:hover   { background: alpha(@color4, 0.16); }
-#custom-temps:hover { background: alpha(@color6, 0.16); }
-
-/* ==========================================================
- *  STATUS CLUSTER (right)
- * ========================================================== */
-
-#network    { color: @color4; }   /* blue    - connectivity */
-#bluetooth  { color: @color6; }   /* cyan                   */
-#pulseaudio { color: @color5; }   /* magenta - audio        */
-#battery    { color: @color2; }   /* green                  */
-#clock      { color: @color3; }   /* yellow  - warm anchor  */
-
-#network:hover    { background: alpha(@color4, 0.16); }
-#bluetooth:hover  { background: alpha(@color6, 0.16); }
-#pulseaudio:hover { background: alpha(@color5, 0.16); }
-#battery:hover    { background: alpha(@color2, 0.16); }
-#clock:hover      { background: alpha(@color3, 0.16); }
-
-/* muted states */
-#bluetooth.disabled,
-#bluetooth.off {
-    color: @color8;
-}
-
-/* the clock gets a touch more presence as the far-right anchor */
+#mpris,
+#workspaces,
+#tray,
+#network,
+#bluetooth,
+#pulseaudio,
+#battery,
 #clock {
-    font-weight: 700;
-    margin-right: 6px;
+    margin: 5px 3px;
+    padding: 3px 8px;
+
+    background: alpha(@mantle, 0.78);
+
+    border: 1px solid alpha(@surface2, 0.30);
+    border-radius: 10px;
+
+    box-shadow:
+        inset 0 1px 0 alpha(@text, 0.025),
+        0 4px 10px alpha(@crust, 0.30);
 }
 
 /* ==========================================================
- *  BATTERY STATES
+ * SYSTEM MONITORING
  * ========================================================== */
 
-#battery.warning:not(.charging) {
-    color: @color3;                       /* yellow warning */
+#custom-cpu {
+    color: @red;
 }
 
-#battery.critical:not(.charging) {
-    color: @color1;
-    border-color: alpha(@color1, 0.45);
-    animation: blink 0.85s linear infinite alternate;
+#custom-ram {
+    color: @yellow;
 }
 
-#battery.charging,
-#battery.plugged {
-    color: @color2;
-    border-color: alpha(@color2, 0.35);
-    animation: pulse 2.2s ease-in-out infinite;
+#custom-gpu {
+    color: @sky;
+}
+
+#custom-temps {
+    color: @peach;
+}
+
+/* Keep these especially compact */
+
+#custom-cpu,
+#custom-ram,
+#custom-gpu,
+#custom-temps {
+    padding-left: 7px;
+    padding-right: 7px;
 }
 
 /* ==========================================================
- *  WORKSPACES  — signature element #1
- *  Quiet container, ghost buttons, and one bold inverted
- *  pill for the active workspace.
+ * MPRIS
+ * ========================================================== */
+
+#mpris {
+    color: @mauve;
+
+    background: alpha(@mauve, 0.08);
+    border-color: alpha(@mauve, 0.22);
+
+    padding-left: 9px;
+    padding-right: 9px;
+}
+
+#mpris:hover {
+    background: alpha(@mauve, 0.16);
+    border-color: alpha(@mauve, 0.38);
+
+    box-shadow:
+        inset 0 1px 0 alpha(@mauve, 0.05),
+        0 6px 14px alpha(@mauve, 0.12);
+}
+
+#mpris.paused {
+    color: @overlay1;
+    background: alpha(@surface1, 0.55);
+    border-color: alpha(@surface2, 0.25);
+}
+
+#mpris.stopped {
+    color: @overlay0;
+}
+
+/* ==========================================================
+ * WORKSPACES
  * ========================================================== */
 
 #workspaces {
-    background: alpha(@background, 0.55);
-    margin: 5px 3px;
     padding: 2px 4px;
-    border-radius: 12px;
-    border: 1px solid alpha(@foreground, 0.06);
-    box-shadow:
-        0 2px 6px alpha(@color0, 0.35),
-        inset 0 1px 0 alpha(@foreground, 0.05);
 }
 
 #workspaces button {
+    color: @overlay1;
     background: transparent;
-    color: @color7;
-    min-width: 16px;
-    margin: 2px 1px;
+
     padding: 2px 8px;
-    border-radius: 8px;
-    font-size: 11px;
-    transition:
-        background 0.2s ease,
-        color 0.2s ease,
-        padding 0.2s ease;
+    margin: 1px;
+
+    border-radius: 7px;
 }
 
 #workspaces button:hover {
-    background: alpha(@foreground, 0.12);
-    color: @foreground;
-    box-shadow: none;                     /* override generic hover shadow */
+    color: @text;
+    background: alpha(@surface1, 0.70);
 }
 
 #workspaces button.active {
-    background: @foreground;              /* the bold, high-contrast move */
-    color: @background;
-    padding: 2px 13px;
-    font-weight: 700;
-}
+    color: @crust;
+    background: @lavender;
 
-#workspaces button.urgent {
-    background: @color1;
-    color: @background;
+    box-shadow:
+        0 0 7px alpha(@lavender, 0.45),
+        0 0 13px alpha(@mauve, 0.18);
 }
 
 #workspaces button.empty {
-    color: alpha(@color7, 0.45);
+    color: alpha(@overlay0, 0.45);
+}
+
+#workspaces button.urgent {
+    color: @crust;
+    background: @red;
 }
 
 /* ==========================================================
- *  WINDOW TITLE — signature element #2
- *  Inverted, high-contrast, disappears when the desktop is
- *  empty so the bar stays calm.
+ * WINDOW TITLE
  * ========================================================== */
 
 #window {
-    background: @foreground;
-    color: @background;
-    font-weight: 700;
-    letter-spacing: 0.3px;
-    margin: 5px 8px;
-    padding: 3px 14px;
+    margin: 5px 3px;
+    padding: 3px 12px;
+
+    color: @text;
+
+    background: alpha(@surface0, 0.72);
+
+    border: 1px solid alpha(@lavender, 0.22);
     border-radius: 10px;
-    box-shadow: 0 2px 8px alpha(@color0, 0.40);
-    transition: background 0.2s ease, color 0.2s ease;
+
+    box-shadow:
+        inset 0 1px 0 alpha(@text, 0.025),
+        0 4px 10px alpha(@crust, 0.25);
 }
 
 window#waybar.empty #window {
     background: transparent;
-    color: transparent;
+    border: none;
     box-shadow: none;
+    color: transparent;
 }
+
 /* ==========================================================
- *  MPRIS (media)
+ * NETWORK
  * ========================================================== */
 
-#mpris {
-    background: alpha(@color5, 0.16);
-    color: @color5;
-    border: 1px solid alpha(@color5, 0.28);
+#network {
+    color: @blue;
 }
 
-#mpris:hover {
-    background: alpha(@color5, 0.28);
-    color: @foreground;
-}
+#network:hover {
+    background: alpha(@blue, 0.11);
+    border-color: alpha(@blue, 0.32);
 
-#mpris.playing {
-    color: @color5;
-    border-color: alpha(@color5, 0.40);
-}
-
-#mpris.paused {
-    color: @color8;
-    background: alpha(@color8, 0.16);
-    border-color: alpha(@color8, 0.25);
-}
-
-#mpris.stopped {
-    color: @color8;
-    background: alpha(@background, 0.55);
-    border-color: alpha(@foreground, 0.06);
+    box-shadow:
+        inset 0 1px 0 alpha(@blue, 0.05),
+        0 6px 14px alpha(@blue, 0.10);
 }
 
 /* ==========================================================
- *  TRAY
+ * BLUETOOTH
+ * ========================================================== */
+
+#bluetooth {
+    color: @teal;
+}
+
+#bluetooth:hover {
+    background: alpha(@teal, 0.11);
+    border-color: alpha(@teal, 0.32);
+
+    box-shadow:
+        inset 0 1px 0 alpha(@teal, 0.05),
+        0 6px 14px alpha(@teal, 0.10);
+}
+
+#bluetooth.disabled,
+#bluetooth.off {
+    color: @overlay0;
+}
+
+/* ==========================================================
+ * AUDIO
+ * ========================================================== */
+
+#pulseaudio {
+    color: @pink;
+}
+
+#pulseaudio:hover {
+    background: alpha(@pink, 0.11);
+    border-color: alpha(@pink, 0.32);
+
+    box-shadow:
+        inset 0 1px 0 alpha(@pink, 0.05),
+        0 6px 14px alpha(@pink, 0.10);
+}
+
+/* ==========================================================
+ * BATTERY
+ * ========================================================== */
+
+#battery {
+    color: @green;
+}
+
+#battery:hover {
+    background: alpha(@green, 0.11);
+    border-color: alpha(@green, 0.32);
+
+    box-shadow:
+        inset 0 1px 0 alpha(@green, 0.05),
+        0 6px 14px alpha(@green, 0.10);
+}
+
+@keyframes battery-blink {
+    from {
+        background: alpha(@red, 0.10);
+    }
+
+    to {
+        background: alpha(@red, 0.40);
+    }
+}
+
+@keyframes battery-charge {
+    0% {
+        box-shadow:
+            inset 0 1px 0 alpha(@text, 0.025),
+            0 0 0 alpha(@green, 0.15);
+    }
+
+    50% {
+        box-shadow:
+            inset 0 1px 0 alpha(@text, 0.04),
+            0 0 13px alpha(@green, 0.28);
+    }
+
+    100% {
+        box-shadow:
+            inset 0 1px 0 alpha(@text, 0.025),
+            0 0 0 alpha(@green, 0.15);
+    }
+}
+
+#battery.warning:not(.charging) {
+    color: @yellow;
+    border-color: alpha(@yellow, 0.38);
+}
+
+#battery.critical:not(.charging) {
+    color: @red;
+    border-color: alpha(@red, 0.42);
+
+    animation:
+        battery-blink 0.8s infinite alternate;
+}
+
+#battery.charging,
+#battery.plugged {
+    color: @green;
+    border-color: alpha(@green, 0.38);
+
+    animation:
+        battery-charge 2s ease infinite;
+}
+
+/* ==========================================================
+ * CLOCK
+ * ========================================================== */
+
+#clock {
+    color: @yellow;
+
+    padding-left: 9px;
+    padding-right: 9px;
+
+    background: linear-gradient(
+        90deg,
+        alpha(@yellow, 0.13),
+        alpha(@peach, 0.13)
+    );
+
+    border-color: alpha(@yellow, 0.28);
+}
+
+#clock:hover {
+    background: linear-gradient(
+        90deg,
+        alpha(@yellow, 0.19),
+        alpha(@peach, 0.19)
+    );
+
+    border-color: alpha(@yellow, 0.40);
+
+    box-shadow:
+        inset 0 1px 0 alpha(@text, 0.04),
+        0 7px 15px alpha(@yellow, 0.12);
+}
+
+/* ==========================================================
+ * TRAY
  * ========================================================== */
 
 #tray {
-    padding: 3px 8px;
+    padding: 2px 6px;
 }
 
 #tray > .passive {
@@ -313,3 +354,24 @@ window#waybar.empty #window {
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
 }
+
+/* ==========================================================
+ * TOOLTIPS
+ * ========================================================== */
+
+tooltip {
+    color: @text;
+
+    background: alpha(@crust, 0.96);
+
+    border: 1px solid alpha(@surface2, 0.40);
+    border-radius: 10px;
+}
+
+tooltip label {
+    padding: 7px 9px;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
