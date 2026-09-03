@@ -87,7 +87,7 @@ window#waybar {
 #mpris {
     color: @mauve;
 
-    background: alpha(@mauve, 0.08);
+    background: alpha(@mantle, 0.45);
     border-color: alpha(@mauve, 0.22);
 
     padding-left: 9px;
@@ -95,7 +95,7 @@ window#waybar {
 }
 
 #mpris:hover {
-    background: alpha(@mauve, 0.16);
+    background: alpha(@mantle, 0.66);
     border-color: alpha(@mauve, 0.38);
 
     box-shadow:
