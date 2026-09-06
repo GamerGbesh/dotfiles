@@ -13,6 +13,9 @@ require("windows")
 require("layouts")
 -- require("plugins")
 
+-- Color module
+local colors = require("mocha")
+
 hl.config({
 	cursor = {
 		no_hardware_cursors = false,
@@ -28,8 +31,16 @@ hl.config({
 		border_size = 2,
 
 		col = {
-			active_border = { colors = { "rgba(ffccffee)", "rgba(00ff99ee)" }, angle = 45 },
-			inactive_border = "rgba(595959aa)",
+			active_border = {
+				colors = {
+					"rgba(" .. colors.mauve:sub(2) .. "ff)",
+					"rgba(" .. colors.pink:sub(2) .. "ff)",
+					"rgba(" .. colors.blue:sub(2) .. "ff)",
+					"rgba(" .. colors.lavender:sub(2) .. "ff)",
+				},
+				angle = 45,
+			},
+			inactive_border = "rgba(" .. colors.surface0:sub(2) .. "aa)",
 		},
 
 		resize_on_border = false,
