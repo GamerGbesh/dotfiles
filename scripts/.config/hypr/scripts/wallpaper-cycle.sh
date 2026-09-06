@@ -10,5 +10,5 @@ while true; do
     [ -n "$wallpaper" ] && awww img "$wallpaper" \
         --transition-type random \
         --transition-duration 1.5
-    sleep $((60 * 10))
+    sleep $((60 * 20))
 done
