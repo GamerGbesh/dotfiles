@@ -1,29 +1,44 @@
-@define-color bg rgba(23, 25, 28, 1);
+/* ==========================================================
+ * SWAYNC · CATPPUCCIN MOCHA · colors.css
+ *
+ * Legacy alias file — style.css defines the canonical palette.
+ * Kept here for compatibility; maps old generic names to mocha values.
+ * ========================================================== */
 
-@define-color text-primary #ffffff;
-@define-color text-muted #ededed;
+/* Backgrounds */
+@define-color bg              #1e1e2e;   /* base    */
+@define-color bg-mpris        #181825;   /* mantle  */
+@define-color noti-bg         rgba(49,50,68,0.85);  /* surface0 translucent */
+@define-color noti-bg-low     rgba(166,227,161,0.10); /* green tinted */
+@define-color noti-bg-critical rgba(243,139,168,0.12); /* red tinted */
+@define-color noti-bg-bright  #313244;   /* surface0 */
 
-@define-color accent #5385dd;
-@define-color accent-shadow rgba(58, 110, 200, 0.18);
+/* Text */
+@define-color text-primary    #cdd6f4;   /* text    */
+@define-color text-muted      #bac2de;   /* subtext1 */
 
-@define-color noti-bg rgba(26, 26, 26, 0.4);
-@define-color noti-bg-low rgba(64, 80, 86, 0.4);
-@define-color noti-bg-critical rgba(86, 74, 64, 0.4);
-@define-color noti-border #7e8a94;
+/* Accent */
+@define-color accent          #b4befe;   /* lavender */
+@define-color accent-shadow   rgba(180,190,254,0.18);
 
-@define-color noti-bg-action-hover #292a2d;
-@define-color noti-fg-action-hover #ffffff;
+/* Borders */
+@define-color noti-border     #45475a;   /* surface1 */
 
-@define-color noti-bg-bright #242424;
-@define-color bg-mpris #252626;
+/* Actions */
+@define-color noti-bg-action-hover  rgba(180,190,254,0.25);
+@define-color noti-fg-action-hover  #cdd6f4;
 
-@define-color noti-hover #e6605c;
-@define-color noti-close-button-hover #ee4646;
+/* Close / hover */
+@define-color noti-hover             #f38ba8;   /* red */
+@define-color noti-close-button-hover #f38ba8;  /* red */
 
-@define-color noti-heading #64e268;
+/* Heading */
+@define-color noti-heading    #a6e3a1;   /* green */
 
-@define-color widget-button #242424;
-@define-color widget-button-checked #4ab854;
-@define-color widget-button-checked-fg #000000;
+/* Widget buttons */
+@define-color widget-button          #313244;   /* surface0 */
+@define-color widget-button-checked  #89dceb;   /* sky */
+@define-color widget-button-checked-fg #11111b; /* crust */
 
-@define-color bg-dnd-off #5b5d5e;
+/* DND */
+@define-color bg-dnd-off      #585b70;   /* surface2 */

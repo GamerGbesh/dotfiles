@@ -271,17 +271,18 @@
  * ========================================================== */
 
 .control-center {
-    background-color: alpha(@base, 0.97);
+    background-color: @base;
 
-    border: 1px solid alpha(@lavender, 0.25);
-    border-radius: 20px;
+    /* Full-height panel: no rounding on the right edge (screen edge),
+       subtle left border to separate from content */
+    border: none;
+    border-left: 1px solid alpha(@lavender, 0.18);
+    border-radius: 0;
 
-    box-shadow:
-        0 8px 24px alpha(@crust, 0.6),
-        inset 0 1px 0 alpha(@text, 0.05);
+    box-shadow: -4px 0 24px alpha(@crust, 0.70);
 
-    margin: 8px;
-    padding: 10px;
+    margin: 0;
+    padding: 12px 10px;
 }
 
 
@@ -296,8 +297,19 @@
 
     border-radius: 14px;
 
+    /* Clip children so the accent bar can never bleed outside the curve */
+    overflow: hidden;
+
     margin: 3px 0;
     padding: 3px;
+}
+
+.control-center
+.notification-row
+.notification-background
+.notification {
+    /* Inner radius = card radius minus padding, so it follows the curve */
+    border-radius: 11px;
 }
 
 .control-center
@@ -461,18 +473,18 @@ progressbar {
  * ========================================================== */
 
 .widget-title {
-    background-color: #5b4675;
+    background-color: alpha(@mauve, 0.18);
 
-    border: 1px solid alpha(@lavender, 0.30);
+    border: 1px solid alpha(@mauve, 0.35);
     border-radius: 12px;
 
-    color: @text;
+    color: @lavender;
 
     font-size: 1.05rem;
     font-weight: 700;
 
     margin: 4px 4px 10px;
-    padding: 8px 12px;
+    padding: 10px 14px;
 }
 
 .widget-title > button {
