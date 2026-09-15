@@ -3,6 +3,7 @@ local fileManager = "thunar"
 local menu = "wofi --show drun"
 local mainBrowser = "firefox"
 local mainMod = "SUPER"
+local home = os.getenv("HOME")
 
 -- Vim directional binding
 local left = "h"
@@ -24,14 +25,14 @@ hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ action = "toggle" }))
 hl.bind(mainMod .. " + space", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(mainBrowser))
-hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("quickshell --path /home/gbesh/.config/hypr/qml/clipboard"))
+hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("quickshell --path " .. home .. "/.config/hypr/qml/clipboard"))
 hl.bind(mainMod .. " + ESCAPE", hl.dsp.exec_cmd("missioncenter"))
 hl.bind(mainMod .. " + PERIOD", hl.dsp.exec_cmd("wofi-emoji"))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("swaync-client -t"))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("waypaper"))
-hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("/home/gbesh/.config/swaync/scripts/acapture.sh"))
-hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("/home/gbesh/.config/swaync/scripts/dnd-notify.sh"))
-hl.bind(mainMod .. " + CTRL + SHIFT + W", hl.dsp.exec_cmd("/home/gbesh/.config/hypr/scripts/toggle_wifi.sh"))
+hl.bind(mainMod .. " + M", hl.dsp.exec_cmd(home .. "/.config/swaync/scripts/acapture.sh"))
+hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(home .. "/.config/swaync/scripts/dnd-notify.sh"))
+hl.bind(mainMod .. " + CTRL + SHIFT + W", hl.dsp.exec_cmd(home .. "/.config/hypr/scripts/toggle_wifi.sh"))
 hl.bind("CTRL + SHIFT + B", hl.dsp.exec_cmd("pkill -SIGUSR1 waybar"))
 -- Screenshots
 hl.bind("print", hl.dsp.exec_cmd("hyprshot -m region -o ~/Pictures/Screenshots"))
