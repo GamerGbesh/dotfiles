@@ -29,3 +29,5 @@ x-scheme-handler/antigravity=antigravity.desktop
 x-scheme-handler/everest=/home/gbesh/.local/share/applications/Olympus.desktop
 x-scheme-handler/codex=chatgpt.desktop
 application/vnd.openxmlformats-officedocument.wordprocessingml.document=libreoffice-writer.desktop
+application/vnd.ms-powerpoint=libreoffice-impress.desktop
+application/vnd.openxmlformats-officedocument.presentationml.presentation=libreoffice-impress.desktop

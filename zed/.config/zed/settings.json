@@ -69,7 +69,7 @@
   "theme": {
     "mode": "dark",
     "light": "One Light",
-    "dark": "VSCode Modern Dark",
+    "dark": "Catppuccin Mocha",
   },
   "diagnostics": {
     "inline": {
@@ -85,6 +85,8 @@
   "auto_signature_help": true,
   "languages": {
     "Python": {
+      "show_whitespaces": "selection",
+      "format_on_save": "on",
       "language_servers": ["pyrefly", "ruff", "!pyright"],
     },
   },
