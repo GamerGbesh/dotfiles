@@ -30,10 +30,11 @@ hl.bind(mainMod .. " + ESCAPE", hl.dsp.exec_cmd("missioncenter"))
 hl.bind(mainMod .. " + PERIOD", hl.dsp.exec_cmd("wofi-emoji"))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("swaync-client -t"))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("waypaper"))
+hl.bind("CTRL + SHIFT + B", hl.dsp.exec_cmd("pkill -SIGUSR1 waybar"))
+-- Scripts
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd(home .. "/.config/swaync/scripts/acapture.sh"))
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(home .. "/.config/swaync/scripts/dnd-notify.sh"))
 hl.bind(mainMod .. " + CTRL + SHIFT + W", hl.dsp.exec_cmd(home .. "/.config/hypr/scripts/toggle_wifi.sh"))
-hl.bind("CTRL + SHIFT + B", hl.dsp.exec_cmd("pkill -SIGUSR1 waybar"))
 -- Screenshots
 hl.bind("print", hl.dsp.exec_cmd("hyprshot -m region -o ~/Pictures/Screenshots"))
 hl.bind("CTRL + print", hl.dsp.exec_cmd("hyprshot -m output -o ~/Pictures/Screenshots"))
@@ -41,6 +42,7 @@ hl.bind(mainMod .. " + print", hl.dsp.exec_cmd("hyprshot -m window -o ~/Pictures
 hl.bind("ALT + print", hl.dsp.exec_cmd("hyprshot -m active -o ~/Pictures/Screenshots"))
 hl.bind(mainMod .. "+ SHIFT + P", hl.dsp.exec_cmd("hyprpicker | wl-copy"))
 hl.bind(mainMod .. " + SHIFT + T", hl.dsp.exec_cmd("normcap"))
+-- Window
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + I", hl.dsp.window.pin())
 -- Power / Calculator
