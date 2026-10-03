@@ -67,6 +67,13 @@ hl.window_rule({
 	opacity = 0.95,
 })
 
+hl.window_rule({
+	match = { class = "thunar", title = "File Operation Progress" },
+	float = true,
+	size = { 600, 500 },
+	center = true,
+})
+
 hl.layer_rule({
 	match = { title = "noctalia", namespace = "noctalia-background-.*$" },
 	ignore_alpha = 0.5,
