@@ -75,6 +75,14 @@ return {
         --  For example, in C this would take you to the header.
         map('grD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
+        -- Use the same picker for search and LSP navigation.
+        map('grr', function() Snacks.picker.lsp_references() end, 'References')
+        map('gri', function() Snacks.picker.lsp_implementations() end, 'Implementations')
+        map('grd', function() Snacks.picker.lsp_definitions() end, 'Definitions')
+        map('gO', function() Snacks.picker.lsp_symbols() end, 'Document symbols')
+        map('gW', function() Snacks.picker.lsp_workspace_symbols() end, 'Workspace symbols')
+        map('grt', function() Snacks.picker.lsp_type_definitions() end, 'Type definitions')
+
         -- The following two autocommands are used to highlight references of the
         -- word under your cursor when your cursor rests there for a little while.
         --    See `:help CursorHold` for information about when this is executed

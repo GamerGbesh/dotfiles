@@ -484,5 +484,11 @@
     "unbind": {
       "*": "buffer_search::UseSelectionForFind"
     }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-x": "editor::Cut"
+    }
   }
 ]

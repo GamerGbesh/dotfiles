@@ -87,7 +87,7 @@ window#waybar {
 #mpris {
     color: @mauve;
 
-    background: alpha(@mantle, 0.45);
+    background: alpha(@mantle, 0.75);
     border-color: alpha(@mauve, 0.22);
 
     padding-left: 9px;
@@ -105,7 +105,7 @@ window#waybar {
 
 #mpris.paused {
     color: @overlay1;
-    background: alpha(@surface1, 0.55);
+    background: alpha(@surface1, 0.89);
     border-color: alpha(@surface2, 0.25);
 }
 
@@ -318,8 +318,8 @@ window#waybar.empty #window {
 
     background: linear-gradient(
         90deg,
-        alpha(@yellow, 0.13),
-        alpha(@peach, 0.13)
+        alpha(@mantle, 0.80),
+        alpha(@peach, 0.33)
     );
 
     border-color: alpha(@yellow, 0.28);
