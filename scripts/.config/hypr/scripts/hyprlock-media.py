@@ -35,7 +35,7 @@ def run(*args):
 
 def snapshot():
     # Share a short-lived snapshot between image and label, and keep the same
-    # player if multiple players are playing. Prefer Playing over Paused.
+    # Spotify instance if several exist. Prefer Playing over Paused.
     with (CACHE / "metadata.lock").open("w") as lock:
         fcntl.flock(lock, fcntl.LOCK_EX)
         state_file = CACHE / "metadata.json"
@@ -43,9 +43,11 @@ def snapshot():
             old = json.loads(state_file.read_text())
         except (OSError, ValueError):
             old = {}
-        if 0 <= time.time() - old.get("time", 0) < 0.6:
+        if (0 <= time.time() - old.get("time", 0) < 0.6
+                and old.get("player", "spotify").split(".")[0] == "spotify"):
             return old
-        players = run("playerctl", "--list-all").splitlines()
+        players = [p for p in run("playerctl", "--list-all").splitlines()
+                   if p.split(".")[0] == "spotify"]
         previous = old.get("player")
         if previous in players:
             players.remove(previous)
