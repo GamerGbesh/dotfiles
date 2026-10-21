@@ -23,11 +23,23 @@ x-scheme-handler/http=firefox.desktop
 x-scheme-handler/https=firefox.desktop
 x-scheme-handler/about=firefox.desktop
 x-scheme-handler/unknown=firefox.desktop
-application/pdf=firefox.desktop
 x-scheme-handler/claude-cli=claude-code-url-handler.desktop
 x-scheme-handler/antigravity=antigravity.desktop
 x-scheme-handler/everest=/home/gbesh/.local/share/applications/Olympus.desktop
 x-scheme-handler/codex=chatgpt.desktop
-application/vnd.openxmlformats-officedocument.wordprocessingml.document=libreoffice-writer.desktop
-application/vnd.ms-powerpoint=libreoffice-impress.desktop
-application/vnd.openxmlformats-officedocument.presentationml.presentation=libreoffice-impress.desktop
+# Word documents
+application/vnd.openxmlformats-officedocument.wordprocessingml.document=ai.storyteller.wordcraft.desktop
+
+# PowerPoint presentations
+application/vnd.ms-powerpoint=ai.storyteller.deckcraft.desktop
+application/vnd.openxmlformats-officedocument.presentationml.presentation=ai.storyteller.deckcraft.desktop
+
+# Excel spreadsheets
+application/vnd.ms-excel=ai.storyteller.gridcraft.desktop
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet=ai.storyteller.gridcraft.desktop
+
+# CSV files
+text/csv=ai.storyteller.gridcraft.desktop
+
+# PDF files
+application/pdf=ai.storyteller.pdfcraft.desktop
