@@ -18,6 +18,14 @@ hl.window_rule({
 	float = true,
 })
 
+hl.window_rule({
+	match = { class = "firefox", title = "Picture-in-Picture" },
+	float = true,
+	pin = true,
+	size = { 420, 300 },
+	move = { "1490", "770" },
+})
+
 hl.layer_rule({
 	match = "waybar",
 	blur = true,
