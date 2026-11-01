@@ -68,6 +68,9 @@ hl.config({
 			passes = 3,
 			vibrancy = 0.18,
 		},
+		wobble = {
+			enabled = true,
+		},
 	},
 
 	animations = {
