@@ -26,7 +26,7 @@ hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ action = "toggle" 
 hl.bind(mainMod .. " + space", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(mainBrowser))
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("quickshell --path " .. home .. "/.config/hypr/qml/clipboard"))
-hl.bind(mainMod .. " + ESCAPE", hl.dsp.exec_cmd("missioncenter"))
+hl.bind(mainMod .. " + ESCAPE", hl.dsp.exec_cmd("TaskManagerOG-1.1.1-x86_64.AppImage"))
 hl.bind(mainMod .. " + PERIOD", hl.dsp.exec_cmd("wofi-emoji"))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("swaync-client -t"))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("waypaper"))

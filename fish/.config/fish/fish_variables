@@ -1,9 +1,5 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
-SETUVAR --export ANTHROPIC_API_KEY:
-SETUVAR --export ANTHROPIC_AUTH_TOKEN:sk\x2dd7fdeab723505298\x2d88a7e3\x2d7951cdf5
-SETUVAR --export ANTHROPIC_BASE_URL:http\x3a//localhost\x3a20128
-SETUVAR --export ANTHROPIC_MODEL:gbesh
 SETUVAR --export CLAUDE_CONFIG_DIR:/home/gbesh/\x2eclaude\x2domniroute
 SETUVAR --export EDITOR:nvim
 SETUVAR --export UV_CACHE_DIR:/home/gbesh/extra/uv
