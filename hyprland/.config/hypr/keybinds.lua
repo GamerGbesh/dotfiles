@@ -1,9 +1,10 @@
 local terminal = "kitty"
 local fileManager = "thunar"
-local menu = "wofi --show drun"
 local mainBrowser = "firefox"
 local mainMod = "SUPER"
 local home = os.getenv("HOME")
+local wofiLaunch = home .. "/.config/wofi/launch.sh"
+local menu = wofiLaunch .. " drun wofi --show drun"
 
 -- Vim directional binding
 local left = "h"
@@ -27,7 +28,7 @@ hl.bind(mainMod .. " + space", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(mainBrowser))
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("quickshell --path " .. home .. "/.config/hypr/qml/clipboard"))
 hl.bind(mainMod .. " + ESCAPE", hl.dsp.exec_cmd("TaskManagerOG-1.1.1-x86_64.AppImage"))
-hl.bind(mainMod .. " + PERIOD", hl.dsp.exec_cmd("wofi-emoji"))
+hl.bind(mainMod .. " + PERIOD", hl.dsp.exec_cmd(wofiLaunch .. " emoji wofi-emoji"))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("swaync-client -t"))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("waypaper"))
 hl.bind("CTRL + SHIFT + B", hl.dsp.exec_cmd("pkill -SIGUSR1 waybar"))

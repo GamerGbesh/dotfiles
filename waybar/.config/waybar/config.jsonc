@@ -31,7 +31,7 @@
     "format-disconnected": "<span size='13000' foreground='#f5e0dc'>  </span>Disconnected",
     "tooltip-format-wifi": "Wi-Fi: {essid}\nSignal: {signalStrength}%",
     "tooltip-format-ethernet": "Ethernet: {ifname}\nIP: {ipaddr}",
-    "on-click": "bash /home/gbesh/.config/wofi/wifi-menu.sh"
+    "on-click": "~/.config/wofi/launch.sh wifi bash ~/.config/wofi/wifi-menu.sh"
   },
   "pulseaudio": {
       "format": "<span size='13000' foreground='#89b4fa'>{icon}</span>  {volume}%",

@@ -28,7 +28,7 @@ CHENTRY=$(echo -e "$MENU" | uniq -u | wofi \
     --height 500 \
     --location center \
     --conf ~/.config/wofi/config \
-    --style ~/.config/wofi/style.css)
+    --style ~/.config/wofi/style.css) || exit 0   # menu closed / cancelled
 
 CHSSID=$(echo "$CHENTRY" \
     | sed 's/\s\{2,\}/|/g' \
@@ -42,7 +42,7 @@ if [ "$CHENTRY" = "manual" ]; then
         --lines 1 \
         --width 500 \
         --conf ~/.config/wofi/config \
-        --style ~/.config/wofi/style.css)
+        --style ~/.config/wofi/style.css) || exit 0
 
     MPASS=$(echo "$MSSID" | awk -F "," '{print $2}')
     MSSIDONLY=$(echo "$MSSID" | awk -F "," '{print $1}')
@@ -82,7 +82,7 @@ else
                 --lines 1 \
                 --width 500 \
                 --conf ~/.config/wofi/config \
-                --style ~/.config/wofi/style.css)
+                --style ~/.config/wofi/style.css) || exit 0
         fi
 
         nmcli dev wifi connect "$CHSSID" password "$WIFIPASS"
