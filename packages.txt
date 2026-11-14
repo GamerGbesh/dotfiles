@@ -59,7 +59,6 @@ cliphist 1:0.7.0-2.1
 cloudflare-warp-bin 2026.6.880-1
 cmatrix 2.0-4.1
 containerd 2.3.4-1.1
-coolercontrol 4.3.1-2
 cpu-x 5.4.0-3.1
 cpupower 7.2-1
 cryptsetup 2.8.7-1.1
@@ -200,7 +199,6 @@ nilfs-utils 2.3.1-1.1
 ninja 1.13.2-3.1
 normcap 0.6.0-3
 noto-fonts 1:2026.08.01-1
-noto-fonts-cjk 20240730-1
 noto-fonts-emoji 1:2.051-1
 npm 12.0.2-1
 nss-mdns 0.15.1-2.1
@@ -291,9 +289,7 @@ ttf-carlito 20230509-2
 ttf-cascadia-code-nerd 3.5.1-2
 ttf-croscore 20220810-3
 ttf-dejavu 2.37+18+g9b5d1b2f-8
-ttf-hack-nerd 3.5.1-2
 ttf-liberation 2.1.5-2
-ttf-meslo-nerd 3.5.1-2
 ttf-ms-fonts 2.0-12
 ttf-opensans 3.003-1
 tty-clock 2.3-2
