@@ -4,6 +4,7 @@ base-devel
 bat
 bluetui
 brightnessctl
+calf
 cava
 cliphist
 cmake
@@ -11,6 +12,7 @@ code
 cpio
 curl
 docker
+easyeffects
 fastfetch
 fd
 firefox
@@ -34,6 +36,7 @@ lazydocker
 lazygit
 libnotify
 libpulse
+lsp-plugins-lv2
 meson
 neovim
 networkmanager
