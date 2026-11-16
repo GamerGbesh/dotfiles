@@ -1,0 +1,146 @@
+#!/usr/bin/env python3
+"""Query the weekly timetable edited by the Quickshell app next to this script.
+
+    timetable              today's blocks (same as `today`)
+    timetable today
+    timetable tomorrow
+    timetable mon|tue|...  a specific weekday
+    timetable all          the whole week
+    timetable edit         open the editor (closes it if already open)
+    timetable path         print the data file location
+
+Add --json to any query for machine-readable output. A day with nothing on it
+prints "none".
+"""
+
+import json
+import os
+import signal
+import subprocess
+import sys
+from datetime import date, timedelta
+from pathlib import Path
+
+DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+DATA = Path(os.environ.get("XDG_DATA_HOME") or Path.home() / ".local/share") / "timetable/timetable.json"
+APP_DIR = Path(__file__).resolve().parent
+
+
+def load():
+    try:
+        return json.loads(DATA.read_text())
+    except FileNotFoundError:
+        return {"slots": [], "entries": []}
+    except json.JSONDecodeError as e:
+        sys.exit(f"timetable: {DATA} is not valid JSON ({e})")
+
+
+def blocks(tt, day):
+    slots = tt.get("slots", [])
+    out = []
+    for e in sorted(tt.get("entries", []), key=lambda e: e["start"]):
+        if e.get("day") != day:
+            continue
+        first, last = e["start"], e["start"] + e["span"] - 1
+        if first < 0 or last >= len(slots):
+            continue
+        out.append({
+            "start": slots[first]["start"],
+            "end": slots[last]["end"],
+            "title": e.get("title", ""),
+            "location": e.get("location", ""),
+            "note": e.get("note", ""),
+        })
+    return out
+
+
+def show_day(tt, day, header=False):
+    bs = blocks(tt, day)
+    if header:
+        print(DAYS[day])
+    indent = "  " if header else ""
+    if not bs:
+        print(f"{indent}none")
+        return
+    for b in bs:
+        details = " · ".join(x for x in (b["title"], b["location"], b["note"]) if x)
+        print(f"{indent}{b['start']}–{b['end']}  {details}")
+
+
+def running_editors():
+    """PIDs of quickshell instances running this app."""
+    pids = []
+    for proc in Path("/proc").iterdir():
+        if not proc.name.isdigit():
+            continue
+        try:
+            argv = (proc / "cmdline").read_bytes().split(b"\0")
+        except OSError:
+            continue
+        if argv and Path(argv[0].decode(errors="ignore")).name in ("quickshell", "qs") \
+                and str(APP_DIR).encode() in argv:
+            pids.append(int(proc.name))
+    return pids
+
+
+def parse_day(arg):
+    a = arg.lower()
+    hits = [i for i, name in enumerate(DAYS) if name.lower().startswith(a)]
+    return hits[0] if len(hits) == 1 else None
+
+
+def main(argv):
+    as_json = "--json" in argv
+    args = [a for a in argv if a != "--json"]
+    if any(a in ("-h", "--help", "help") for a in args):
+        print(__doc__.strip())
+        return 0
+    cmd = args[0].lower() if args else "today"
+
+    if cmd == "edit":
+        pids = running_editors()
+        if pids:
+            for pid in pids:
+                os.kill(pid, signal.SIGTERM)
+            return 0
+        subprocess.Popen(["quickshell", "--path", str(APP_DIR)],
+                         stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                         start_new_session=True)
+        return 0
+    if cmd == "path":
+        print(DATA)
+        return 0
+
+    tt = load()
+    today = date.today().weekday()
+
+    if cmd == "all":
+        week = range(7) if tt.get("showWeekend") or any(e.get("day", 0) > 4 for e in tt.get("entries", [])) else range(5)
+        if as_json:
+            print(json.dumps({DAYS[d]: blocks(tt, d) for d in week}, indent=2))
+            return 0
+        for i, d in enumerate(week):
+            if i:
+                print()
+            show_day(tt, d, header=True)
+        return 0
+
+    if cmd == "today":
+        day = today
+    elif cmd == "tomorrow":
+        day = (today + 1) % 7
+    else:
+        day = parse_day(cmd)
+        if day is None:
+            print(f"timetable: unknown command '{args[0]}'\n\n{__doc__.strip()}", file=sys.stderr)
+            return 2
+
+    if as_json:
+        print(json.dumps({"day": DAYS[day], "blocks": blocks(tt, day)}, indent=2))
+    else:
+        show_day(tt, day)
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv[1:]))
